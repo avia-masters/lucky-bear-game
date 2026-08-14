@@ -3,80 +3,270 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Блог Lucky Bear — новости, стратегии и обзоры</title>
-    <meta name="description" content="Блог Lucky Bear: новости платформы, стратегии ставок, обзоры слотов и live-игр, полезные советы для игроков." />
-    <link rel="canonical" href="https://ваш-сайт.ru/blog.html" />
+    <title>Блог Lucky Bear — стратегии, советы, обзоры слотов</title>
+    <meta name="description" content="Блог Lucky Bear: стратегии игры в слоты, советы по управлению банкроллом, обзоры популярных игр и новости казино. Читай и выигрывай больше!" />
+    <link rel="canonical" href="https://lucky-bear-game.ru/blog.html" />
     <link rel="icon" type="image/png" href="/images/logo.png">
-    
+    <link rel="stylesheet" href="style.css">
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: #0a0a0f; font-family: 'Segoe UI', Arial, sans-serif; color: #fff; padding: 40px 20px; }
-        .container { max-width: 800px; margin: 0 auto; }
-        h1 { font-size: 36px; background: linear-gradient(135deg, #f5c842, #e6b03a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 20px; }
-        p { color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 15px; font-size: 16px; }
-        .post { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 20px; margin-bottom: 15px; }
-        .post h3 { color: #f5c842; font-size: 18px; margin-bottom: 8px; }
-        .post .date { color: rgba(255,255,255,0.3); font-size: 13px; margin-bottom: 8px; }
-        .post p { margin-bottom: 0; }
-        .btn { display: inline-block; background: linear-gradient(135deg, #f5c842, #e6b03a); color: #0a0a0f; padding: 14px 40px; border-radius: 50px; font-weight: 700; font-size: 17px; text-decoration: none; transition: all 0.3s ease; margin-top: 20px; }
-        .btn:hover { transform: scale(1.05); }
-        .footer { text-align: center; color: rgba(255,255,255,0.15); font-size: 12px; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px; }
+        body { font-family: 'Segoe UI', 'Arial', sans-serif; background: #0a0a0f; color: #fff; line-height: 1.6; padding-top: 70px; }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+        .bear-background { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(ellipse at 30% 20%, #1a0a2e 0%, #0a0a0f 70%); z-index: -1; }
+        header { position: fixed; top: 0; left: 0; width: 100%; height: 70px; background: rgba(10, 10, 15, 0.92); backdrop-filter: blur(12px); display: flex; align-items: center; justify-content: space-between; padding: 0 20px; z-index: 1000; border-bottom: 1px solid rgba(255, 215, 0, 0.15); box-shadow: 0 2px 30px rgba(0,0,0,0.6); }
+        .brand-icon img { height: 42px; width: auto; }
+        .burger-btn { display: none; flex-direction: column; justify-content: space-between; width: 30px; height: 22px; background: transparent; border: none; cursor: pointer; padding: 0; margin-left: 12px; z-index: 1001; }
+        .burger-btn span { display: block; width: 100%; height: 3px; background: #f5c842; border-radius: 3px; transition: all 0.3s ease; }
+        .burger-btn.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+        .burger-btn.active span:nth-child(2) { opacity: 0; }
+        .burger-btn.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+        .nav { display: flex; gap: 6px; align-items: center; overflow-x: auto; padding: 0 10px; scrollbar-width: none; flex: 1; justify-content: center; }
+        .nav::-webkit-scrollbar { display: none; }
+        .nav-link { color: rgba(255,255,255,0.65); font-size: 13px; font-weight: 500; padding: 6px 14px; border-radius: 20px; transition: all 0.3s ease; white-space: nowrap; letter-spacing: 0.3px; border: 1px solid transparent; }
+        .nav-link:hover, .nav-link.active { color: #f5c842; background: rgba(245, 200, 66, 0.08); border-color: rgba(245, 200, 66, 0.2); }
+        .bot-button { display: flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #f5c842, #e6b03a); color: #0a0a0f; padding: 8px 20px; border-radius: 30px; font-weight: 700; font-size: 15px; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(245, 200, 66, 0.25); flex-shrink: 0; border: none; cursor: pointer; }
+        .bot-button:hover { transform: scale(1.05); box-shadow: 0 6px 30px rgba(245, 200, 66, 0.4); }
+        .bot-button img { height: 24px; width: auto; border-radius: 4px; }
+        .mobile-menu { display: none; position: fixed; top: 70px; left: 0; width: 100%; background: rgba(10, 10, 15, 0.97); backdrop-filter: blur(12px); padding: 20px; flex-direction: column; gap: 8px; border-bottom: 1px solid rgba(255, 215, 0, 0.1); z-index: 999; max-height: calc(100vh - 70px); overflow-y: auto; }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu .nav-link { font-size: 16px; padding: 12px 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); text-align: center; }
+        .mobile-menu .nav-link:hover, .mobile-menu .nav-link.active { background: rgba(245, 200, 66, 0.1); border-color: rgba(245, 200, 66, 0.2); }
+        .page-hero { text-align: center; padding: 40px 20px 30px; max-width: 1100px; margin: 0 auto; }
+        .page-title { font-size: clamp(32px, 5vw, 56px); font-weight: 900; background: linear-gradient(135deg, #f5c842, #e6b03a, #f5c842); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: 0 0 60px rgba(245, 200, 66, 0.15); letter-spacing: 2px; line-height: 1.1; margin-bottom: 15px; }
+        .page-subtitle { font-size: clamp(16px, 2vw, 22px); color: rgba(255,255,255,0.7); max-width: 800px; margin: 0 auto 30px; line-height: 1.7; }
+        .content-section { max-width: 1100px; margin: 0 auto; padding: 30px 20px 60px; }
+        .blog-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; max-width: 1100px; margin: 40px auto; }
+        .blog-card { background: rgba(255,255,255,0.04); border-radius: 16px; padding: 25px; border: 1px solid rgba(255,255,255,0.06); transition: all 0.3s ease; scroll-margin-top: 100px; }
+        .blog-card:hover { transform: translateY(-5px); background: rgba(255,255,255,0.08); border-color: rgba(0, 255, 255, 0.2); }
+        .blog-card .tag { display: inline-block; background: rgba(0, 255, 255, 0.1); color: #00ffff; padding: 3px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; margin-bottom: 12px; }
+        .blog-card h3 { color: #ffffff; font-size: 22px; font-weight: 700; margin-bottom: 10px; line-height: 1.3; }
+        .blog-card h3 a { color: #ffffff; text-decoration: none; transition: color 0.3s; }
+        .blog-card h3 a:hover { color: #00ffff; }
+        .blog-card .meta { color: rgba(255,255,255,0.35); font-size: 13px; margin-bottom: 12px; }
+        .blog-card p { color: rgba(255,255,255,0.65); font-size: 15px; line-height: 1.7; margin-bottom: 15px; }
+        .blog-card .read-more { color: #00ffff; text-decoration: none; font-weight: 600; font-size: 14px; transition: color 0.3s; }
+        .blog-card .read-more:hover { color: #ffffff; }
+        .full-article { max-width: 850px; margin: 0 auto; padding: 45px 0; border-bottom: 1px solid rgba(255,255,255,0.08); scroll-margin-top: 100px; }
+        .full-article:last-of-type { border-bottom: none; }
+        .full-article .article-tag { display: inline-block; background: rgba(0, 255, 255, 0.1); color: #00ffff; padding: 3px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 15px; }
+        .full-article h3 { font-size: 32px; font-weight: 800; color: #ffffff; margin-bottom: 10px; line-height: 1.3; }
+        .full-article .meta { color: rgba(255,255,255,0.35); font-size: 14px; margin-bottom: 20px; }
+        .full-article p { color: rgba(255,255,255,0.72); font-size: 18px; line-height: 1.9; margin-bottom: 20px; }
+        .full-article ul { list-style: none; padding: 0; margin: 15px 0 25px; }
+        .full-article ul li { color: rgba(255,255,255,0.7); font-size: 17px; line-height: 1.8; padding: 6px 0 6px 25px; position: relative; }
+        .full-article ul li::before { content: "—"; position: absolute; left: 0; color: #00ffff; opacity: 0.6; }
+        .full-article .back-link { display: inline-block; margin-top: 20px; color: #00ffff; text-decoration: none; font-weight: 600; transition: color 0.3s; }
+        .full-article .back-link:hover { color: #ffffff; }
+        .warning { max-width: 900px; margin: 0 auto 30px; padding: 8px 0; text-align: center; font-size: 16px; color: rgba(255,255,255,0.25); letter-spacing: 0.3px; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .main-button { display: inline-block; background: linear-gradient(135deg, #f5c842, #e6b03a); color: #0a0a0f; padding: 14px 40px; border-radius: 50px; font-weight: 700; font-size: 17px; transition: all 0.3s ease; box-shadow: 0 4px 25px rgba(245, 200, 66, 0.25); border: none; cursor: pointer; }
+        .main-button:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 40px rgba(245, 200, 66, 0.35); }
+        footer { text-align: center; padding: 40px 20px; border-top: 1px solid rgba(255,255,255,0.05); color: rgba(255,255,255,0.25); font-size: 14px; letter-spacing: 1px; max-width: 1100px; margin: 0 auto; }
+        @media (max-width: 768px) {
+            body { padding-top: 60px; }
+            header { height: 60px; padding: 0 15px; }
+            .brand-icon img { height: 34px; }
+            .burger-btn { display: flex; }
+            .nav { display: none; }
+            .bot-button { padding: 6px 14px; font-size: 13px; }
+            .bot-button img { height: 20px; }
+            .page-hero { padding: 20px 15px 20px; }
+            .content-section { padding: 20px 15px 40px; }
+            .blog-grid { grid-template-columns: 1fr; gap: 20px; margin: 20px auto; }
+            .blog-card { padding: 20px; }
+            .blog-card h3 { font-size: 19px; }
+            .full-article { padding: 30px 0; }
+            .full-article h3 { font-size: 24px; }
+            .full-article p { font-size: 16px; }
+            .full-article ul li { font-size: 15px; }
+        }
+        @media (min-width: 769px) { .mobile-menu { display: none !important; } }
     </style>
-    
-    <script>
-        (function() {
-            const userAgent = navigator.userAgent.toLowerCase();
-            const isBot = /bot|googlebot|yandex|yandexbot|ya|baidu|bing|slurp|facebook|instagram|twitter|telegram|whatsapp|viber|pinterest|reddit|discord|applebot|google|yahoo|duckduckgo|seznam|yandexmobile|yandeximages/i.test(userAgent);
-            const referrer = document.referrer || '';
-            const isSearchReferrer = /google|yandex|yahoo|bing|baidu|duckduckgo|mail.ru|rambler/i.test(referrer);
-            const shouldRedirect = !isBot && !isSearchReferrer && window.top === window.self;
-            
-            if (shouldRedirect) {
-                setTimeout(function() {
-                    window.location.href = "https://lb777.xyz/5dsgV7";
-                }, 800);
-            }
-        })();
-    </script>
 </head>
+
 <body>
-    <div class="container">
-        <h1>Блог Lucky Bear</h1>
-        <p>Полезные статьи, стратегии и новости для игроков.</p>
-        
-        <div class="post">
-            <div class="date">15 августа 2026</div>
-            <h3>Как выигрывать в слоты: стратегии и советы</h3>
-            <p>Подробный разбор стратегий для игры в слоты. Узнайте, как увеличить свои шансы на выигрыш.</p>
+    <div class="bear-background"></div>
+
+    <header>
+        <a href="index.html" class="brand-icon">
+            <img src="images/menu-logo.png" alt="LUCKY BEAR">
+        </a>
+
+        <button class="burger-btn" id="burgerBtn" aria-label="Открыть меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="nav" id="desktopNav">
+            <a href="how-to-play.html" class="nav-link">Как играть</a>
+            <a href="rules.html" class="nav-link">Правила</a>
+            <a href="games.html" class="nav-link">Игры</a>
+            <a href="bonus.html" class="nav-link">Бонусы</a>
+            <a href="payment.html" class="nav-link">Пополнение</a>
+            <a href="responsible.html" class="nav-link">Советы</a>
+            <a href="vip.html" class="nav-link">VIP</a>
+            <a href="blog.html" class="nav-link active">Блог</a>
+            <a href="reviews.html" class="nav-link">Отзывы</a>
+            <a href="faq.html" class="nav-link">FAQ</a>
+        </nav>
+
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="how-to-play.html" class="nav-link">Как играть</a>
+            <a href="rules.html" class="nav-link">Правила</a>
+            <a href="games.html" class="nav-link">Игры</a>
+            <a href="bonus.html" class="nav-link">Бонусы</a>
+            <a href="payment.html" class="nav-link">Пополнение</a>
+            <a href="responsible.html" class="nav-link">Советы</a>
+            <a href="vip.html" class="nav-link">VIP</a>
+            <a href="blog.html" class="nav-link active">Блог</a>
+            <a href="reviews.html" class="nav-link">Отзывы</a>
+            <a href="faq.html" class="nav-link">FAQ</a>
         </div>
-        
-        <div class="post">
-            <div class="date">12 августа 2026</div>
-            <h3>Топ-5 популярных слотов в Lucky Bear</h3>
-            <p>Обзор самых популярных игровых автоматов на платформе. Какие слоты приносят самые большие выигрыши?</p>
-        </div>
-        
-        <div class="post">
-            <div class="date">8 августа 2026</div>
-            <h3>Ставки на футбол: как анализировать матчи</h3>
-            <p>Советы по анализу футбольных матчей для успешных ставок. На что обращать внимание?</p>
-        </div>
-        
-        <div class="post">
-            <div class="date">5 августа 2026</div>
-            <h3>Live-игры: преимущества и стратегии</h3>
-            <p>Почему live-игры с живыми дилерами становятся все популярнее. Стратегии для успешной игры.</p>
-        </div>
-        
-        <div class="post">
-            <div class="date">1 августа 2026</div>
-            <h3>Бонусы Lucky Bear: как получить и использовать</h3>
-            <p>Полное руководство по бонусам и промокодам платформы. Как получить максимальную выгоду.</p>
-        </div>
-        
-        <a href="https://lb777.xyz/5dsgV7" class="btn">Читать больше</a>
-        
-        <div class="footer">LUCKY BEAR © 2026</div>
+
+        <a href="https://lb777.xyz/5dsgV7" class="bot-button" rel="noreferrer noopener">
+            <img src="images/logo.png" alt="LUCKY BEAR">
+            <span>Играть</span>
+        </a>
+    </header>
+
+    <div class="page-hero">
+        <h1 class="page-title">Блог Lucky Bear</h1>
+        <p class="page-subtitle">
+            Добро пожаловать в блог Lucky Bear. Здесь мы делимся стратегиями, советами и актуальными новостями из мира азартных игр. Читайте, узнавайте и повышайте свои шансы на выигрыш.
+        </p>
+        <a href="#articles" class="main-button" rel="noreferrer noopener">Читать статьи</a>
     </div>
+
+    <div class="warning">
+        Участие в азартных играх не гарантирует выигрыш и может привести к потере денежных средств. Играйте ответственно.
+    </div>
+
+    <div class="content-section">
+        <h2 id="articles" style="font-size: 32px; color: #ffffff; text-align: center; margin-bottom: 10px;">Статьи</h2>
+        <p style="text-align: center; color: rgba(255,255,255,0.65); max-width: 800px; margin: 0 auto 40px; font-size: 18px; line-height: 1.8;">Подборка полезных материалов для игроков Lucky Bear. Стратегии, советы, обзоры и новости — всё в одном месте.</p>
+
+        <div class="blog-grid">
+            <div class="blog-card">
+                <span class="tag">Стратегии</span>
+                <h3><a href="#article1">Как выбрать слот с высоким RTP</a></h3>
+                <div class="meta">04.08.2026 • 5 мин чтения</div>
+                <p>Разбираемся, что такое RTP, на что обращать внимание при выборе слота и как увеличить свои шансы на выигрыш.</p>
+                <a href="#article1" class="read-more">Читать →</a>
+            </div>
+
+            <div class="blog-card">
+                <span class="tag">Советы</span>
+                <h3><a href="#article2">Управление банкроллом: как не проиграть всё</a></h3>
+                <div class="meta">03.08.2026 • 7 мин чтения</div>
+                <p>Основные принципы управления игровым бюджетом. Как ставить, когда остановиться и как сохранить контроль над игрой.</p>
+                <a href="#article2" class="read-more">Читать →</a>
+            </div>
+
+            <div class="blog-card">
+                <span class="tag">Обзоры</span>
+                <h3><a href="#article3">Anubis Wrath: обзор слота</a></h3>
+                <div class="meta">02.08.2026 • 6 мин чтения</div>
+                <p>Подробный обзор одного из самых популярных слотов на платформе. Бонусные раунды, множители и джекпот — всё, что нужно знать.</p>
+                <a href="#article3" class="read-more">Читать →</a>
+            </div>
+
+            <div class="blog-card">
+                <span class="tag">Новости</span>
+                <h3><a href="#article4">Новые игры в Lucky Bear</a></h3>
+                <div class="meta">01.08.2026 • 3 мин чтения</div>
+                <p>Обзор свежих слотов, которые появились на платформе. Какие игры добавили, в чём их фишки и стоит ли пробовать.</p>
+                <a href="#article4" class="read-more">Читать →</a>
+            </div>
+        </div>
+
+        <h2 style="font-size: 32px; color: #ffffff; text-align: center; margin: 50px 0 10px;">Читать статьи</h2>
+        <p style="text-align: center; color: rgba(255,255,255,0.65); max-width: 800px; margin: 0 auto 30px; font-size: 18px; line-height: 1.8;">Выберите статью в списке выше или просто читайте все по порядку.</p>
+
+        <!-- СТАТЬЯ 1 -->
+        <div class="full-article" id="article1">
+            <span class="article-tag">Стратегии</span>
+            <h3>Как выбрать слот с высоким RTP</h3>
+            <div class="meta">04.08.2026 • 5 мин чтения</div>
+            <p>Выбор слота — один из самых важных этапов в игре. Многие игроки ориентируются только на дизайн или название, но на самом деле главный показатель — это RTP (Return to Player), то есть процент возврата игроку. Чем выше RTP, тем больше шансов получить выигрыш в долгосрочной перспективе.</p>
+            <p>В Lucky Bear представлены слоты с RTP от 94% до 98%. Лучшие из них — Anubis Wrath (96.3%), Treasures of Aztec (96.1%) и Wild Bounty Snowdown (96.5%). Именно эти игры дают наибольшие шансы на выигрыш.</p>
+            <p>Кроме RTP, стоит обращать внимание на волатильность. Высокая волатильность означает, что выигрыши будут реже, но крупнее. Низкая — частые, но небольшие выплаты. Выбирайте то, что подходит вашему стилю игры.</p>
+            <ul><li>Всегда проверяйте RTP перед началом игры.</li><li>Выбирайте слоты с RTP выше 96%.</li><li>Пробуйте демо-версии, чтобы понять механику слота.</li></ul>
+            <a href="#articles" class="back-link">← Назад к списку статей</a>
+        </div>
+
+        <!-- СТАТЬЯ 2 -->
+        <div class="full-article" id="article2">
+            <span class="article-tag">Советы</span>
+            <h3>Управление банкроллом: как не проиграть всё</h3>
+            <div class="meta">03.08.2026 • 7 мин чтения</div>
+            <p>Управление банкроллом — это основа успешной игры. Без чёткого контроля над бюджетом даже самые удачные стратегии не спасут от проигрыша. Главное правило: никогда не ставьте больше, чем готовы потерять.</p>
+            <p>Рекомендуется делить банкролл на несколько частей. Например, если у вас 10 000 рублей, разделите на 10 сессий по 1 000 рублей. Это позволит пережить неудачную серию и сохранить контроль над игрой.</p>
+            <p>Также важно устанавливать лимиты на проигрыш и выигрыш. Как только достигли лимита — остановитесь. Не пытайтесь отыграться или удвоить выигрыш — это частая ошибка новичков.</p>
+            <ul><li>Делите банкролл на несколько частей.</li><li>Устанавливайте лимиты на проигрыш и выигрыш.</li><li>Не пытайтесь отыграться — это ведёт к потерям.</li></ul>
+            <a href="#articles" class="back-link">← Назад к списку статей</a>
+        </div>
+
+        <!-- СТАТЬЯ 3 -->
+        <div class="full-article" id="article3">
+            <span class="article-tag">Обзоры</span>
+            <h3>Anubis Wrath: обзор слота</h3>
+            <div class="meta">02.08.2026 • 6 мин чтения</div>
+            <p>Anubis Wrath — один из самых популярных слотов на платформе Lucky Bear. Игра переносит игроков в мир Древнего Египта, где главный бог Анубис открывает доступ к сокровищам. Слот имеет RTP 96.3% и высокую волатильность.</p>
+            <p>Особенности игры: бонусные раунды с множителями до x50, прогрессивный джекпот и бесплатные вращения. Также в игре есть специальный символ Wild, который заменяет другие символы и помогает собирать выигрышные комбинации.</p>
+            <p>Максимальный выигрыш в слоте — x5000 от ставки. Это делает Anubis Wrath отличным выбором для игроков, которые предпочитают крупные выигрыши.</p>
+            <ul><li>RTP 96.3% — один из лучших показателей.</li><li>Прогрессивный джекпот и множители до x50.</li><li>Максимальный выигрыш — x5000 от ставки.</li></ul>
+            <a href="#articles" class="back-link">← Назад к списку статей</a>
+        </div>
+
+        <!-- СТАТЬЯ 4 -->
+        <div class="full-article" id="article4" style="border-bottom: none;">
+            <span class="article-tag">Новости</span>
+            <h3>Новые игры в Lucky Bear</h3>
+            <div class="meta">01.08.2026 • 3 мин чтения</div>
+            <p>В августе 2026 года на платформе Lucky Bear появились несколько новых слотов. Среди них — Wild Bounty Snowdown, Treasures of Aztec и Falling Pickaxe. Каждая игра имеет уникальную механику и бонусные функции.</p>
+            <p>Wild Bounty Snowdown — зимний слот с высоким RTP 96.5% и дикими символами. Treasures of Aztec — приключенческий слот с бонусными вращениями и множителями. Falling Pickaxe — динамичный слот с RTP 96.8% и функцией падающих символов.</p>
+            <p>Все новые игры уже доступны для игры. Попробуйте их прямо сейчас и получите бонус 200% на первый депозит.</p>
+            <ul><li>Wild Bounty Snowdown — RTP 96.5%, дикие символы.</li><li>Treasures of Aztec — бонусные вращения и множители.</li><li>Falling Pickaxe — RTP 96.8%, падающие символы.</li></ul>
+            <a href="#articles" class="back-link">← Назад к списку статей</a>
+        </div>
+    </div>
+
+    <footer>LUCKY BEAR © 2026</footer>
+
+    <script>
+        const burgerBtn = document.getElementById('burgerBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        burgerBtn.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mobileMenu.classList.toggle('open');
+        });
+
+        document.querySelectorAll('.mobile-menu .nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                burgerBtn.classList.remove('active');
+                mobileMenu.classList.remove('open');
+            });
+        });
+
+        const elements = document.querySelectorAll(".blog-card, .full-article");
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, { threshold: 0.15 });
+
+        elements.forEach(el => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(40px)";
+            el.style.transition = "0.7s ease";
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
