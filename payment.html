@@ -9,86 +9,73 @@
     <link rel="icon" type="image/png" href="/images/logo.png">
     <link rel="stylesheet" href="style.css">
 
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', 'Arial', sans-serif; background: #0a0a0f; color: #fff; line-height: 1.6; padding-top: 70px; }
-        a { text-decoration: none; color: inherit; }
-        img { max-width: 100%; display: block; }
-        .bear-background { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(ellipse at 30% 20%, #1a0a2e 0%, #0a0a0f 70%); z-index: -1; }
-        header { position: fixed; top: 0; left: 0; width: 100%; height: 70px; background: rgba(10, 10, 15, 0.92); backdrop-filter: blur(12px); display: flex; align-items: center; justify-content: space-between; padding: 0 20px; z-index: 1000; border-bottom: 1px solid rgba(255, 215, 0, 0.15); box-shadow: 0 2px 30px rgba(0,0,0,0.6); }
-        .brand-icon img { height: 42px; width: auto; }
-        .burger-btn { display: none; flex-direction: column; justify-content: space-between; width: 30px; height: 22px; background: transparent; border: none; cursor: pointer; padding: 0; margin-left: 12px; z-index: 1001; }
-        .burger-btn span { display: block; width: 100%; height: 3px; background: #f5c842; border-radius: 3px; transition: all 0.3s ease; }
-        .burger-btn.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
-        .burger-btn.active span:nth-child(2) { opacity: 0; }
-        .burger-btn.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
-        .nav { display: flex; gap: 6px; align-items: center; overflow-x: auto; padding: 0 10px; scrollbar-width: none; flex: 1; justify-content: center; }
-        .nav::-webkit-scrollbar { display: none; }
-        .nav-link { color: rgba(255,255,255,0.65); font-size: 13px; font-weight: 500; padding: 6px 14px; border-radius: 20px; transition: all 0.3s ease; white-space: nowrap; letter-spacing: 0.3px; border: 1px solid transparent; }
-        .nav-link:hover, .nav-link.active { color: #f5c842; background: rgba(245, 200, 66, 0.08); border-color: rgba(245, 200, 66, 0.2); }
-        .bot-button { display: flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #f5c842, #e6b03a); color: #0a0a0f; padding: 8px 20px; border-radius: 30px; font-weight: 700; font-size: 15px; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(245, 200, 66, 0.25); flex-shrink: 0; border: none; cursor: pointer; }
-        .bot-button:hover { transform: scale(1.05); box-shadow: 0 6px 30px rgba(245, 200, 66, 0.4); }
-        .bot-button img { height: 24px; width: auto; border-radius: 4px; }
-        .mobile-menu { display: none; position: fixed; top: 70px; left: 0; width: 100%; background: rgba(10, 10, 15, 0.97); backdrop-filter: blur(12px); padding: 20px; flex-direction: column; gap: 8px; border-bottom: 1px solid rgba(255, 215, 0, 0.1); z-index: 999; max-height: calc(100vh - 70px); overflow-y: auto; }
-        .mobile-menu.open { display: flex; }
-        .mobile-menu .nav-link { font-size: 16px; padding: 12px 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); text-align: center; }
-        .mobile-menu .nav-link:hover, .mobile-menu .nav-link.active { background: rgba(245, 200, 66, 0.1); border-color: rgba(245, 200, 66, 0.2); }
-        .page-hero { text-align: center; padding: 40px 20px 30px; max-width: 1100px; margin: 0 auto; }
-        .page-title { font-size: clamp(32px, 5vw, 56px); font-weight: 900; background: linear-gradient(135deg, #f5c842, #e6b03a, #f5c842); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: 0 0 60px rgba(245, 200, 66, 0.15); letter-spacing: 2px; line-height: 1.1; margin-bottom: 15px; }
-        .page-subtitle { font-size: clamp(16px, 2vw, 22px); color: rgba(255,255,255,0.7); max-width: 800px; margin: 0 auto 30px; line-height: 1.7; }
-        .content-section { max-width: 1100px; margin: 0 auto; padding: 30px 20px 60px; }
-        .payment-block { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 30px 35px; margin-bottom: 20px; transition: all 0.3s ease; }
-        .payment-block:hover { border-color: rgba(245, 200, 66, 0.15); background: rgba(255,255,255,0.05); }
-        .payment-block h3 { color: #f5c842; font-size: 20px; margin-bottom: 10px; font-weight: 600; }
-        .payment-block p { color: rgba(255,255,255,0.7); font-size: 16px; line-height: 1.8; }
-        .payment-block ul { color: rgba(255,255,255,0.7); font-size: 16px; line-height: 1.8; padding-left: 20px; margin-top: 8px; }
-        .payment-block ul li { margin-bottom: 6px; }
-        .highlight-block { border-color: rgba(245, 200, 66, 0.2); background: rgba(245, 200, 66, 0.04); }
-        .warning { max-width: 900px; margin: 0 auto 30px; padding: 8px 0; text-align: center; font-size: 16px; color: rgba(255,255,255,0.25); letter-spacing: 0.3px; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .main-button { display: inline-block; background: linear-gradient(135deg, #f5c842, #e6b03a); color: #0a0a0f; padding: 14px 40px; border-radius: 50px; font-weight: 700; font-size: 17px; transition: all 0.3s ease; box-shadow: 0 4px 25px rgba(245, 200, 66, 0.25); border: none; cursor: pointer; }
-        .main-button:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 40px rgba(245, 200, 66, 0.35); }
-        footer { text-align: center; padding: 40px 20px; border-top: 1px solid rgba(255,255,255,0.05); color: rgba(255,255,255,0.25); font-size: 14px; letter-spacing: 1px; max-width: 1100px; margin: 0 auto; }
-        .table-wrapper { max-width: 900px; margin: 40px auto 0; position: relative; border-radius: 16px; padding: 1px; background: transparent; box-shadow: 0 0 30px rgba(0, 212, 255, 0.1); }
-        .table-wrapper::before { content: ''; position: absolute; inset: -1px; border-radius: 16px; padding: 1px; background: linear-gradient(135deg, #00d4ff, #7b68ee, #ffd700, #00fa9a, #00d4ff); background-size: 300% 300%; animation: borderGlow 6s ease infinite; -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; z-index: 0; }
-        @keyframes borderGlow { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        .table-inner { position: relative; z-index: 1; background: transparent; border-radius: 16px; padding: 20px 15px 25px; overflow: hidden; }
-        .table-inner h3 { font-size: 26px; font-weight: 700; color: #ffffff; text-align: center; margin: 0 0 20px 0; letter-spacing: 1px; text-shadow: 0 0 20px rgba(0, 255, 255, 0.2); }
-        .bonus-table { width: 100%; border-collapse: collapse; font-size: 15px; color: #f2f4f5; min-width: 500px; background: transparent; }
-        .bonus-table thead th { padding: 14px 12px; text-align: center; font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 0.8px; color: #a0b4c4; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-        .bonus-table tbody td { padding: 12px 10px; text-align: center; border-bottom: 1px solid rgba(255, 255, 255, 0.05); color: rgba(255, 255, 255, 0.9); }
-        .bonus-table tbody tr:last-child td { border-bottom: none; }
-        .table-scroll { overflow-x: auto; padding-bottom: 8px; scrollbar-width: thin; scrollbar-color: rgba(255, 255, 255, 0.1) transparent; }
-        .table-scroll::-webkit-scrollbar { height: 4px; }
-        .table-scroll::-webkit-scrollbar-track { background: transparent; }
-        .table-scroll::-webkit-scrollbar-thumb { background: transparent; border-radius: 10px; }
-        .table-scroll::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.1); }
-        .table-button { display: block; width: fit-content; margin: 25px auto 5px; padding: 14px 50px; background: linear-gradient(135deg, #00c6ff, #0072ff); border: none; border-radius: 30px; color: #ffffff; font-size: 16px; font-weight: 700; text-decoration: none; text-align: center; box-shadow: 0 4px 25px rgba(0, 114, 255, 0.5); transition: 0.3s ease; position: relative; z-index: 2; }
-        .table-button:hover { transform: scale(1.03); box-shadow: 0 6px 35px rgba(0, 114, 255, 0.7); }
-        .table-note { text-align: center; color: rgba(255, 255, 255, 0.4); font-size: 13px; margin-top: 12px; }
-        .section-subtitle { font-size: 30px; font-weight: 800; color: #ffffff; margin: 40px 0 20px; letter-spacing: .3px; }
-        @media (max-width: 768px) {
-            body { padding-top: 60px; }
-            header { height: 60px; padding: 0 15px; }
-            .brand-icon img { height: 34px; }
-            .burger-btn { display: flex; }
-            .nav { display: none; }
-            .bot-button { padding: 6px 14px; font-size: 13px; }
-            .bot-button img { height: 20px; }
-            .page-hero { padding: 20px 15px 20px; }
-            .content-section { padding: 20px 15px 40px; }
-            .payment-block { padding: 20px; }
-            .bonus-table { font-size: 13px; min-width: 400px; }
-            .bonus-table thead th, .bonus-table tbody td { padding: 10px 6px; }
-            .table-wrapper h3 { font-size: 20px; }
-            .table-button { padding: 12px 30px; font-size: 14px; }
-            .section-subtitle { font-size: 24px; }
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=110916195', 'ym');
+
+        ym(110916195, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/110916195" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Главная",
+          "item": "https://lucky-bear-game.ru/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Пополнение",
+          "item": "https://lucky-bear-game.ru/payment.html"
         }
-        @media (min-width: 769px) { .mobile-menu { display: none !important; } }
-    </style>
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Lucky Bear",
+      "url": "https://lucky-bear-game.ru",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://lucky-bear-game.ru/search?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Lucky Bear",
+      "url": "https://lucky-bear-game.ru",
+      "logo": "https://lucky-bear-game.ru/images/logo.png"
+    }
+    </script>
 </head>
 
 <body>
     <div class="bear-background"></div>
+    <div class="bear-glow-1"></div>
+    <div class="bear-glow-2"></div>
+    <div class="bear-glow-3"></div>
+    <div class="bear-glow-4"></div>
 
     <header>
         <a href="index.html" class="brand-icon">
@@ -133,113 +120,74 @@
         </a>
     </header>
 
-    <div class="page-hero">
-        <h1 class="page-title">Пополнение и вывод</h1>
-        <p class="page-subtitle">
+    <div class="hero">
+        <img src="images/logo.png" alt="LUCKY BEAR" class="logo">
+        <div class="title">ПОПОЛНЕНИЕ</div>
+        <div class="subtitle">LUCKY BEAR</div>
+        <p class="hero-description">
             Все финансовые операции на платформе Lucky Bear проходят быстро, безопасно и прозрачно. Доступны пополнение и вывод в рублях через банковские переводы и СБП, а также криптовалютные транзакции.
         </p>
-        <a href="https://lb777.xyz/5dsgV7" class="main-button" rel="noreferrer noopener">Пополнить счёт</a>
+        <div class="hero-buttons">
+            <a href="https://lb777.xyz/5dsgV7" class="main-button" rel="noreferrer noopener">Пополнить счёт</a>
+            <a href="index.html" class="main-button secondary">На главную</a>
+        </div>
     </div>
 
     <div class="warning">
         Участие в азартных играх не гарантирует выигрыш и может привести к потере денежных средств. Играйте ответственно.
     </div>
 
-    <div class="content-section">
-        <!-- ПОПОЛНЕНИЕ В РУБЛЯХ -->
-        <h2 style="font-size: 32px; color: #ffffff; text-align: center; margin-bottom: 10px;">Пополнение в рублях</h2>
-        <p style="text-align: center; color: rgba(255,255,255,0.65); max-width: 800px; margin: 0 auto 40px; font-size: 18px; line-height: 1.8;">Для пополнения счёта в рублях доступны переводы через банковские системы и СБП. Средства зачисляются мгновенно после подтверждения платежа.</p>
+    <section>
+        <h2 class="section-title">Пополнение в рублях</h2>
+        <p class="section-description">
+            Для пополнения счёта в рублях доступны переводы через банковские системы и СБП. Средства зачисляются мгновенно после подтверждения платежа.
+        </p>
 
-        <div class="payment-block"><h3>Перевод с Т-банка</h3><p>Лимиты: от 1 064 ₽ до 300 000 ₽. Зачисление происходит в течение нескольких минут после перевода.</p></div>
-        <div class="payment-block"><h3>Сбербанк (перевод за рубеж)</h3><p>Лимиты: от 1 064 ₽ до 300 000 ₽. Поддерживается отправка переводов на счета за пределами России.</p></div>
-        <div class="payment-block"><h3>Перевод через ВТБ</h3><p>Лимиты: от 1 064 ₽ до 300 000 ₽. Переводы обрабатываются в штатном режиме банка.</p></div>
-        <div class="payment-block"><h3>Система быстрых платежей (СБП)</h3><p>Лимиты: от 2 064 ₽ до 300 000 ₽. Зачисление происходит мгновенно. Комиссия банка не взимается.</p></div>
-        <div class="payment-block"><h3>Перевод по номеру телефона</h3><p>Лимиты: от 2 064 ₽ до 300 000 ₽. Удобный способ без необходимости вводить реквизиты карты.</p></div>
-        <div class="payment-block"><h3>Перевод по номеру карты</h3><p>Лимиты: от 2 064 ₽ до 300 000 ₽. Переведите средства на указанную карту, и они будут зачислены на счёт.</p></div>
-        <div class="payment-block" style="border-bottom: none;"><h3>Перевод с Альфа-банка</h3><p>Лимиты: от 1 064 ₽ до 300 000 ₽. Переводы обрабатываются в режиме реального времени.</p></div>
+        <div class="info-block"><h3>Перевод с Т-банка</h3><p>Лимиты: от 1 064 ₽ до 300 000 ₽. Зачисление происходит в течение нескольких минут после перевода.</p></div>
+        <div class="info-block"><h3>Сбербанк (перевод за рубеж)</h3><p>Лимиты: от 1 064 ₽ до 300 000 ₽. Поддерживается отправка переводов на счета за пределами России.</p></div>
+        <div class="info-block"><h3>Перевод через ВТБ</h3><p>Лимиты: от 1 064 ₽ до 300 000 ₽. Переводы обрабатываются в штатном режиме банка.</p></div>
+        <div class="info-block"><h3>Система быстрых платежей (СБП)</h3><p>Лимиты: от 2 064 ₽ до 300 000 ₽. Зачисление происходит мгновенно. Комиссия банка не взимается.</p></div>
+        <div class="info-block"><h3>Перевод по номеру телефона</h3><p>Лимиты: от 2 064 ₽ до 300 000 ₽. Удобный способ без необходимости вводить реквизиты карты.</p></div>
+        <div class="info-block"><h3>Перевод по номеру карты</h3><p>Лимиты: от 2 064 ₽ до 300 000 ₽. Переведите средства на указанную карту, и они будут зачислены на счёт.</p></div>
+        <div class="info-block" style="border-bottom: none;"><h3>Перевод с Альфа-банка</h3><p>Лимиты: от 1 064 ₽ до 300 000 ₽. Переводы обрабатываются в режиме реального времени.</p></div>
 
-        <!-- ТАБЛИЦА 1 -->
-        <div class="table-wrapper">
-            <div class="table-inner">
-                <h3>Акция пополнения</h3>
-                <div class="table-scroll">
-                    <table class="bonus-table">
-                        <thead><tr><th>Сумма пополнения</th><th>Процент бонуса</th><th>Бонусная сумма</th></tr></thead>
-                        <tbody>
-                            <tr><td>1 000 ₽</td><td>120%</td><td>1 200 ₽</td></tr>
-                            <tr><td>2 000 ₽</td><td>180%</td><td>3 600 ₽</td></tr>
-                            <tr><td>5 000 ₽</td><td>240%</td><td>12 000 ₽</td></tr>
-                            <tr><td>8 000 ₽</td><td>300%</td><td>24 000 ₽</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-                <a href="https://lb777.xyz/5dsgV7" class="table-button" rel="noreferrer noopener">Пополнить баланс</a>
-                <div class="table-note">* Условия акции действуют на момент публикации</div>
-            </div>
-        </div>
+        <h2 class="section-title" style="margin-top: 60px;">Пополнение в криптовалюте</h2>
+        <p class="section-description">
+            Для пополнения счёта доступны популярные криптовалюты. Средства зачисляются после подтверждения сети, комиссия не взимается.
+        </p>
 
-        <!-- ПОПОЛНЕНИЕ КРИПТОВАЛЮТОЙ -->
-        <h2 style="font-size: 32px; color: #ffffff; text-align: center; margin: 50px 0 10px;">Пополнение в криптовалюте</h2>
-        <p style="text-align: center; color: rgba(255,255,255,0.65); max-width: 800px; margin: 0 auto 40px; font-size: 18px; line-height: 1.8;">Для пополнения счёта доступны популярные криптовалюты. Средства зачисляются после подтверждения сети, комиссия не взимается.</p>
+        <div class="info-block"><h3>USDT (BNB Smart Chain/BEP20, TON, TRC20/TRON, BSC/BNB)</h3><p>Лимиты: от 10 USDT до 5 000 USDT. Зачисление происходит после 2-3 подтверждений в сети.</p></div>
+        <div class="info-block"><h3>BTC (Bitcoin BRC20/Ordinals)</h3><p>Лимиты: от 0.000154 BTC до 0.077164 BTC. Время зачисления зависит от загруженности сети.</p></div>
+        <div class="info-block"><h3>ETH (Ethereum/ERC20)</h3><p>Лимиты: от 0.005653 ETH до 2.826743 ETH. Транзакции обрабатываются после подтверждения сети.</p></div>
+        <div class="info-block"><h3>TRX (Tron/TRC20)</h3><p>Лимиты: от 31.496 TRX до 15 748.03 TRX. Отличается низкой комиссией и высокой скоростью.</p></div>
+        <div class="info-block"><h3>SOL (Solana)</h3><p>Лимиты: от 0.138198 SOL до 69.098955 SOL. Одна из самых быстрых сетей для транзакций.</p></div>
+        <div class="info-block"><h3>BNB (BNB Smart Chain/BEP20)</h3><p>Лимиты: от 0.01662 BNB до 8.309789 BNB. Популярная криптовалюта для транзакций в сети BSC.</p></div>
+        <div class="info-block" style="border-bottom: none;"><h3>USDC (Polygon, Arbitrum One, Base)</h3><p>Лимиты: от 10 USDC до 5 000 USDC. Поддерживается в нескольких сетях, что даёт гибкость в выборе.</p></div>
 
-        <div class="payment-block"><h3>USDT (BNB Smart Chain/BEP20, TON, TRC20/TRON, BSC/BNB)</h3><p>Лимиты: от 10 USDT до 5 000 USDT. Зачисление происходит после 2-3 подтверждений в сети.</p></div>
-        <div class="payment-block"><h3>BTC (Bitcoin BRC20/Ordinals)</h3><p>Лимиты: от 0.000154 BTC до 0.077164 BTC. Время зачисления зависит от загруженности сети.</p></div>
-        <div class="payment-block"><h3>ETH (Ethereum/ERC20)</h3><p>Лимиты: от 0.005653 ETH до 2.826743 ETH. Транзакции обрабатываются после подтверждения сети.</p></div>
-        <div class="payment-block"><h3>TRX (Tron/TRC20)</h3><p>Лимиты: от 31.496 TRX до 15 748.03 TRX. Отличается низкой комиссией и высокой скоростью.</p></div>
-        <div class="payment-block"><h3>SOL (Solana)</h3><p>Лимиты: от 0.138198 SOL до 69.098955 SOL. Одна из самых быстрых сетей для транзакций.</p></div>
-        <div class="payment-block"><h3>BNB (BNB Smart Chain/BEP20)</h3><p>Лимиты: от 0.01662 BNB до 8.309789 BNB. Популярная криптовалюта для транзакций в сети BSC.</p></div>
-        <div class="payment-block" style="border-bottom: none;"><h3>USDC (Polygon, Arbitrum One, Base)</h3><p>Лимиты: от 10 USDC до 5 000 USDC. Поддерживается в нескольких сетях, что даёт гибкость в выборе.</p></div>
+        <h2 class="section-title" style="margin-top: 60px;">Вывод средств</h2>
+        <p class="section-description">
+            Вывод доступен на те же реквизиты, с которых был внесён депозит. Средства зачисляются в течение 24 часов.
+        </p>
 
-        <!-- ВЫВОД СРЕДСТВ -->
-        <h2 style="font-size: 32px; color: #ffffff; text-align: center; margin: 50px 0 10px;">Вывод средств</h2>
-        <p style="text-align: center; color: rgba(255,255,255,0.65); max-width: 800px; margin: 0 auto 40px; font-size: 18px; line-height: 1.8;">Вывод доступен на те же реквизиты, с которых был внесён депозит. Средства зачисляются в течение 24 часов.</p>
+        <h3 style="font-size: 30px; font-weight: 800; color: #4a8db7; margin: 40px 0 20px; letter-spacing: .3px;">Вывод в рублях</h3>
+        <div class="info-block"><h3>Система быстрых платежей (СБП)</h3><p>Лимиты: от 2 200 ₽ до 150 000 ₽. Быстрый вывод на банковские счета.</p></div>
+        <div class="info-block"><h3>Перевод по номеру телефона</h3><p>Лимиты: от 2 200 ₽ до 150 000 ₽. Вывод на карту, привязанную к номеру телефона.</p></div>
+        <div class="info-block" style="border-bottom: none;"><h3>Перевод по номеру карты</h3><p>Лимиты: от 3 300 ₽ до 150 000 ₽. Вывод на банковскую карту любого банка.</p></div>
 
-        <h3 class="section-subtitle">Вывод в рублях</h3>
-        <div class="payment-block"><h3>Система быстрых платежей (СБП)</h3><p>Лимиты: от 2 200 ₽ до 150 000 ₽. Быстрый вывод на банковские счета.</p></div>
-        <div class="payment-block"><h3>Перевод по номеру телефона</h3><p>Лимиты: от 2 200 ₽ до 150 000 ₽. Вывод на карту, привязанную к номеру телефона.</p></div>
-        <div class="payment-block" style="border-bottom: none;"><h3>Перевод по номеру карты</h3><p>Лимиты: от 3 300 ₽ до 150 000 ₽. Вывод на банковскую карту любого банка.</p></div>
-
-        <h3 class="section-subtitle">Вывод в криптовалюте</h3>
-        <p style="color: rgba(255,255,255,0.62); font-size: 19px; line-height: 1.9; margin-bottom: 30px;">Мгновенное зачисление, комиссия не взимается.</p>
-        <div class="payment-block"><h3>USDT (TON, TRC20/TRON, BSC/BNB)</h3><p>Лимиты: от 20 USDT до 10 000 USDT. Вывод осуществляется в течение нескольких минут.</p></div>
-        <div class="payment-block" style="border-bottom: none;"><h3>Криптовалютные кошельки (TonWallet, CryptoBot)</h3><p>Лимиты: от 20 USDT до 10 000 USDT. Удобный способ вывода на встроенные кошельки.</p></div>
-
-        <!-- VIP ТАБЛИЦА -->
-        <div class="table-wrapper" style="margin-top: 60px;">
-            <div class="table-inner">
-                <h3>VIP-программа Lucky Bear</h3>
-                <div class="table-scroll">
-                    <table class="bonus-table">
-                        <thead>
-                            <tr><th>VIP уровень</th><th>Требование к пополнению</th><th>Требование к ставке</th><th>Еженедельные бонусы</th><th>Ежемесячные бонусы</th><th>Награды за уровень</th><th>Коэффициент разблокировки</th><th>Комиссия за вывод</th></tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>VIP0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0%</td><td>9%</td></tr>
-                            <tr><td>VIP1</td><td>100</td><td>10</td><td>10</td><td>10</td><td>0</td><td>0.1%</td><td>9%</td></tr>
-                            <tr><td>VIP2</td><td>750</td><td>15</td><td>15</td><td>15</td><td>75</td><td>0.2%</td><td>8.5%</td></tr>
-                            <tr><td>VIP3</td><td>1500</td><td>30</td><td>20</td><td>30</td><td>150</td><td>0.25%</td><td>8.5%</td></tr>
-                            <tr><td>VIP4</td><td>7500</td><td>45</td><td>50</td><td>60</td><td>200</td><td>0.3%</td><td>8%</td></tr>
-                            <tr><td>VIP5</td><td>45000</td><td>270</td><td>100</td><td>120</td><td>300</td><td>0.35%</td><td>7.5%</td></tr>
-                            <tr><td>VIP6</td><td>150000</td><td>900</td><td>200</td><td>180</td><td>500</td><td>0.4%</td><td>7%</td></tr>
-                            <tr><td>VIP7</td><td>750000</td><td>4500</td><td>400</td><td>450</td><td>1000</td><td>0.45%</td><td>6.5%</td></tr>
-                            <tr><td>VIP8</td><td>1500000</td><td>9000</td><td>1000</td><td>1200</td><td>2000</td><td>0.45%</td><td>6%</td></tr>
-                            <tr><td>VIP9</td><td>3750000</td><td>22500</td><td>1500</td><td>1800</td><td>3000</td><td>0.45%</td><td>6%</td></tr>
-                            <tr><td>VIP10</td><td>7500000</td><td>45000</td><td>2000</td><td>1800</td><td>5000</td><td>1%</td><td>6%</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-                <a href="https://lb777.xyz/5dsgV7" class="table-button" rel="noreferrer noopener">Пополнить баланс</a>
-                <div class="table-note">* Для повышения VIP-уровня необходимо выполнить условия по пополнению и ставкам</div>
-            </div>
-        </div>
+        <h3 style="font-size: 30px; font-weight: 800; color: #4a8db7; margin: 40px 0 20px; letter-spacing: .3px;">Вывод в криптовалюте</h3>
+        <p style="color: rgba(200,220,240,0.6); font-size: 19px; line-height: 1.9; margin-bottom: 30px;">Мгновенное зачисление, комиссия не взимается.</p>
+        <div class="info-block"><h3>USDT (TON, TRC20/TRON, BSC/BNB)</h3><p>Лимиты: от 20 USDT до 10 000 USDT. Вывод осуществляется в течение нескольких минут.</p></div>
+        <div class="info-block" style="border-bottom: none;"><h3>Криптовалютные кошельки (TonWallet, CryptoBot)</h3><p>Лимиты: от 20 USDT до 10 000 USDT. Удобный способ вывода на встроенные кошельки.</p></div>
 
         <div style="max-width: 900px; margin: 50px auto 0; text-align: center;">
-            <p style="color: rgba(255,255,255,0.8); font-size: 18px; max-width: 700px; margin: 0 auto 25px;">Выберите удобный способ пополнения и начните игру в Lucky Bear уже сегодня.</p>
+            <p style="color: rgba(200,220,240,0.7); font-size: 18px; max-width: 700px; margin: 0 auto 25px;">Выберите удобный способ пополнения и начните игру в Lucky Bear уже сегодня.</p>
             <a href="https://lb777.xyz/5dsgV7" class="main-button" rel="noreferrer noopener" style="display: inline-block;">Перейти к пополнению</a>
         </div>
-    </div>
+    </section>
 
-    <footer>LUCKY BEAR © 2026</footer>
+    <footer>
+        LUCKY BEAR © 2026
+    </footer>
 
     <script>
         const burgerBtn = document.getElementById('burgerBtn');
@@ -257,7 +205,18 @@
             });
         });
 
-        const elements = document.querySelectorAll(".payment-block, .table-wrapper");
+        const logo = document.querySelector(".logo");
+        window.addEventListener("scroll", () => {
+            let scroll = window.scrollY;
+            let opacity = 1 - scroll / 500;
+            let scale = 1 - scroll / 1500;
+            if (opacity < 0) opacity = 0;
+            if (scale < 0.7) scale = 0.7;
+            logo.style.opacity = opacity;
+            logo.style.transform = `scale(${scale})`;
+        });
+
+        const elements = document.querySelectorAll(".info-block");
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
