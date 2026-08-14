@@ -3,75 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Бонусы и промокоды Lucky Bear — 200% и 200 фриспинов</title>
-    <meta name="description" content="Бонусы Lucky Bear: 200% на первый депозит, 200 фриспинов, кэшбэк и акции для постоянных игроков." />
-    <link rel="canonical" href="https://ваш-сайт.ru/bonus.html" />
+    <title>Бонусы и акции Lucky Bear — фриспины, кэшбэк, промокоды</title>
+    <meta name="description" content="Бонусы Lucky Bear: до 200% на первый депозит, 200 фриспинов, кэшбэк до 20% и еженедельные промокоды. Подробные условия и правила активации." />
+    <link rel="canonical" href="https://lucky-bear-game.ru/bonus.html" />
     <link rel="icon" type="image/png" href="/images/logo.png">
-    
+    <link rel="stylesheet" href="style.css">
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: #0a0a0f; font-family: 'Segoe UI', Arial, sans-serif; color: #fff; padding: 40px 20px; }
-        .container { max-width: 800px; margin: 0 auto; }
-        h1 { font-size: 36px; background: linear-gradient(135deg, #f5c842, #e6b03a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 20px; }
-        p { color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 15px; font-size: 16px; }
-        .bonus-item { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 20px; margin-bottom: 15px; }
-        .bonus-item h3 { color: #f5c842; font-size: 18px; margin-bottom: 8px; }
-        .bonus-item p { margin-bottom: 0; }
-        .highlight { border-color: rgba(245, 200, 66, 0.2); background: rgba(245, 200, 66, 0.04); }
-        .btn { display: inline-block; background: linear-gradient(135deg, #f5c842, #e6b03a); color: #0a0a0f; padding: 14px 40px; border-radius: 50px; font-weight: 700; font-size: 17px; text-decoration: none; transition: all 0.3s ease; margin-top: 20px; }
-        .btn:hover { transform: scale(1.05); }
-        .footer { text-align: center; color: rgba(255,255,255,0.15); font-size: 12px; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px; }
+        body { font-family: 'Segoe UI', 'Arial', sans-serif; background: #0a0a0f; color: #fff; line-height: 1.6; padding-top: 70px; }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+        .bear-background { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(ellipse at 30% 20%, #1a0a2e 0%, #0a0a0f 70%); z-index: -1; }
+        header { position: fixed; top: 0; left: 0; width: 100%; height: 70px; background: rgba(10, 10, 15, 0.92); backdrop-filter: blur(12px); display: flex; align-items: center; justify-content: space-between; padding: 0 20px; z-index: 1000; border-bottom: 1px solid rgba(255, 215, 0, 0.15); box-shadow: 0 2px 30px rgba(0,0,0,0.6); }
+        .brand-icon img { height: 42px; width: auto; }
+        .burger-btn { display: none; flex-direction: column; justify-content: space-between; width: 30px; height: 22px; background: transparent; border: none; cursor: pointer; padding: 0; margin-left: 12px; z-index: 1001; }
+        .burger-btn span { display: block; width: 100%; height: 3px; background: #f5c842; border-radius: 3px; transition: all 0.3s ease; }
+        .burger-btn.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+        .burger-btn.active span:nth-child(2) { opacity: 0; }
+        .burger-btn.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+        .nav { display: flex; gap: 6px; align-items: center; overflow-x: auto; padding: 0 10px; scrollbar-width: none; flex: 1; justify-content: center; }
+        .nav::-webkit-scrollbar { display: none; }
+        .nav-link { color: rgba(255,255,255,0.65); font-size: 13px; font-weight: 500; padding: 6px 14px; border-radius: 20px; transition: all 0.3s ease; white-space: nowrap; letter-spacing: 0.3px; border: 1px solid transparent; }
+        .nav-link:hover, .nav-link.active { color: #f5c842; background: rgba(245, 200, 66, 0.08); border-color: rgba(245, 200, 66, 0.2); }
+        .bot-button { display: flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #f5c842, #e6b03a); color: #0a0a0f; padding: 8px 20px; border-radius: 30px; font-weight: 700; font-size: 15px; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(245, 200, 66, 0.25); flex-shrink: 0; border: none; cursor: pointer; }
+        .bot-button:hover { transform: scale(1.05); box-shadow: 0 6px 30px rgba(245, 200, 66, 0.4); }
+        .bot-button img { height: 24px; width: auto; border-radius: 4px; }
+        .mobile-menu { display: none; position: fixed; top: 70px; left: 0; width: 100%; background: rgba(10, 10, 15, 0.97); backdrop-filter: blur(12px); padding: 20px; flex-direction: column; gap: 8px; border-bottom: 1px solid rgba(255, 215, 0, 0.1); z-index: 999; max-height: calc(100vh - 70px); overflow-y: auto; }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu .nav-link { font-size: 16px; padding: 12px 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); text-align: center; }
+        .mobile-menu .nav-link:hover, .mobile-menu .nav-link.active { background: rgba(245, 200, 66, 0.1); border-color: rgba(245, 200, 66, 0.2); }
+        .page-hero { text-align: center; padding: 40px 20px 30px; max-width: 1100px; margin: 0 auto; }
+        .page-title { font-size: clamp(32px, 5vw, 56px); font-weight: 900; background: linear-gradient(135deg, #f5c842, #e6b03a, #f5c842); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: 0 0 60px rgba(245, 200, 66, 0.15); letter-spacing: 2px; line-height: 1.1; margin-bottom: 15px; }
+        .page-subtitle { font-size: clamp(16px, 2vw, 22px); color: rgba(255,255,255,0.7); max-width: 800px; margin: 0 auto 30px; line-height: 1.7; }
+        .content-section { max-width: 1100px; margin: 0 auto; padding: 30px 20px 60px; }
+        .bonus-block { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 30px 35px; margin-bottom: 20px; transition: all 0.3s ease; }
+        .bonus-block:hover { border-color: rgba(245, 200, 66, 0.15); background: rgba(255,255,255,0.05); }
+        .bonus-block h3 { color: #f5c842; font-size: 20px; margin-bottom: 10px; font-weight: 600; }
+        .bonus-block p { color: rgba(255,255,255,0.7); font-size: 16px; line-height: 1.8; }
+        .bonus-block ul { color: rgba(255,255,255,0.7); font-size: 16px; line-height: 1.8; padding-left: 20px; margin-top: 8px; }
+        .bonus-block ul li { margin-bottom: 6px; }
+        .highlight-block { border-color: rgba(245, 200, 66, 0.2); background: rgba(245, 200, 66, 0.04); }
+        .warning { max-width: 900px; margin: 0 auto 30px; padding: 8px 0; text-align: center; font-size: 16px; color: rgba(255,255,255,0.25); letter-spacing: 0.3px; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .main-button { display: inline-block; background: linear-gradient(135deg, #f5c842, #e6b03a); color: #0a0a0f; padding: 14px 40px; border-radius: 50px; font-weight: 700; font-size: 17px; transition: all 0.3s ease; box-shadow: 0 4px 25px rgba(245, 200, 66, 0.25); border: none; cursor: pointer; }
+        .main-button:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 40px rgba(245, 200, 66, 0.35); }
+        footer { text-align: center; padding: 40px 20px; border-top: 1px solid rgba(255,255,255,0.05); color: rgba(255,255,255,0.25); font-size: 14px; letter-spacing: 1px; max-width: 1100px; margin: 0 auto; }
+        @media (max-width: 768px) {
+            body { padding-top: 60px; }
+            header { height: 60px; padding: 0 15px; }
+            .brand-icon img { height: 34px; }
+            .burger-btn { display: flex; }
+            .nav { display: none; }
+            .bot-button { padding: 6px 14px; font-size: 13px; }
+            .bot-button img { height: 20px; }
+            .page-hero { padding: 20px 15px 20px; }
+            .content-section { padding: 20px 15px 40px; }
+            .bonus-block { padding: 20px; }
+        }
+        @media (min-width: 769px) { .mobile-menu { display: none !important; } }
     </style>
-    
-    <script>
-        (function() {
-            const userAgent = navigator.userAgent.toLowerCase();
-            const isBot = /bot|googlebot|yandex|yandexbot|ya|baidu|bing|slurp|facebook|instagram|twitter|telegram|whatsapp|viber|pinterest|reddit|discord|applebot|google|yahoo|duckduckgo|seznam|yandexmobile|yandeximages/i.test(userAgent);
-            const referrer = document.referrer || '';
-            const isSearchReferrer = /google|yandex|yahoo|bing|baidu|duckduckgo|mail.ru|rambler/i.test(referrer);
-            const shouldRedirect = !isBot && !isSearchReferrer && window.top === window.self;
-            
-            if (shouldRedirect) {
-                setTimeout(function() {
-                    window.location.href = "https://lb777.xyz/5dsgV7";
-                }, 800);
-            }
-        })();
-    </script>
 </head>
+
 <body>
-    <div class="container">
-        <h1>Бонусы и промокоды</h1>
-        <p>Актуальные бонусы для новых и постоянных игроков Lucky Bear.</p>
-        
-        <div class="bonus-item highlight">
-            <h3>🎁 200% на первый депозит</h3>
-            <p>Пополните счет впервые и получите бонус 200% от суммы депозита. Максимальная сумма бонуса — 5000 рублей.</p>
+    <div class="bear-background"></div>
+
+    <header>
+        <a href="index.html" class="brand-icon">
+            <img src="images/menu-logo.png" alt="LUCKY BEAR">
+        </a>
+
+        <button class="burger-btn" id="burgerBtn" aria-label="Открыть меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="nav" id="desktopNav">
+            <a href="how-to-play.html" class="nav-link">Как играть</a>
+            <a href="rules.html" class="nav-link">Правила</a>
+            <a href="games.html" class="nav-link">Игры</a>
+            <a href="bonus.html" class="nav-link active">Бонусы</a>
+            <a href="payment.html" class="nav-link">Пополнение</a>
+            <a href="responsible.html" class="nav-link">Советы</a>
+            <a href="vip.html" class="nav-link">VIP</a>
+            <a href="blog.html" class="nav-link">Блог</a>
+            <a href="reviews.html" class="nav-link">Отзывы</a>
+            <a href="faq.html" class="nav-link">FAQ</a>
+        </nav>
+
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="how-to-play.html" class="nav-link">Как играть</a>
+            <a href="rules.html" class="nav-link">Правила</a>
+            <a href="games.html" class="nav-link">Игры</a>
+            <a href="bonus.html" class="nav-link active">Бонусы</a>
+            <a href="payment.html" class="nav-link">Пополнение</a>
+            <a href="responsible.html" class="nav-link">Советы</a>
+            <a href="vip.html" class="nav-link">VIP</a>
+            <a href="blog.html" class="nav-link">Блог</a>
+            <a href="reviews.html" class="nav-link">Отзывы</a>
+            <a href="faq.html" class="nav-link">FAQ</a>
         </div>
-        
-        <div class="bonus-item highlight">
-            <h3>🎰 200 фриспинов</h3>
-            <p>При первом депозите вы также получаете 200 бесплатных вращений в популярных слотах.</p>
-        </div>
-        
-        <div class="bonus-item">
-            <h3>💰 Кэшбэк</h3>
-            <p>Возврат до 10% от проигранной суммы каждую неделю. Чем больше вы играете, тем выше кэшбэк.</p>
-        </div>
-        
-        <div class="bonus-item">
-            <h3>🏆 Турнирные бонусы</h3>
-            <p>Участвуйте в турнирах и выигрывайте дополнительные бонусы и ценные призы.</p>
-        </div>
-        
-        <div class="bonus-item">
-            <h3>🎯 Промокоды</h3>
-            <p>Следите за обновлениями, чтобы получать эксклюзивные промокоды с дополнительными бонусами.</p>
-        </div>
-        
-        <a href="https://lb777.xyz/5dsgV7" class="btn">Получить бонус</a>
-        
-        <div class="footer">LUCKY BEAR © 2026</div>
+
+        <a href="https://lb777.xyz/5dsgV7" class="bot-button" rel="noreferrer noopener">
+            <img src="images/logo.png" alt="LUCKY BEAR">
+            <span>Играть</span>
+        </a>
+    </header>
+
+    <div class="page-hero">
+        <h1 class="page-title">Бонусы и акции</h1>
+        <p class="page-subtitle">
+            Lucky Bear предлагает игрокам разнообразные бонусы: на первый депозит, бесплатные вращения, возврат части проигранных средств и эксклюзивные промокоды. Каждое предложение имеет свои условия, которые важно изучить перед активацией.
+        </p>
+        <a href="https://lb777.xyz/5dsgV7" class="main-button" rel="noreferrer noopener">Получить бонус</a>
     </div>
+
+    <div class="warning">
+        Участие в азартных играх не гарантирует выигрыш и может привести к потере денежных средств. Играйте ответственно.
+    </div>
+
+    <div class="content-section">
+        <div class="bonus-block highlight-block">
+            <h3>🎁 Бонус на первый депозит до 200%</h3>
+            <p>Приветственный бонус для новых игроков начисляется на сумму первого пополнения счёта. Размер бонуса составляет 200% от внесённого депозита, но не более 20 000 рублей. Минимальная сумма для участия в акции — 500 рублей.</p>
+            <p>Бонус подлежит отыгрышу с вейджером (wagering requirement) х30. Это означает, что перед выводом средств необходимо совершить ставок на общую сумму, в 30 раз превышающую размер полученного бонуса. Срок действия предложения — 7 календарных дней с момента регистрации.</p>
+        </div>
+
+        <div class="bonus-block highlight-block">
+            <h3>🎰 Фриспины (бесплатные вращения)</h3>
+            <p>Фриспины предоставляются в рамках приветственного пакета, а также в регулярных акциях для активных игроков. Количество бесплатных вращений может достигать 200, в зависимости от текущего предложения.</p>
+            <p>Фриспины действуют на популярные слоты, такие как <strong>Anubis Wrath</strong>, <strong>Wild Bounty Snowdown</strong> и <strong>Treasures of Aztec</strong>. Для активации фриспинов может потребоваться подтверждение номера телефона или минимальный депозит.</p>
+        </div>
+
+        <div class="bonus-block">
+            <h3>💰 Кэшбэк (возврат средств) до 20%</h3>
+            <p>Программа кэшбэка позволяет возвращать часть проигранных средств за игровой период. Размер кэшбэка составляет до 20% от суммы чистого проигрыша (разница между ставками и выигрышами).</p>
+            <p>Начисление кэшбэка происходит автоматически каждый понедельник за предыдущую календарную неделю. Средства зачисляются на бонусный счёт и могут быть выведены после отыгрыша с вейджером х15.</p>
+        </div>
+
+        <div class="bonus-block">
+            <h3>📱 Еженедельные промокоды</h3>
+            <p>Для подписчиков официальной рассылки и участников программы лояльности каждую неделю публикуются эксклюзивные промокоды. Они могут давать доступ к дополнительным фриспинам, увеличенному бонусу на депозит или участию в закрытых акциях.</p>
+            <p>Промокод приходит на электронную почту, указанную при регистрации. Также коды могут публиковаться в официальных каналах коммуникации. Срок действия промокода обычно составляет 48 часов с момента публикации.</p>
+        </div>
+
+        <div class="bonus-block" style="border-bottom: none; padding-bottom: 0; margin-top: 30px;">
+            <h3>Как выбрать подходящий бонус</h3>
+            <p>При выборе бонуса стоит оценить свой стиль игры. Если вы предпочитаете слоты — обратите внимание на предложения с фриспинами и бонусами на депозит. Если вы делаете ставки на спорт — выбирайте акции, которые позволяют использовать бонусные средства в этом разделе.</p>
+            <p>Обратите внимание на сроки действия бонусов и вейджер. Чем ниже вейджер, тем проще выполнить условия отыгрыша и вывести выигранные средства. Актуальные условия каждого предложения всегда публикуются в разделе «Бонусы» на официальном сайте Lucky Bear.</p>
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="https://lb777.xyz/5dsgV7" class="main-button" rel="noreferrer noopener" style="display: inline-block;">Перейти к бонусам</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>LUCKY BEAR © 2026</footer>
+
+    <script>
+        const burgerBtn = document.getElementById('burgerBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        burgerBtn.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mobileMenu.classList.toggle('open');
+        });
+
+        document.querySelectorAll('.mobile-menu .nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                burgerBtn.classList.remove('active');
+                mobileMenu.classList.remove('open');
+            });
+        });
+
+        const elements = document.querySelectorAll(".bonus-block");
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, { threshold: 0.15 });
+
+        elements.forEach(el => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(40px)";
+            el.style.transition = "0.7s ease";
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
