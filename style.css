@@ -1,17 +1,17 @@
-/* ===================================
-   LUCKY BEAR NEON STYLE
-   Голубой неон + фоновые медведи
-   =================================== */
+/* ===========================================
+   LUCKY BEAR NEON STYLE (СВЕТЛЫЙ ФОН)
+   Голубой неон + 6 фоновых медведей
+   =========================================== */
 
 :root {
-    --neon-blue: #00d4ff;
-    --neon-dark: #0a1628;
-    --neon-light: #e8f4ff;
-    --neon-glow: rgba(0, 212, 255, 0.3);
-    --neon-text: #00bfff;
-    --bg-card: rgba(255, 255, 255, 0.05);
-    --border-glow: rgba(0, 212, 255, 0.2);
-    --shadow-glow: 0 0 30px rgba(0, 212, 255, 0.1);
+    --neon-blue: #0088cc;
+    --neon-light: #00d4ff;
+    --bg-light: #e8f4ff;
+    --bg-card: rgba(255, 255, 255, 0.7);
+    --text-dark: #0a1628;
+    --text-soft: #2a4a6a;
+    --border-glow: rgba(0, 136, 204, 0.15);
+    --shadow-glow: 0 0 40px rgba(0, 136, 204, 0.08);
 }
 
 * {
@@ -22,8 +22,8 @@
 }
 
 body {
-    background: #0a1628;
-    color: #e8f4ff;
+    background: #e8f4ff;
+    color: #0a1628;
     font-family: 'Segoe UI', 'Arial', sans-serif;
     line-height: 1.6;
     padding-top: 70px;
@@ -40,89 +40,94 @@ img {
     display: block;
 }
 
-/* ===== ФОН С МЕДВЕДЯМИ (НЕОНОВЫЙ) ===== */
+/* ===== СВЕТЛЫЙ ФОН С МЕДВЕДЯМИ ===== */
 .bear-background {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(ellipse at 30% 20%, #0d2847 0%, #0a1628 70%);
+    background: linear-gradient(135deg, #dce8f5 0%, #e8f4ff 40%, #f0f8ff 100%);
     z-index: -1;
 }
 
-/* ===== НЕОНОВЫЕ МЕДВЕДИ (СВЕТЯТСЯ) ===== */
+/* ===== 6 МЕДВЕДЕЙ ПО УГЛАМ (ровные, без искажений) ===== */
 .bear-background::before,
-.bear-background::after {
+.bear-background::after,
+.bear-glow-1,
+.bear-glow-2,
+.bear-glow-3,
+.bear-glow-4 {
     content: '';
     position: fixed;
     background-image: url('images/menu-logo.png');
     background-repeat: no-repeat;
     background-size: contain;
-    opacity: 0.1;
+    background-position: center;
     pointer-events: none;
     z-index: -1;
-    filter: drop-shadow(0 0 40px rgba(0, 212, 255, 0.15));
-}
-
-.bear-background::before {
-    top: 8%;
-    left: 3%;
-    width: 280px;
-    height: 280px;
-    transform: rotate(-10deg);
-    opacity: 0.12;
-}
-
-.bear-background::after {
-    bottom: 8%;
-    right: 3%;
-    width: 350px;
-    height: 350px;
-    transform: rotate(15deg);
-    opacity: 0.12;
-}
-
-/* ===== ДОПОЛНИТЕЛЬНЫЕ НЕОНОВЫЕ МЕДВЕДИ ===== */
-.bear-background .bear-glow {
-    position: fixed;
-    background-image: url('images/menu-logo.png');
-    background-repeat: no-repeat;
-    background-size: contain;
     opacity: 0.08;
-    pointer-events: none;
-    z-index: -1;
-    filter: drop-shadow(0 0 60px rgba(0, 212, 255, 0.2));
 }
 
-.bear-background .bear-glow:nth-child(1) {
-    top: 20%;
-    left: 50%;
-    transform: translateX(-50%) scale(0.8);
-    width: 400px;
-    height: 400px;
-    opacity: 0.04;
+/* Медведь 1 — верхний левый */
+.bear-background::before {
+    top: 5%;
+    left: 3%;
+    width: 180px;
+    height: 180px;
+    transform: rotate(-5deg);
 }
 
-/* ===== СВЕТЯЩИЕСЯ ЛИНИИ ===== */
-.bear-background .line-glow {
-    position: fixed;
-    background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.05), transparent);
-    height: 1px;
-    width: 100%;
-    pointer-events: none;
-    z-index: -1;
-    animation: linePulse 4s ease-in-out infinite;
+/* Медведь 2 — верхний правый */
+.bear-background::after {
+    top: 5%;
+    right: 3%;
+    width: 200px;
+    height: 200px;
+    transform: rotate(5deg);
 }
 
-.bear-background .line-glow:nth-child(2) { top: 25%; }
-.bear-background .line-glow:nth-child(3) { top: 50%; animation-delay: 2s; }
-.bear-background .line-glow:nth-child(4) { top: 75%; animation-delay: 1s; }
-
-@keyframes linePulse {
-    0%, 100% { opacity: 0.2; }
-    50% { opacity: 0.8; }
+/* Медведь 3 — средний левый */
+.bear-glow-1 {
+    top: 35%;
+    left: 1%;
+    width: 140px;
+    height: 140px;
+    transform: rotate(-8deg);
 }
+
+/* Медведь 4 — средний правый */
+.bear-glow-2 {
+    top: 35%;
+    right: 1%;
+    width: 160px;
+    height: 160px;
+    transform: rotate(8deg);
+}
+
+/* Медведь 5 — нижний левый */
+.bear-glow-3 {
+    bottom: 5%;
+    left: 3%;
+    width: 200px;
+    height: 200px;
+    transform: rotate(-3deg);
+}
+
+/* Медведь 6 — нижний правый */
+.bear-glow-4 {
+    bottom: 5%;
+    right: 3%;
+    width: 180px;
+    height: 180px;
+    transform: rotate(3deg);
+}
+
+/* ===== ДОБАВЛЯЕМ МЕДВЕДЕЙ В HTML (нужно добавить в index.html) ===== */
+/* <div class="bear-glow-1"></div>
+   <div class="bear-glow-2"></div>
+   <div class="bear-glow-3"></div>
+   <div class="bear-glow-4"></div> */
 
 /* ===== ХЕДЕР ===== */
 header {
@@ -131,15 +136,15 @@ header {
     left: 0;
     width: 100%;
     height: 70px;
-    background: rgba(10, 22, 40, 0.92);
+    background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(15px);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 20px;
     z-index: 1000;
-    border-bottom: 1px solid rgba(0, 212, 255, 0.15);
-    box-shadow: 0 0 40px rgba(0, 212, 255, 0.05);
+    border-bottom: 1px solid rgba(0, 136, 204, 0.08);
+    box-shadow: 0 2px 30px rgba(0, 0, 0, 0.04);
 }
 
 .brand-icon {
@@ -149,7 +154,6 @@ header {
 .brand-icon img {
     height: 42px;
     width: auto;
-    filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.2));
 }
 
 /* ===== БУРГЕР-МЕНЮ ===== */
@@ -171,10 +175,9 @@ header {
     display: block;
     width: 100%;
     height: 3px;
-    background: #00d4ff;
+    background: #0088cc;
     border-radius: 3px;
     transition: all 0.3s ease;
-    box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
 }
 
 .burger-btn.active span:nth-child(1) {
@@ -204,7 +207,7 @@ header {
 }
 
 .nav-link {
-    color: rgba(200, 230, 255, 0.65);
+    color: rgba(10, 22, 40, 0.55);
     font-size: 13px;
     font-weight: 500;
     padding: 6px 14px;
@@ -217,25 +220,24 @@ header {
 
 .nav-link:hover,
 .nav-link.active {
-    color: #00d4ff;
-    background: rgba(0, 212, 255, 0.08);
-    border-color: rgba(0, 212, 255, 0.2);
-    box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
+    color: #0088cc;
+    background: rgba(0, 136, 204, 0.06);
+    border-color: rgba(0, 136, 204, 0.1);
 }
 
-/* ===== КНОПКА "ИГРАТЬ" (НЕОНОВАЯ) ===== */
+/* ===== КНОПКА "ИГРАТЬ" ===== */
 .bot-button {
     display: flex;
     align-items: center;
     gap: 8px;
-    background: linear-gradient(135deg, #00d4ff, #0088cc);
+    background: linear-gradient(135deg, #0088cc, #00a8e8);
     color: #ffffff;
     padding: 8px 20px;
     border-radius: 30px;
     font-weight: 700;
     font-size: 15px;
     transition: all 0.3s ease;
-    box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
+    box-shadow: 0 4px 20px rgba(0, 136, 204, 0.15);
     flex-shrink: 0;
     border: none;
     cursor: pointer;
@@ -243,7 +245,7 @@ header {
 
 .bot-button:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 50px rgba(0, 212, 255, 0.4);
+    box-shadow: 0 6px 30px rgba(0, 136, 204, 0.25);
 }
 
 .bot-button img {
@@ -259,12 +261,12 @@ header {
     top: 70px;
     left: 0;
     width: 100%;
-    background: rgba(10, 22, 40, 0.97);
+    background: rgba(255, 255, 255, 0.97);
     backdrop-filter: blur(15px);
     padding: 20px;
     flex-direction: column;
     gap: 8px;
-    border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+    border-bottom: 1px solid rgba(0, 136, 204, 0.05);
     z-index: 999;
     max-height: calc(100vh - 70px);
     overflow-y: auto;
@@ -278,18 +280,18 @@ header {
     font-size: 16px;
     padding: 12px 20px;
     border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.05);
+    border: 1px solid rgba(0, 0, 0, 0.03);
     text-align: center;
 }
 
 .mobile-menu .nav-link:hover,
 .mobile-menu .nav-link.active {
-    background: rgba(0, 212, 255, 0.1);
-    border-color: rgba(0, 212, 255, 0.2);
-    color: #00d4ff;
+    background: rgba(0, 136, 204, 0.06);
+    border-color: rgba(0, 136, 204, 0.1);
+    color: #0088cc;
 }
 
-/* ===== ГЕРОЙ (НЕОНОВЫЙ) ===== */
+/* ===== ГЕРОЙ ===== */
 .hero {
     text-align: center;
     padding: 40px 20px 30px;
@@ -307,7 +309,6 @@ header {
     margin: 0 auto 20px;
     transition: all 0.1s ease;
     animation: floatLogo 4s ease-in-out infinite;
-    filter: drop-shadow(0 0 40px rgba(0, 212, 255, 0.2));
 }
 
 @keyframes floatLogo {
@@ -318,20 +319,18 @@ header {
 .title {
     font-size: clamp(40px, 8vw, 80px);
     font-weight: 900;
-    color: #ffffff;
-    letter-spacing: 4px;
+    color: #0a1628;
+    letter-spacing: 2px;
     line-height: 1.1;
-    text-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
 }
 
 .title span {
-    color: #00d4ff;
-    text-shadow: 0 0 60px rgba(0, 212, 255, 0.5);
+    color: #0088cc;
 }
 
 .subtitle {
     font-size: clamp(16px, 2.5vw, 26px);
-    color: rgba(200, 230, 255, 0.85);
+    color: rgba(10, 22, 40, 0.75);
     margin-top: 10px;
     font-weight: 300;
     letter-spacing: 0.5px;
@@ -341,7 +340,7 @@ header {
     max-width: 800px;
     margin: 20px auto 30px;
     font-size: clamp(15px, 1.8vw, 19px);
-    color: rgba(200, 230, 255, 0.7);
+    color: rgba(10, 22, 40, 0.6);
     line-height: 1.7;
 }
 
@@ -353,36 +352,36 @@ header {
     margin-bottom: 20px;
 }
 
-/* ===== ГЛАВНЫЕ КНОПКИ (НЕОНОВЫЕ) ===== */
+/* ===== ГЛАВНЫЕ КНОПКИ ===== */
 .main-button {
     display: inline-block;
-    background: linear-gradient(135deg, #00d4ff, #0088cc);
+    background: linear-gradient(135deg, #0088cc, #00a8e8);
     color: #ffffff;
     padding: 14px 40px;
     border-radius: 50px;
     font-weight: 700;
     font-size: 17px;
     transition: all 0.3s ease;
-    box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
+    box-shadow: 0 4px 25px rgba(0, 136, 204, 0.15);
     border: none;
     cursor: pointer;
 }
 
 .main-button:hover {
     transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 0 60px rgba(0, 212, 255, 0.4);
+    box-shadow: 0 8px 40px rgba(0, 136, 204, 0.25);
 }
 
 .main-button.secondary {
-    background: rgba(255,255,255,0.06);
-    color: #fff;
+    background: rgba(0, 0, 0, 0.03);
+    color: #0a1628;
     box-shadow: none;
-    border: 1px solid rgba(0, 212, 255, 0.15);
+    border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .main-button.secondary:hover {
-    background: rgba(0, 212, 255, 0.08);
-    box-shadow: 0 0 30px rgba(0, 212, 255, 0.1);
+    background: rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04);
 }
 
 /* ===== ПРЕДУПРЕЖДЕНИЕ ===== */
@@ -392,10 +391,10 @@ header {
     padding: 8px 0;
     text-align: center;
     font-size: 16px;
-    color: rgba(200, 230, 255, 0.25);
+    color: rgba(10, 22, 40, 0.25);
     letter-spacing: 0.3px;
-    border-top: 1px solid rgba(0, 212, 255, 0.05);
-    border-bottom: 1px solid rgba(0, 212, 255, 0.05);
+    border-top: 1px solid rgba(0, 0, 0, 0.04);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 /* ===== СЕКЦИИ ===== */
@@ -411,13 +410,11 @@ section {
     font-weight: 700;
     text-align: center;
     margin-bottom: 15px;
-    color: #ffffff;
-    text-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
+    color: #0a1628;
 }
 
 .section-title span {
-    color: #00d4ff;
-    text-shadow: 0 0 40px rgba(0, 212, 255, 0.3);
+    color: #0088cc;
 }
 
 .section-description {
@@ -425,45 +422,43 @@ section {
     max-width: 800px;
     margin: 0 auto 40px;
     font-size: clamp(15px, 1.6vw, 18px);
-    color: rgba(200, 230, 255, 0.65);
+    color: rgba(10, 22, 40, 0.6);
     line-height: 1.8;
 }
 
-/* ===== ИНФО-БЛОКИ (НЕОНОВЫЕ) ===== */
+/* ===== ИНФО-БЛОКИ ===== */
 .info-block {
-    background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(0, 212, 255, 0.06);
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(0, 136, 204, 0.06);
     border-radius: 16px;
     padding: 30px 35px;
     margin-bottom: 20px;
     transition: all 0.3s ease;
-    box-shadow: 0 0 20px rgba(0, 212, 255, 0.02);
+    backdrop-filter: blur(5px);
 }
 
 .info-block:hover {
-    border-color: rgba(0, 212, 255, 0.15);
-    background: rgba(0, 212, 255, 0.03);
-    box-shadow: 0 0 40px rgba(0, 212, 255, 0.05);
+    border-color: rgba(0, 136, 204, 0.12);
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.03);
 }
 
 .info-block h3 {
-    color: #00d4ff;
+    color: #0088cc;
     font-size: 20px;
     margin-bottom: 10px;
     font-weight: 600;
-    text-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
 }
 
 .info-block p {
-    color: rgba(200, 230, 255, 0.7);
+    color: rgba(10, 22, 40, 0.7);
     font-size: 16px;
     line-height: 1.8;
 }
 
 .info-highlight {
-    border-color: rgba(0, 212, 255, 0.15);
-    background: rgba(0, 212, 255, 0.04);
-    box-shadow: 0 0 40px rgba(0, 212, 255, 0.05);
+    border-color: rgba(0, 136, 204, 0.12);
+    background: rgba(0, 136, 204, 0.04);
 }
 
 /* ===== СЕТКИ ===== */
@@ -482,12 +477,12 @@ section {
 .advantages-card,
 .promo-card,
 .faq-card {
-    background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(0, 212, 255, 0.06);
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(0, 136, 204, 0.05);
     border-radius: 16px;
     padding: 25px 28px;
     transition: all 0.3s ease;
-    box-shadow: 0 0 20px rgba(0, 212, 255, 0.02);
+    backdrop-filter: blur(5px);
 }
 
 .rules-card:hover,
@@ -495,10 +490,10 @@ section {
 .advantages-card:hover,
 .promo-card:hover,
 .faq-card:hover {
-    border-color: rgba(0, 212, 255, 0.12);
-    background: rgba(0, 212, 255, 0.03);
+    border-color: rgba(0, 136, 204, 0.1);
+    background: rgba(255, 255, 255, 0.8);
     transform: translateY(-2px);
-    box-shadow: 0 0 40px rgba(0, 212, 255, 0.05);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.03);
 }
 
 .rules-card h3,
@@ -506,11 +501,10 @@ section {
 .advantages-card h3,
 .promo-card h3,
 .faq-card h3 {
-    color: #00d4ff;
+    color: #0088cc;
     font-size: 18px;
     margin-bottom: 10px;
     font-weight: 600;
-    text-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
 }
 
 .rules-card p,
@@ -518,7 +512,7 @@ section {
 .advantages-card p,
 .promo-card p,
 .faq-card p {
-    color: rgba(200, 230, 255, 0.65);
+    color: rgba(10, 22, 40, 0.65);
     font-size: 15px;
     line-height: 1.7;
 }
@@ -531,27 +525,27 @@ section {
 }
 
 .rules-extra-card {
-    background: rgba(255,255,255,0.01);
-    border: 1px solid rgba(0, 212, 255, 0.04);
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(0, 0, 0, 0.03);
     border-radius: 14px;
     padding: 22px 24px;
     transition: all 0.3s ease;
 }
 
 .rules-extra-card:hover {
-    border-color: rgba(0, 212, 255, 0.1);
-    background: rgba(0, 212, 255, 0.02);
+    background: rgba(255, 255, 255, 0.7);
+    border-color: rgba(0, 136, 204, 0.08);
 }
 
 .rules-extra-card h3 {
-    color: #00bfff;
+    color: #0088cc;
     font-size: 17px;
     margin-bottom: 8px;
     font-weight: 600;
 }
 
 .rules-extra-card p {
-    color: rgba(200, 230, 255, 0.6);
+    color: rgba(10, 22, 40, 0.6);
     font-size: 15px;
     line-height: 1.7;
 }
@@ -560,8 +554,8 @@ section {
 footer {
     text-align: center;
     padding: 40px 20px;
-    border-top: 1px solid rgba(0, 212, 255, 0.05);
-    color: rgba(200, 230, 255, 0.2);
+    border-top: 1px solid rgba(0, 0, 0, 0.03);
+    color: rgba(10, 22, 40, 0.2);
     font-size: 14px;
     letter-spacing: 1px;
     max-width: 1100px;
@@ -634,9 +628,22 @@ footer {
     }
 
     .bear-background::before,
-    .bear-background::after {
-        display: none;
+    .bear-background::after,
+    .bear-glow-1,
+    .bear-glow-2,
+    .bear-glow-3,
+    .bear-glow-4 {
+        width: 80px !important;
+        height: 80px !important;
+        opacity: 0.06 !important;
     }
+
+    .bear-background::before { top: 3%; left: 2%; }
+    .bear-background::after { top: 3%; right: 2%; }
+    .bear-glow-1 { top: 30%; left: 0%; }
+    .bear-glow-2 { top: 30%; right: 0%; }
+    .bear-glow-3 { bottom: 3%; left: 2%; }
+    .bear-glow-4 { bottom: 3%; right: 2%; }
 }
 
 @media (min-width: 769px) {
