@@ -1,0 +1,687 @@
+/* ===========================
+   LUCKY BEAR PREMIUM STYLE
+   =========================== */
+
+:root {
+    --bg-main: #101820;
+    --bg-card: rgba(20, 30, 38, 0.72);
+    --bg-card-hover: rgba(35, 48, 58, 0.85);
+    --text-main: #f2f4f5;
+    --text-soft: #b8c1c8;
+    --border: rgba(255,255,255,0.10);
+    --accent: #9fb7aa;
+    --shadow: 0 20px 50px rgba(0,0,0,0.35);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #101827;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ===== HEADER ===== */
+header {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(0,0,0,.55);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255,255,255,.10) !important;
+    z-index: 99999 !important;
+    padding: 0 20px;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    transition: .3s;
+}
+.nav a:hover {
+    color: #00ffff;
+}
+
+.brand-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.brand-icon img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    transition: .3s;
+}
+.brand-icon img:hover {
+    transform: scale(1.1);
+}
+
+.bot-button {
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 45px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 16px;
+    border-radius: 25px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    border: 1px solid rgba(0,255,255,.5);
+    background: rgba(0,255,255,.08);
+    transition: .3s;
+}
+.bot-button img {
+    width: 25px !important;
+    height: 25px !important;
+    object-fit: contain;
+}
+.bot-button:hover {
+    background: rgba(0,255,255,.2);
+    transform: translateY(-50%) scale(1.05);
+}
+
+/* ===== HERO ===== */
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    padding-top: 80px;
+}
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(0,255,255,.10), transparent 70%);
+    filter: blur(60px);
+    opacity: 0.5;
+}
+.logo {
+    position: relative;
+    width: 260px;
+    max-width: 65vw;
+    z-index: 2;
+    object-fit: contain;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    animation: logoAppear 2s ease, floatLogo 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 35px rgba(0,255,255,.35));
+}
+@keyframes logoAppear {
+    from { opacity: 0; transform: translateY(50px) scale(.8); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes floatLogo {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+
+.title {
+    margin-top: 25px;
+    font-size: 48px;
+    letter-spacing: 6px;
+    color: #ffffff;
+    font-weight: 900;
+    position: relative;
+    text-shadow: 0 0 10px rgba(0,255,255,.7), 0 0 30px rgba(0,255,255,.4);
+}
+.subtitle {
+    margin-top: 15px;
+    color: #ddd;
+    font-size: 20px;
+}
+.hero-description {
+    max-width: 700px;
+    margin: 20px auto 0;
+    color: rgba(255,255,255,.68);
+    font-size: 17px;
+    line-height: 1.7;
+}
+.scroll {
+    position: absolute;
+    bottom: 40px;
+    color: #aaa;
+    animation: bounce 2s infinite;
+}
+@keyframes bounce {
+    50% { transform: translateY(10px); }
+}
+
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 35px;
+    flex-wrap: wrap;
+}
+.main-button,
+.telegram-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 34px;
+    border-radius: 16px;
+   text-decoration: none;
+    font-size: 16px;
+    color: #ffffff;
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.18);
+    backdrop-filter: blur(10px);
+    transition: .3s ease;
+}
+.main-button:hover,
+.telegram-button:hover {
+    background: rgba(255,255,255,.16);
+    transform: translateY(-3px);
+}
+
+/* ===== ОБЩИЕ СЕКЦИИ ===== */
+section {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 90px 25px;
+    scroll-margin-top: 90px;
+}
+.section-title {
+    font-size: 46px !important;
+    font-weight: 800 !important;
+    letter-spacing: 1px !important;
+    color: #ffffff !important;
+    text-align: center;
+    margin-bottom: 30px !important;
+}
+.section-description {
+    max-width: 850px !important;
+    margin: 0 auto 70px !important;
+    color: rgba(255,255,255,.62) !important;
+    font-size: 19px !important;
+    line-height: 1.9 !important;
+    text-align: center;
+}
+
+/* ===== ЕДИНЫЙ СТИЛЬ ДЛЯ ВСЕХ БЛОКОВ ===== */
+.info-block,
+.info-card,
+.about-card,
+.bonus-card,
+.rule-card,
+.faq-item,
+.faq-card,
+.game-step,
+.rules-card,
+.promo-card,
+.advantages-card,
+.rules-extra-card {
+    position: relative;
+    padding: 45px 0 !important;
+    margin: 0 auto !important;
+    background: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid rgba(255,255,255,.12) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    transform: none !important;
+    backdrop-filter: none !important;
+    max-width: 900px;
+}
+.info-block:last-child,
+.info-card:last-child,
+.about-card:last-child,
+.bonus-card:last-child,
+.rule-card:last-child,
+.faq-item:last-child,
+.faq-card:last-child,
+.game-step:last-child,
+.rules-card:last-child,
+.promo-card:last-child,
+.advantages-card:last-child,
+.rules-extra-card:last-child {
+    border-bottom: none !important;
+}
+.info-block::after,
+.info-card::after,
+.about-card::after,
+.bonus-card::after,
+.rule-card::after,
+.faq-item::after,
+.faq-card::after,
+.game-step::after,
+.rules-card::after,
+.promo-card::after,
+.advantages-card::after,
+.rules-extra-card::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 70px;
+    height: 2px;
+    background: #00ffff;
+    opacity: .5;
+}
+.info-block:last-child::after,
+.info-card:last-child::after,
+.about-card:last-child::after,
+.bonus-card:last-child::after,
+.rule-card:last-child::after,
+.faq-item:last-child::after,
+.faq-card:last-child::after,
+.game-step:last-child::after,
+.rules-card:last-child::after,
+.promo-card:last-child::after,
+.advantages-card:last-child::after,
+.rules-extra-card:last-child::after {
+    display: none;
+}
+
+.info-block h3,
+.info-card h3,
+.about-card h3,
+.bonus-card h3,
+.rule-card h3,
+.faq-item h3,
+.faq-card h3,
+.game-step h3,
+.rules-card h3,
+.promo-card h3,
+.advantages-card h3,
+.rules-extra-card h3 {
+    font-size: 30px !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+    margin-bottom: 20px !important;
+    letter-spacing: .3px;
+}
+.info-block p,
+.info-card p,
+.about-card p,
+.bonus-card p,
+.rule-card p,
+.faq-item p,
+.faq-card p,
+.game-step p,
+.rules-card p,
+.promo-card p,
+.advantages-card p,
+.rules-extra-card p {
+    max-width: 850px;
+    color: rgba(255,255,255,.72) !important;
+    font-size: 18px !important;
+    line-height: 1.9 !important;
+    letter-spacing: .1px;
+}
+
+/* ===== СПЕЦИАЛЬНЫЕ СЕТКИ ===== */
+.rules-grid {
+    display: block;
+    max-width: 900px;
+    margin: 50px auto 0;
+}
+.rules-extra {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 35px;
+    max-width: 900px;
+    margin: 50px auto 0;
+}
+.bonus-box {
+    display: block;
+    max-width: 900px;
+    margin: 50px auto 0;
+}
+.about-box {
+    display: block;
+    max-width: 900px;
+    margin: 50px auto 0;
+}
+.advantages-box {
+    display: block;
+    max-width: 900px;
+    margin: 50px auto 0;
+}
+.faq-box {
+    display: block;
+    max-width: 900px;
+    margin: 50px auto 0;
+}
+.rules-extra-card {
+    border-top: 1px solid rgba(255,255,255,.12) !important;
+    padding: 30px 0 !important;
+}
+.rules-extra-card h3 {
+   font-size: 22px !important;
+}
+.rules-extra-card p {
+    color: rgba(255,255,255,.65) !important;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #050505;
+    color: #777;
+    border-top: 1px solid rgba(0,255,255,.15);
+}
+
+/* ===== АДАПТИВ ===== */
+@media (max-width: 768px) {
+    header {
+        height: 70px !important;
+        min-height: auto !important;
+        flex-direction: row !important;
+        padding: 0 8px !important;
+        background: rgba(0,0,0,.65);
+        backdrop-filter: blur(15px);
+    }
+
+    .brand-icon {
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        transform: none !important;
+        flex-shrink: 0;
+        margin-right: 4px;
+    }
+    .brand-icon img {
+        width: 55px !important;
+        height: 55px !important;
+    }
+
+    .nav {
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        transform: none !important;
+        display: flex !important;
+        flex-wrap: nowrap;
+        gap: 6px !important;
+        width: auto;
+        margin-top: 0;
+        overflow-x: auto;
+        justify-content: center;
+        padding: 0 3px;
+        flex: 1 1 auto;
+    }
+    .nav a {
+        font-size: 12px !important;
+        padding: 3px 5px;
+        white-space: nowrap;
+        color: rgba(255,255,255,0.9);
+        font-weight: 600;
+        letter-spacing: 0.3px;
+    }
+    .nav a:hover {
+        color: #00ffff;
+    }
+
+    .bot-button {
+        position: relative !important;
+        right: auto !important;
+        top: auto !important;
+        transform: none !important;
+        height: 36px !important;
+        padding: 0 12px !important;
+        font-size: 12px !important;
+        flex-shrink: 0;
+        border-radius: 20px;
+        background: rgba(0,255,255,.2);
+        border: 1.5px solid rgba(0,255,255,.6);
+        color: #ffffff;
+        font-weight: 700;
+        gap: 4px;
+    }
+    .bot-button img {
+        width: 22px !important;
+        height: 22px !important;
+    }
+    .bot-button span {
+        display: inline-block;
+    }
+    .bot-button:hover {
+        background: rgba(0,255,255,.35);
+        transform: scale(1.02) !important;
+    }
+
+    .hero {
+        padding-top: 120px;
+    }
+    .title {
+        font-size: 28px !important;
+        letter-spacing: 2px;
+    }
+    .subtitle {
+        font-size: 15px !important;
+    }
+    .section-title {
+        font-size: 28px !important;
+    }
+    section {
+        padding: 80px 18px 40px !important;
+    }
+    .rules-extra {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== ФОНОВЫЕ МЕДВЕДИ ===== */
+.bear-background {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1 !important;
+    background-image: url("images/menu-logo.png"),
+                     url("images/menu-logo.png"),
+                     url("images/menu-logo.png"),
+                     url("images/menu-logo.png");
+    background-repeat: no-repeat;
+    background-position: 5% 15%, 90% 30%, 10% 70%, 85% 85%;
+    background-size: 260px, 320px, 220px, 280px;
+    opacity: 0.12;
+    filter: blur(1px);
+}
+section, footer {
+    position: relative;
+    z-index: 1;
+}
+@media (max-width: 480px) {
+    .bear-background {
+        top: 120px !important;
+        background-position: 10% 15%, 90% 20%, 10% 80%, 90% 85% !important;
+        background-size: 120px, 140px, 100px, 130px !important;
+        opacity: 0.15 !important;
+    }
+    .hero-buttons {
+        margin-bottom: 40px !important;
+    }
+}
+/* ============================================================
+   ПРИНУДИТЕЛЬНАЯ АДАПТАЦИЯ ДЛЯ ВСЕХ СТРАНИЦ (как на VIP)
+   ============================================================ */
+
+/* ===== ПЕРЕОПРЕДЕЛЯЕМ HERO ===== */
+.hero {
+    padding-top: 110px !important;
+    min-height: 90vh !important;
+    height: auto !important;
+    padding-bottom: 20px !important;
+}
+
+.hero .logo {
+    width: 260px !important;
+    max-width: 50vw !important;
+    margin-top: 0 !important;
+    margin-bottom: 5px !important;
+}
+
+.hero .title {
+    margin-top: 5px !important;
+}
+
+.hero .subtitle {
+    margin-top: 5px !important;
+}
+
+.hero .hero-description {
+    margin-top: 15px !important;
+}
+
+.hero .hero-buttons {
+    margin-top: 25px !important;
+    margin-bottom: 10px !important;
+}
+
+/* ===== ПЕРЕОПРЕДЕЛЯЕМ ПРЕДУПРЕЖДЕНИЕ ===== */
+.hero + div {
+    margin-top: 10px !important;
+    margin-bottom: 30px !important;
+}
+
+/* ===== УБИРАЕМ ПОДСВЕТКУ НАФИГ ===== */
+.hero::before {
+    opacity: 0.1 !important;
+    width: 300px !important;
+    height: 300px !important;
+    background: radial-gradient(circle, rgba(0,255,255,.03), transparent 70%) !important;
+    filter: blur(40px) !important;
+}
+
+/* ===== МОБИЛЬНАЯ АДАПТАЦИЯ ===== */
+@media (max-width: 768px) {
+    .hero {
+        padding-top: 100px !important;
+        min-height: 80vh !important;
+        height: auto !important;
+        padding-bottom: 10px !important;
+    }
+
+    .hero .logo {
+        width: 160px !important;
+        max-width: 45vw !important;
+        margin-top: 0 !important;
+        margin-bottom: 5px !important;
+    }
+
+    .hero .title {
+        font-size: 24px !important;
+        margin-top: 5px !important;
+    }
+
+    .hero .subtitle {
+        font-size: 14px !important;
+        margin-top: 5px !important;
+    }
+
+    .hero .hero-description {
+        font-size: 15px !important;
+        padding: 0 15px !important;
+        margin-top: 10px !important;
+        line-height: 1.6 !important;
+    }
+
+    .hero .hero-buttons {
+        margin-top: 15px !important;
+        margin-bottom: 5px !important;
+        gap: 12px !important;
+    }
+
+    .hero .main-button {
+        padding: 12px 24px !important;
+        font-size: 14px !important;
+    }
+
+    .hero + div {
+        margin-top: 5px !important;
+        margin-bottom: 15px !important;
+        padding: 5px 0 !important;
+        font-size: 13px !important;
+    }
+
+    .hero::before {
+        opacity: 0.05 !important;
+        width: 200px !important;
+        height: 200px !important;
+    }
+}
+
+@media (max-width: 400px) {
+    .hero {
+        padding-top: 90px !important;
+        min-height: 70vh !important;
+    }
+
+    .hero .logo {
+        width: 130px !important;
+        max-width: 40vw !important;
+    }
+
+    .hero .title {
+        font-size: 20px !important;
+    }
+
+    .hero .subtitle {
+        font-size: 12px !important;
+    }
+
+    .hero .hero-description {
+        font-size: 13px !important;
+        padding: 0 10px !important;
+    }
+
+    .hero .main-button {
+        padding: 10px 18px !important;
+        font-size: 13px !important;
+    }
+
+    .hero::before {
+        opacity: 0.03 !important;
+        width: 150px !important;
+        height: 150px !important;
+    }
+}
+
+/* ===== ФОНОВЫЕ МЕДВЕДИ НА МОБИЛЬНЫХ ===== */
+@media (max-width: 480px) {
+    .bear-background {
+        top: 120px !important;
+        background-position: 10% 15%, 90% 20%, 10% 80%, 90% 85% !important;
+        background-size: 120px, 140px, 100px, 130px !important;
+        opacity: 0.15 !important;
+    }
+}
