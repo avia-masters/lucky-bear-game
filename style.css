@@ -1,5 +1,5 @@
 /* ===========================================
-   LUCKY BEAR NEON STYLE (СВЕТЛЫЙ ФОН)
+   LUCKY BEAR NEON STYLE (ОЧЕНЬ СВЕТЛЫЙ ФОН)
    Голубой неон + 4 фоновых медведя по углам
    =========================================== */
 
@@ -22,7 +22,7 @@
 }
 
 body {
-    background: #e8f4ff;
+    background: #f5f9ff;
     color: #0a1628;
     font-family: 'Segoe UI', 'Arial', sans-serif;
     line-height: 1.6;
@@ -40,23 +40,22 @@ img {
     display: block;
 }
 
-/* ===== СВЕТЛЫЙ ФОН ===== */
+/* ===== ОЧЕНЬ СВЕТЛЫЙ ФОН ===== */
 .bear-background {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(145deg, #dce8f5 0%, #eef6fc 50%, #f5faff 100%);
+    background: linear-gradient(145deg, #f0f6fe 0%, #f8fbff 50%, #ffffff 100%);
     z-index: -1;
 }
 
-/* ===== 4 РОВНЫХ МЕДВЕДЯ ПО УГЛАМ (БЕЗ ПОВОРОТА) ===== */
-.bear-background::before,
-.bear-background::after,
+/* ===== 4 РОВНЫХ МЕДВЕДЯ ПО УГЛАМ ===== */
 .bear-glow-1,
-.bear-glow-2 {
-    content: '';
+.bear-glow-2,
+.bear-glow-3,
+.bear-glow-4 {
     position: fixed;
     background-image: url('images/menu-logo.png');
     background-repeat: no-repeat;
@@ -64,44 +63,36 @@ img {
     background-position: center;
     pointer-events: none;
     z-index: -1;
-    opacity: 0.08;
+    opacity: 0.06;
 }
 
-/* Медведь 1 — верхний левый */
-.bear-background::before {
-    top: 3%;
-    left: 2%;
-    width: 280px;
-    height: 280px;
-}
-
-/* Медведь 2 — верхний правый */
-.bear-background::after {
-    top: 3%;
-    right: 2%;
-    width: 280px;
-    height: 280px;
-}
-
-/* Медведь 3 — нижний левый */
 .bear-glow-1 {
+    top: 3%;
+    left: 2%;
+    width: 280px;
+    height: 280px;
+}
+
+.bear-glow-2 {
+    top: 3%;
+    right: 2%;
+    width: 280px;
+    height: 280px;
+}
+
+.bear-glow-3 {
     bottom: 3%;
     left: 2%;
     width: 280px;
     height: 280px;
 }
 
-/* Медведь 4 — нижний правый */
-.bear-glow-2 {
+.bear-glow-4 {
     bottom: 3%;
     right: 2%;
     width: 280px;
     height: 280px;
 }
-
-/* ===== ДОБАВЬТЕ В HTML (после <div class="bear-background"></div>) ===== */
-/* <div class="bear-glow-1"></div>
-   <div class="bear-glow-2"></div> */
 
 /* ===== ХЕДЕР ===== */
 header {
@@ -110,7 +101,7 @@ header {
     left: 0;
     width: 100%;
     height: 70px;
-    background: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.92);
     backdrop-filter: blur(15px);
     display: flex;
     align-items: center;
@@ -118,7 +109,7 @@ header {
     padding: 0 20px;
     z-index: 1000;
     border-bottom: 1px solid rgba(0, 136, 204, 0.06);
-    box-shadow: 0 2px 30px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 2px 30px rgba(0, 0, 0, 0.02);
 }
 
 .brand-icon {
@@ -235,7 +226,7 @@ header {
     top: 70px;
     left: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.97);
+    background: rgba(255, 255, 255, 0.98);
     backdrop-filter: blur(15px);
     padding: 20px;
     flex-direction: column;
@@ -402,7 +393,7 @@ section {
 
 /* ===== ИНФО-БЛОКИ ===== */
 .info-block {
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 0.7);
     border: 1px solid rgba(0, 136, 204, 0.06);
     border-radius: 16px;
     padding: 30px 35px;
@@ -413,7 +404,7 @@ section {
 
 .info-block:hover {
     border-color: rgba(0, 136, 204, 0.12);
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.9);
     box-shadow: 0 8px 40px rgba(0, 0, 0, 0.03);
 }
 
@@ -451,7 +442,7 @@ section {
 .advantages-card,
 .promo-card,
 .faq-card {
-    background: rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.6);
     border: 1px solid rgba(0, 136, 204, 0.05);
     border-radius: 16px;
     padding: 25px 28px;
@@ -465,7 +456,7 @@ section {
 .promo-card:hover,
 .faq-card:hover {
     border-color: rgba(0, 136, 204, 0.1);
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.85);
     transform: translateY(-2px);
     box-shadow: 0 8px 40px rgba(0, 0, 0, 0.03);
 }
@@ -499,7 +490,7 @@ section {
 }
 
 .rules-extra-card {
-    background: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.5);
     border: 1px solid rgba(0, 0, 0, 0.03);
     border-radius: 14px;
     padding: 22px 24px;
@@ -507,7 +498,7 @@ section {
 }
 
 .rules-extra-card:hover {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.8);
     border-color: rgba(0, 136, 204, 0.08);
 }
 
@@ -601,19 +592,19 @@ footer {
         font-size: clamp(28px, 6vw, 40px);
     }
 
-    .bear-background::before,
-    .bear-background::after,
     .bear-glow-1,
-    .bear-glow-2 {
-        width: 120px !important;
-        height: 120px !important;
-        opacity: 0.06 !important;
+    .bear-glow-2,
+    .bear-glow-3,
+    .bear-glow-4 {
+        width: 100px !important;
+        height: 100px !important;
+        opacity: 0.05 !important;
     }
 
-    .bear-background::before { top: 2%; left: 1%; }
-    .bear-background::after { top: 2%; right: 1%; }
-    .bear-glow-1 { bottom: 2%; left: 1%; }
-    .bear-glow-2 { bottom: 2%; right: 1%; }
+    .bear-glow-1 { top: 2%; left: 1%; }
+    .bear-glow-2 { top: 2%; right: 1%; }
+    .bear-glow-3 { bottom: 2%; left: 1%; }
+    .bear-glow-4 { bottom: 2%; right: 1%; }
 }
 
 @media (min-width: 769px) {
