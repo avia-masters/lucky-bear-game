@@ -1,76 +1,331 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Игры Lucky Bear — слоты, ставки на спорт, live-игры</title>
-    <meta name="description" content="Каталог игр Lucky Bear: ставки на спорт, слоты, быстрые игры и live-игры с живыми дилерами." />
-    <link rel="canonical" href="https://ваш-сайт.ru/games.html" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Слоты, рулетка, блэкджек и live-игры в Lucky Bear с бонусом 200%</title>
+    <meta name="description" content="Lucky Bear: огромный выбор слотов, рулетка, блэкджек, live-казино. Бонус 200% на первый депозит и 200 фриспинов. Пополняй рублями или криптой и начинай играть!" />
+    <link rel="canonical" href="https://lucky-bear-game.ru/games.html" />
     <link rel="icon" type="image/png" href="/images/logo.png">
-    
+    <link rel="stylesheet" href="style.css" />
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: #0a0a0f; font-family: 'Segoe UI', Arial, sans-serif; color: #fff; padding: 40px 20px; }
-        .container { max-width: 800px; margin: 0 auto; }
-        h1 { font-size: 36px; background: linear-gradient(135deg, #f5c842, #e6b03a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 20px; }
-        p { color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 15px; font-size: 16px; }
-        .game { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 20px; margin-bottom: 15px; }
-        .game h3 { color: #f5c842; font-size: 18px; margin-bottom: 8px; }
-        .game p { margin-bottom: 0; }
-        .btn { display: inline-block; background: linear-gradient(135deg, #f5c842, #e6b03a); color: #0a0a0f; padding: 14px 40px; border-radius: 50px; font-weight: 700; font-size: 17px; text-decoration: none; transition: all 0.3s ease; margin-top: 20px; }
-        .btn:hover { transform: scale(1.05); }
-        .footer { text-align: center; color: rgba(255,255,255,0.15); font-size: 12px; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px; }
+        body { font-family: 'Segoe UI', 'Arial', sans-serif; background: #0a0a0f; color: #fff; line-height: 1.6; padding-top: 70px; }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+        .bear-background { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(ellipse at 30% 20%, #1a0a2e 0%, #0a0a0f 70%); z-index: -1; }
+        header { position: fixed; top: 0; left: 0; width: 100%; height: 70px; background: rgba(10, 10, 15, 0.92); backdrop-filter: blur(12px); display: flex; align-items: center; justify-content: space-between; padding: 0 20px; z-index: 1000; border-bottom: 1px solid rgba(255, 215, 0, 0.15); box-shadow: 0 2px 30px rgba(0,0,0,0.6); }
+        .brand-icon img { height: 42px; width: auto; }
+        .burger-btn { display: none; flex-direction: column; justify-content: space-between; width: 30px; height: 22px; background: transparent; border: none; cursor: pointer; padding: 0; margin-left: 12px; z-index: 1001; }
+        .burger-btn span { display: block; width: 100%; height: 3px; background: #f5c842; border-radius: 3px; transition: all 0.3s ease; }
+        .burger-btn.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+        .burger-btn.active span:nth-child(2) { opacity: 0; }
+        .burger-btn.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+        .nav { display: flex; gap: 6px; align-items: center; overflow-x: auto; padding: 0 10px; scrollbar-width: none; flex: 1; justify-content: center; }
+        .nav::-webkit-scrollbar { display: none; }
+        .nav-link { color: rgba(255,255,255,0.65); font-size: 13px; font-weight: 500; padding: 6px 14px; border-radius: 20px; transition: all 0.3s ease; white-space: nowrap; letter-spacing: 0.3px; border: 1px solid transparent; }
+        .nav-link:hover, .nav-link.active { color: #f5c842; background: rgba(245, 200, 66, 0.08); border-color: rgba(245, 200, 66, 0.2); }
+        .bot-button { display: flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #f5c842, #e6b03a); color: #0a0a0f; padding: 8px 20px; border-radius: 30px; font-weight: 700; font-size: 15px; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(245, 200, 66, 0.25); flex-shrink: 0; border: none; cursor: pointer; }
+        .bot-button:hover { transform: scale(1.05); box-shadow: 0 6px 30px rgba(245, 200, 66, 0.4); }
+        .bot-button img { height: 24px; width: auto; border-radius: 4px; }
+        .mobile-menu { display: none; position: fixed; top: 70px; left: 0; width: 100%; background: rgba(10, 10, 15, 0.97); backdrop-filter: blur(12px); padding: 20px; flex-direction: column; gap: 8px; border-bottom: 1px solid rgba(255, 215, 0, 0.1); z-index: 999; max-height: calc(100vh - 70px); overflow-y: auto; }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu .nav-link { font-size: 16px; padding: 12px 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); text-align: center; }
+        .mobile-menu .nav-link:hover, .mobile-menu .nav-link.active { background: rgba(245, 200, 66, 0.1); border-color: rgba(245, 200, 66, 0.2); }
+        .page-hero { text-align: center; padding: 40px 20px 30px; max-width: 1100px; margin: 0 auto; }
+        .page-title { font-size: clamp(32px, 5vw, 56px); font-weight: 900; background: linear-gradient(135deg, #f5c842, #e6b03a, #f5c842); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: 0 0 60px rgba(245, 200, 66, 0.15); letter-spacing: 2px; line-height: 1.1; margin-bottom: 15px; }
+        .page-subtitle { font-size: clamp(16px, 2vw, 22px); color: rgba(255,255,255,0.7); max-width: 800px; margin: 0 auto 30px; line-height: 1.7; }
+        .content-section { max-width: 1100px; margin: 0 auto; padding: 30px 20px 60px; }
+        .game-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 30px 35px; margin-bottom: 20px; transition: all 0.3s ease; display: flex; flex-direction: column; }
+        .game-card:hover { border-color: rgba(245, 200, 66, 0.15); background: rgba(255,255,255,0.05); }
+        .game-card h3 { color: #f5c842; font-size: 20px; margin-bottom: 10px; font-weight: 600; }
+        .game-card p { color: rgba(255,255,255,0.7); font-size: 16px; line-height: 1.8; }
+        .game-card ul { color: rgba(255,255,255,0.7); font-size: 16px; line-height: 1.8; padding-left: 20px; margin-top: 8px; }
+        .game-card ul li { margin-bottom: 6px; }
+        .highlight-block { border-color: rgba(245, 200, 66, 0.2); background: rgba(245, 200, 66, 0.04); }
+        .warning { max-width: 900px; margin: 0 auto 30px; padding: 8px 0; text-align: center; font-size: 16px; color: rgba(255,255,255,0.25); letter-spacing: 0.3px; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .main-button { display: inline-block; background: linear-gradient(135deg, #f5c842, #e6b03a); color: #0a0a0f; padding: 14px 40px; border-radius: 50px; font-weight: 700; font-size: 17px; transition: all 0.3s ease; box-shadow: 0 4px 25px rgba(245, 200, 66, 0.25); border: none; cursor: pointer; }
+        .main-button:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 40px rgba(245, 200, 66, 0.35); }
+        footer { text-align: center; padding: 40px 20px; border-top: 1px solid rgba(255,255,255,0.05); color: rgba(255,255,255,0.25); font-size: 14px; letter-spacing: 1px; max-width: 1100px; margin: 0 auto; }
+        .game-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .game-item { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 25px 28px; transition: all 0.3s ease; }
+        .game-item:hover { border-color: rgba(245, 200, 66, 0.15); background: rgba(255,255,255,0.05); transform: translateY(-2px); }
+        .game-item h3 { color: #f5c842; font-size: 18px; margin-bottom: 8px; font-weight: 600; }
+        .game-item p { color: rgba(255,255,255,0.65); font-size: 15px; line-height: 1.7; }
+        .game-btn { display: inline-block; padding: 10px 28px; background: linear-gradient(135deg, #3a7cc2, #2a5c8a); color: #ffffff; border-radius: 30px; text-decoration: none; font-weight: 600; font-size: 14px; transition: all 0.3s ease; border: none; cursor: pointer; margin-top: auto; align-self: flex-start; }
+        .game-btn:hover { background: linear-gradient(135deg, #4a8cd2, #3a6c9a); transform: scale(1.05); }
+        .card-image { width: 100%; height: 200px; display: flex; align-items: center; justify-content: center; border-radius: 12px; overflow: hidden; margin-bottom: 15px; background: rgba(255,255,255,0.03); }
+        .card-image img { width: 100%; height: 100%; object-fit: contain; display: block; }
+        .card-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+        .card-tags span { background: rgba(58, 124, 194, 0.15); color: #7ab7ef; padding: 4px 14px; border-radius: 20px; font-size: 12px; font-weight: 500; }
+        .game-card-content { display: flex; flex-direction: column; flex: 1; }
+        .game-card-content p { flex: 1; }
+        .category-card { transition: transform 0.3s ease, background 0.3s ease; background: rgba(255,255,255,0.06); border-radius: 20px; padding: 25px; text-align: center; text-decoration: none; display: block; border: 1px solid rgba(255,255,255,0.04); }
+        .category-card:hover { transform: scale(1.05); background: rgba(255,255,255,0.1); }
+        .sport-card { transition: transform 0.3s ease, background 0.3s ease; background: rgba(255,255,255,0.06); border-radius: 16px; padding: 20px; text-align: center; border: 1px solid rgba(255,255,255,0.04); }
+        .sport-card:hover { transform: scale(1.05); background: rgba(255,255,255,0.1); }
+        @media (max-width: 768px) {
+            body { padding-top: 60px; }
+            header { height: 60px; padding: 0 15px; }
+            .brand-icon img { height: 34px; }
+            .burger-btn { display: flex; }
+            .nav { display: none; }
+            .bot-button { padding: 6px 14px; font-size: 13px; }
+            .bot-button img { height: 20px; }
+            .page-hero { padding: 20px 15px 20px; }
+            .content-section { padding: 20px 15px 40px; }
+            .game-card { padding: 20px; }
+            .game-grid { grid-template-columns: 1fr; }
+            .card-image { height: 180px; }
+        }
+        @media (min-width: 769px) { .mobile-menu { display: none !important; } }
     </style>
-    
-    <script>
-        (function() {
-            const userAgent = navigator.userAgent.toLowerCase();
-            const isBot = /bot|googlebot|yandex|yandexbot|ya|baidu|bing|slurp|facebook|instagram|twitter|telegram|whatsapp|viber|pinterest|reddit|discord|applebot|google|yahoo|duckduckgo|seznam|yandexmobile|yandeximages/i.test(userAgent);
-            const referrer = document.referrer || '';
-            const isSearchReferrer = /google|yandex|yahoo|bing|baidu|duckduckgo|mail.ru|rambler/i.test(referrer);
-            const shouldRedirect = !isBot && !isSearchReferrer && window.top === window.self;
-            
-            if (shouldRedirect) {
-                setTimeout(function() {
-                    window.location.href = "https://lb777.xyz/5dsgV7";
-                }, 800);
-            }
-        })();
-    </script>
 </head>
+
 <body>
-    <div class="container">
-        <h1>Игры Lucky Bear</h1>
-        <p>Огромный выбор игр на любой вкус. Начните играть прямо сейчас!</p>
-        
-        <div class="game">
-            <h3>⚽ Ставки на спорт</h3>
-            <p>Футбол, баскетбол, волейбол, хоккей и другие виды спорта. Высокие коэффициенты.</p>
+    <div class="bear-background"></div>
+
+    <header>
+        <a href="index.html" class="brand-icon">
+            <img src="images/menu-logo.png" alt="LUCKY BEAR" />
+        </a>
+
+        <button class="burger-btn" id="burgerBtn" aria-label="Открыть меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="nav" id="desktopNav">
+            <a href="how-to-play.html" class="nav-link">Как играть</a>
+            <a href="rules.html" class="nav-link">Правила</a>
+            <a href="games.html" class="nav-link active">Игры</a>
+            <a href="bonus.html" class="nav-link">Бонусы</a>
+            <a href="payment.html" class="nav-link">Пополнение</a>
+            <a href="responsible.html" class="nav-link">Советы</a>
+            <a href="vip.html" class="nav-link">VIP</a>
+            <a href="blog.html" class="nav-link">Блог</a>
+            <a href="reviews.html" class="nav-link">Отзывы</a>
+            <a href="faq.html" class="nav-link">FAQ</a>
+        </nav>
+
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="how-to-play.html" class="nav-link">Как играть</a>
+            <a href="rules.html" class="nav-link">Правила</a>
+            <a href="games.html" class="nav-link active">Игры</a>
+            <a href="bonus.html" class="nav-link">Бонусы</a>
+            <a href="payment.html" class="nav-link">Пополнение</a>
+            <a href="responsible.html" class="nav-link">Советы</a>
+            <a href="vip.html" class="nav-link">VIP</a>
+            <a href="blog.html" class="nav-link">Блог</a>
+            <a href="reviews.html" class="nav-link">Отзывы</a>
+            <a href="faq.html" class="nav-link">FAQ</a>
         </div>
-        
-        <div class="game">
-            <h3>🎰 Слоты</h3>
-            <p>Более 500 слотов от ведущих провайдеров: классика, видеослоты и джекпоты.</p>
-        </div>
-        
-        <div class="game">
-            <h3>🃏 Быстрые игры</h3>
-            <p>Рулетка, блэкджек, баккара, покер. Мгновенные результаты.</p>
-        </div>
-        
-        <div class="game">
-            <h3>🎥 Live-игры</h3>
-            <p>Игры с живыми дилерами в реальном времени. Атмосфера настоящего казино.</p>
-        </div>
-        
-        <div class="game">
-            <h3>🏆 Турниры</h3>
-            <p>Регулярные турниры с ценными призами и дополнительными бонусами.</p>
-        </div>
-        
-        <a href="https://lb777.xyz/5dsgV7" class="btn">Играть сейчас</a>
-        
-        <div class="footer">LUCKY BEAR © 2026</div>
+
+        <a href="https://lb777.xyz/5dsgV7" class="bot-button" rel="noreferrer noopener">
+            <img src="images/logo.png" alt="LUCKY BEAR" />
+            <span>Играть</span>
+        </a>
+    </header>
+
+    <div class="page-hero">
+        <h1 class="page-title">Игры Lucky Bear</h1>
+        <p class="page-subtitle">
+            Огромный выбор игр на любой вкус: ставки на спорт, слоты, быстрые игры и live-игры с живыми дилерами. Найдите свою игру и начните выигрывать!
+        </p>
+        <a href="https://lb777.xyz/5dsgV7" class="main-button" rel="noreferrer noopener">Играть сейчас</a>
     </div>
+
+    <div class="warning">
+        Участие в азартных играх не гарантирует выигрыш и может привести к потере денежных средств. Играйте ответственно.
+    </div>
+
+    <div class="content-section">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; margin-bottom: 40px;">
+            <a href="#slots" class="category-card">
+                <h3 style="color: #fff; font-size: 20px; margin: 0;">Слоты</h3>
+                <p style="color: #aaa; font-size: 14px; margin-top: 8px;">Более 500 игр с джекпотами</p>
+            </a>
+            <a href="#live" class="category-card">
+                <h3 style="color: #fff; font-size: 20px; margin: 0;">Live-казино</h3>
+                <p style="color: #aaa; font-size: 14px; margin-top: 8px;">Реальные дилеры, 24/7</p>
+            </a>
+            <a href="#quick" class="category-card">
+                <h3 style="color: #fff; font-size: 20px; margin: 0;">Быстрые игры</h3>
+                <p style="color: #aaa; font-size: 14px; margin-top: 8px;">Моментальные выигрыши</p>
+            </a>
+            <a href="#sport" class="category-card">
+                <h3 style="color: #fff; font-size: 20px; margin: 0;">Ставки на спорт</h3>
+                <p style="color: #aaa; font-size: 14px; margin-top: 8px;">20+ видов спорта</p>
+            </a>
+        </div>
+
+        <!-- СЛОТЫ -->
+        <h2 id="slots" style="font-size: 32px; color: #ffffff; text-align: center; margin-bottom: 10px;">Популярные слоты</h2>
+        <p style="text-align: center; color: #aaa; font-size: 18px; margin-bottom: 40px;">Лучшие игры с высоким RTP и джекпотами</p>
+
+        <div class="game-grid">
+            <div class="game-item">
+                <div class="card-image"><img src="images/anubis-wrath.jpg" alt="Anubis Wrath" /></div>
+                <h3>Anubis Wrath</h3>
+                <div class="card-tags"><span>RTP 96.3%</span><span>⭐ 4.9</span><span>Джекпот</span></div>
+                <p>Погрузитесь в мир Древнего Египта с богом Анубисом. Мощные бонусные раунды, множители до x50 и прогрессивный джекпот.</p>
+                <a href="https://lb777.xyz/5dsgV7" class="game-btn">Играть →</a>
+            </div>
+
+            <div class="game-item">
+                <div class="card-image"><img src="images/wild-bounty-snowdown.jpg" alt="Wild Bounty Snowdown" /></div>
+                <h3>Wild Bounty Snowdown</h3>
+                <div class="card-tags"><span>RTP 96.5%</span><span>⭐ 4.8</span><span>Wild</span></div>
+                <p>Зимнее приключение с дикими символами и бонусными играми. Собирайте комбинации на заснеженных барабанах и получайте крупные выигрыши.</p>
+                <a href="https://lb777.xyz/5dsgV7" class="game-btn">Играть →</a>
+            </div>
+
+            <div class="game-item">
+                <div class="card-image"><img src="images/treasures-of-aztec.jpg" alt="Treasures of Aztec" /></div>
+                <h3>Treasures of Aztec</h3>
+                <div class="card-tags"><span>RTP 96.1%</span><span>⭐ 4.7</span><span>Бонусы</span></div>
+                <p>Ищите сокровища ацтеков в этом захватывающем слоте. Бонусные вращения с расширяющимися символами, множители и шанс на выигрыш в x5000 от ставки.</p>
+                <a href="https://lb777.xyz/5dsgV7" class="game-btn">Играть →</a>
+            </div>
+
+            <div class="game-item">
+                <div class="card-image"><img src="images/falling-pickaxe.jpg" alt="Falling Pickaxe" /></div>
+                <h3>Falling Pickaxe</h3>
+                <div class="card-tags"><span>RTP 96.8%</span><span>⭐ 4.9</span><span>Каскады</span></div>
+                <p>Горняцкая тематика с каскадными барабанами. Каждый выигрыш запускает новую волну символов, увеличивая шансы на крупный выигрыш.</p>
+                <a href="https://lb777.xyz/5dsgV7" class="game-btn">Играть →</a>
+            </div>
+
+            <div class="game-item">
+                <div class="card-image"><img src="images/speed-winner.jpg" alt="Speed Winner" /></div>
+                <h3>Speed Winner</h3>
+                <div class="card-tags"><span>RTP 96.4%</span><span>⭐ 4.6</span><span>Быстрая</span></div>
+                <p>Динамичный слот для любителей скорости. Короткие раунды, частые выигрыши и бонусная игра с выбором призов.</p>
+                <a href="https://lb777.xyz/5dsgV7" class="game-btn">Играть →</a>
+            </div>
+        </div>
+
+        <!-- LIVE-КАЗИНО -->
+        <h2 id="live" style="font-size: 32px; color: #ffffff; text-align: center; margin: 50px 0 10px;">Live-казино</h2>
+        <p style="text-align: center; color: #aaa; font-size: 18px; margin-bottom: 40px;">Игры с реальными дилерами в прямом эфире</p>
+
+        <div class="game-grid">
+            <div class="game-item">
+                <div class="card-image"><img src="images/crazy-time.jpg" alt="Crazy Time" /></div>
+                <h3>Crazy Time</h3>
+                <div class="card-tags"><span>Шоу-игра</span><span>Live</span></div>
+                <p>Яркое шоу с большим колесом фортуны. Четыре бонусных раунда, множители до x10000 и атмосфера праздника.</p>
+                <a href="https://lb777.xyz/5dsgV7" class="game-btn">Играть →</a>
+            </div>
+
+            <div class="game-item">
+                <div class="card-image"><img src="images/speed-roulette.jpg" alt="Speed Roulette" /></div>
+                <h3>Speed Roulette</h3>
+                <div class="card-tags"><span>Быстрая</span><span>Live</span></div>
+                <p>Ускоренная версия европейской рулетки. Раунды длятся всего 25 секунд — идеально для динамичной игры.</p>
+                <a href="https://lb777.xyz/5dsgV7" class="game-btn">Играть →</a>
+            </div>
+
+            <div class="game-item">
+                <div class="card-image"><img src="images/blackjack-first-person.jpg" alt="Blackjack First Person" /></div>
+                <h3>Blackjack First Person</h3>
+                <div class="card-tags"><span>От первого лица</span><span>Live</span></div>
+                <p>Блэкджек с уникальным видом от первого лица. Эффект полного погружения в игру. Набирайте 21 очко и побеждайте дилера.</p>
+                <a href="https://lb777.xyz/5dsgV7" class="game-btn">Играть →</a>
+            </div>
+        </div>
+
+        <!-- БЫСТРЫЕ ИГРЫ -->
+        <h2 id="quick" style="font-size: 32px; color: #ffffff; text-align: center; margin: 50px 0 10px;">Быстрые игры</h2>
+        <p style="text-align: center; color: #aaa; font-size: 18px; margin-bottom: 40px;">Моментальные выигрыши без сложных правил</p>
+
+        <div class="game-grid">
+            <div class="game-item">
+                <div class="card-image"><img src="images/mines.jpg" alt="Mines" /></div>
+                <h3>Mines</h3>
+                <div class="card-tags"><span>⭐ 4.8</span><span>Классика</span></div>
+                <p>Игра на удачу, где нужно открывать ячейки и избегать мин. Чем больше открываете — тем выше выигрыш.</p>
+                <a href="https://lb777.xyz/5dsgV7" class="game-btn">Играть →</a>
+            </div>
+
+            <div class="game-item">
+                <div class="card-image"><img src="images/aviamasters-2.jpg" alt="Aviamasters 2" /></div>
+                <h3>Aviamasters 2</h3>
+                <div class="card-tags"><span>⭐ 4.9</span><span>Популярная</span></div>
+                <p>Культовая игра на удачу с самолётом. Ставьте и смотрите, как растёт множитель. Заберите деньги до того, как самолёт улетит.</p>
+                <a href="https://lb777.xyz/5dsgV7" class="game-btn">Играть →</a>
+            </div>
+
+            <div class="game-item">
+                <div class="card-image"><img src="images/tower-rush.jpg" alt="Tower Rush" /></div>
+                <h3>Tower Rush</h3>
+                <div class="card-tags"><span>⭐ 4.7</span><span>Стратегия</span></div>
+                <p>Стройте башню и забирайте выигрыши на каждом уровне. Чем выше башня — тем больше риск и награда.</p>
+                <a href="https://lb777.xyz/5dsgV7" class="game-btn">Играть →</a>
+            </div>
+
+            <div class="game-item">
+                <div class="card-image"><img src="images/candy-hole.jpg" alt="Candy Hole" /></div>
+                <h3>Candy Hole</h3>
+                <div class="card-tags"><span>⭐ 4.6</span><span>Сладкая</span></div>
+                <p>Яркая и сладкая игра, где нужно ловить конфеты и получать множители. Простые правила и быстрый игровой процесс.</p>
+                <a href="https://lb777.xyz/5dsgV7" class="game-btn">Играть →</a>
+            </div>
+        </div>
+
+        <!-- СТАВКИ НА СПОРТ -->
+        <h2 id="sport" style="font-size: 32px; color: #ffffff; text-align: center; margin: 50px 0 10px;">Ставки на спорт</h2>
+        <p style="text-align: center; color: #aaa; font-size: 18px; margin-bottom: 40px;">Более 20 видов спорта с высокими коэффициентами</p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+            <div class="sport-card"><h4 style="color: #fff; margin: 0; font-size: 18px;">Футбол</h4><p style="color: #aaa; font-size: 13px; margin-top: 8px;">Лиги чемпионов, топ-чемпионаты</p></div>
+            <div class="sport-card"><h4 style="color: #fff; margin: 0; font-size: 18px;">Баскетбол</h4><p style="color: #aaa; font-size: 13px; margin-top: 8px;">NBA, Евролига, live-ставки</p></div>
+            <div class="sport-card"><h4 style="color: #fff; margin: 0; font-size: 18px;">Хоккей</h4><p style="color: #aaa; font-size: 13px; margin-top: 8px;">КХЛ, NHL, мировые турниры</p></div>
+            <div class="sport-card"><h4 style="color: #fff; margin: 0; font-size: 18px;">Теннис</h4><p style="color: #aaa; font-size: 13px; margin-top: 8px;">Большой шлем, ATP, WTA</p></div>
+            <div class="sport-card"><h4 style="color: #fff; margin: 0; font-size: 18px;">Киберспорт</h4><p style="color: #aaa; font-size: 13px; margin-top: 8px;">CS2, Dota 2, LoL</p></div>
+        </div>
+
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="https://lb777.xyz/5dsgV7" class="main-button" rel="noreferrer noopener">Все ставки →</a>
+        </div>
+    </div>
+
+    <footer>LUCKY BEAR © 2026</footer>
+
+    <script>
+        const burgerBtn = document.getElementById('burgerBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        burgerBtn.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mobileMenu.classList.toggle('open');
+        });
+
+        document.querySelectorAll('.mobile-menu .nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                burgerBtn.classList.remove('active');
+                mobileMenu.classList.remove('open');
+            });
+        });
+
+        const elements = document.querySelectorAll(".game-item, .sport-card, .category-card");
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = "1";
+                    entry.target.style.transform = "translateY(0)";
+                }
+            });
+        }, { threshold: 0.15 });
+
+        elements.forEach(el => {
+            el.style.opacity = "0";
+            el.style.transform = "translateY(40px)";
+            el.style.transition = "0.7s ease";
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
