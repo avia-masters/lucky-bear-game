@@ -27,8 +27,8 @@
 
     <style>
         /* ===========================================
-           LUCKY BEAR — ТЁМНЫЙ СТИЛЬ (МЯГКИЙ ТЁМНО-СИНИЙ)
-           Белые заголовки, кнопки с градиентом
+           LUCKY BEAR — ПРЕМИАЛЬНЫЙ ТЁМНЫЙ СТИЛЬ
+           Благородные кнопки с переливом
            =========================================== */
 
         * {
@@ -57,7 +57,7 @@
             display: block;
         }
 
-        /* ===== ТЁМНЫЙ ФОН С МЯГКИМ ГРАДИЕНТОМ ===== */
+        /* ===== ТЁМНЫЙ ФОН ===== */
         .bear-background {
             position: fixed;
             top: 0;
@@ -68,7 +68,7 @@
             z-index: -1;
         }
 
-        /* ===== 4 МЕДВЕДЯ ПО УГЛАМ ===== */
+        /* ===== 4 МЕДВЕДЯ ===== */
         .bear-glow-1,
         .bear-glow-2,
         .bear-glow-3,
@@ -83,33 +83,10 @@
             opacity: 0.10;
         }
 
-        .bear-glow-1 {
-            top: 2%;
-            left: 1%;
-            width: 300px;
-            height: 300px;
-        }
-
-        .bear-glow-2 {
-            top: 2%;
-            right: 1%;
-            width: 300px;
-            height: 300px;
-        }
-
-        .bear-glow-3 {
-            bottom: 2%;
-            left: 1%;
-            width: 300px;
-            height: 300px;
-        }
-
-        .bear-glow-4 {
-            bottom: 2%;
-            right: 1%;
-            width: 300px;
-            height: 300px;
-        }
+        .bear-glow-1 { top: 2%; left: 1%; width: 300px; height: 300px; }
+        .bear-glow-2 { top: 2%; right: 1%; width: 300px; height: 300px; }
+        .bear-glow-3 { bottom: 2%; left: 1%; width: 300px; height: 300px; }
+        .bear-glow-4 { bottom: 2%; right: 1%; width: 300px; height: 300px; }
 
         /* ===== ХЕДЕР ===== */
         header {
@@ -158,10 +135,10 @@
             display: block;
             width: 100%;
             height: 3px;
-            background: #00aaff;
+            background: #4a8db7;
             border-radius: 3px;
             transition: all 0.3s ease;
-            box-shadow: 0 0 10px rgba(0, 170, 255, 0.2);
+            box-shadow: 0 0 10px rgba(74, 141, 183, 0.2);
         }
 
         .burger-btn.active span:nth-child(1) {
@@ -204,14 +181,14 @@
 
         .nav-link:hover,
         .nav-link.active {
-            color: #00aaff;
-            background: rgba(0, 170, 255, 0.08);
-            border-color: rgba(0, 170, 255, 0.15);
-            box-shadow: 0 0 20px rgba(0, 170, 255, 0.05);
+            color: #4a8db7;
+            background: rgba(74, 141, 183, 0.08);
+            border-color: rgba(74, 141, 183, 0.15);
+            box-shadow: 0 0 20px rgba(74, 141, 183, 0.05);
         }
 
         /* ============================================================
-           ВСЕ КНОПКИ — ПЕРЕЛИВАЮЩИЙСЯ ГОЛУБО-СИНИЙ ГРАДИЕНТ
+           ПРЕМИАЛЬНЫЕ КНОПКИ — БЛАГОРОДНЫЙ ТЁМНО-СИНИЙ С ПЕРЕЛИВОМ
            ============================================================ */
 
         /* ===== КНОПКА "ИГРАТЬ" В МЕНЮ ===== */
@@ -219,25 +196,42 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            background: linear-gradient(135deg, #00ccff, #0066ff);
-            color: #ffffff;
+            background: linear-gradient(145deg, #0a2a4a, #1a4a6a);
+            color: #e0e8f0;
             padding: 8px 20px;
             border-radius: 30px;
             font-weight: 700;
             font-size: 15px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 25px rgba(0, 136, 255, 0.2);
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
             flex-shrink: 0;
-            border: none;
+            border: 1px solid rgba(74, 141, 183, 0.15);
             cursor: pointer;
-            background-size: 200% 200%;
-            animation: gradientShift 4s ease infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bot-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(74, 141, 183, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.6s ease;
         }
 
         .bot-button:hover {
             transform: scale(1.05);
-            box-shadow: 0 6px 40px rgba(0, 136, 255, 0.4);
-            animation: gradientShift 1.5s ease infinite;
+            box-shadow: 0 6px 30px rgba(74, 141, 183, 0.2);
+            border-color: rgba(74, 141, 183, 0.3);
+            background: linear-gradient(145deg, #0f3050, #1f5a7a);
+        }
+
+        .bot-button:hover::before {
+            opacity: 1;
         }
 
         .bot-button img {
@@ -249,54 +243,60 @@
         /* ===== ГЛАВНАЯ КНОПКА "ИГРАТЬ НА САЙТЕ" ===== */
         .main-button {
             display: inline-block;
-            background: linear-gradient(135deg, #00ccff, #0066ff);
-            color: #ffffff;
+            background: linear-gradient(145deg, #0a2a4a, #1a4a6a);
+            color: #e0e8f0;
             padding: 14px 40px;
             border-radius: 50px;
             font-weight: 700;
             font-size: 17px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 30px rgba(0, 136, 255, 0.15);
-            border: none;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(74, 141, 183, 0.15);
             cursor: pointer;
-            background-size: 200% 200%;
-            animation: gradientShift 4s ease infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .main-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(74, 141, 183, 0.12) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.6s ease;
         }
 
         .main-button:hover {
             transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 8px 50px rgba(0, 136, 255, 0.3);
-            animation: gradientShift 1.5s ease infinite;
+            box-shadow: 0 8px 40px rgba(74, 141, 183, 0.15);
+            border-color: rgba(74, 141, 183, 0.25);
+            background: linear-gradient(145deg, #0f3050, #1f5a7a);
+        }
+
+        .main-button:hover::before {
+            opacity: 1;
         }
 
         /* ===== ВТОРИЧНАЯ КНОПКА "ПОСМОТРЕТЬ КАТАЛОГ ИГР" ===== */
         .main-button.secondary {
             background: transparent;
-            color: #00aaff;
+            color: #4a8db7;
             box-shadow: none;
-            border: 2px solid rgba(0, 136, 255, 0.3);
-            animation: none;
+            border: 2px solid rgba(74, 141, 183, 0.2);
+        }
+
+        .main-button.secondary::before {
+            display: none;
         }
 
         .main-button.secondary:hover {
-            background: rgba(0, 136, 255, 0.08);
-            border-color: #00aaff;
-            box-shadow: 0 4px 30px rgba(0, 136, 255, 0.1);
+            background: rgba(74, 141, 183, 0.05);
+            border-color: rgba(74, 141, 183, 0.4);
+            box-shadow: 0 4px 30px rgba(74, 141, 183, 0.05);
             transform: translateY(-3px) scale(1.02);
-            animation: none;
-        }
-
-        /* ===== АНИМАЦИЯ ПЕРЕЛИВА ГРАДИЕНТА ===== */
-        @keyframes gradientShift {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
         }
 
         /* ===== МОБИЛЬНОЕ МЕНЮ ===== */
@@ -311,7 +311,7 @@
             padding: 20px;
             flex-direction: column;
             gap: 8px;
-            border-bottom: 1px solid rgba(0, 170, 255, 0.05);
+            border-bottom: 1px solid rgba(74, 141, 183, 0.05);
             z-index: 999;
             max-height: calc(100vh - 70px);
             overflow-y: auto;
@@ -332,9 +332,9 @@
 
         .mobile-menu .nav-link:hover,
         .mobile-menu .nav-link.active {
-            background: rgba(0, 170, 255, 0.06);
-            border-color: rgba(0, 170, 255, 0.1);
-            color: #00aaff;
+            background: rgba(74, 141, 183, 0.06);
+            border-color: rgba(74, 141, 183, 0.1);
+            color: #4a8db7;
         }
 
         /* ===== ГЕРОЙ ===== */
@@ -355,7 +355,7 @@
             margin: 0 auto 20px;
             transition: all 0.1s ease;
             animation: floatLogo 4s ease-in-out infinite;
-            filter: drop-shadow(0 0 40px rgba(0, 170, 255, 0.15));
+            filter: drop-shadow(0 0 40px rgba(74, 141, 183, 0.15));
         }
 
         @keyframes floatLogo {
@@ -363,18 +363,18 @@
             50% { transform: translateY(-10px); }
         }
 
-        /* ===== ЗАГОЛОВКИ (БЕЛЫЕ С НЕОНОВЫМ СВЕЧЕНИЕМ) ===== */
+        /* ===== ЗАГОЛОВКИ (БЕЛЫЕ) ===== */
         .title {
             font-size: clamp(40px, 8vw, 80px);
             font-weight: 900;
             color: #ffffff;
             letter-spacing: 2px;
             line-height: 1.1;
-            text-shadow: 0 0 40px rgba(0, 170, 255, 0.1);
+            text-shadow: 0 0 40px rgba(74, 141, 183, 0.08);
         }
 
         .title span {
-            color: #00aaff;
+            color: #4a8db7;
         }
 
         .subtitle {
@@ -422,18 +422,17 @@
             scroll-margin-top: 90px;
         }
 
-        /* ===== ЗАГОЛОВКИ (БЕЛЫЕ) ===== */
         .section-title {
             font-size: clamp(28px, 4vw, 44px);
             font-weight: 700;
             text-align: center;
             margin-bottom: 15px;
             color: #ffffff;
-            text-shadow: 0 0 30px rgba(0, 170, 255, 0.05);
+            text-shadow: 0 0 30px rgba(74, 141, 183, 0.05);
         }
 
         .section-title span {
-            color: #00aaff;
+            color: #4a8db7;
         }
 
         .section-description {
@@ -448,7 +447,7 @@
         /* ===== ИНФО-БЛОКИ ===== */
         .info-block {
             background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(0, 170, 255, 0.06);
+            border: 1px solid rgba(74, 141, 183, 0.06);
             border-radius: 16px;
             padding: 30px 35px;
             margin-bottom: 20px;
@@ -457,17 +456,17 @@
         }
 
         .info-block:hover {
-            border-color: rgba(0, 170, 255, 0.12);
+            border-color: rgba(74, 141, 183, 0.12);
             background: rgba(255, 255, 255, 0.05);
             box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
         }
 
         .info-block h3 {
-            color: #00aaff;
+            color: #4a8db7;
             font-size: 20px;
             margin-bottom: 10px;
             font-weight: 600;
-            text-shadow: 0 0 20px rgba(0, 170, 255, 0.1);
+            text-shadow: 0 0 20px rgba(74, 141, 183, 0.08);
         }
 
         .info-block p {
@@ -477,8 +476,8 @@
         }
 
         .info-highlight {
-            border-color: rgba(0, 170, 255, 0.12);
-            background: rgba(0, 170, 255, 0.04);
+            border-color: rgba(74, 141, 183, 0.12);
+            background: rgba(74, 141, 183, 0.04);
         }
 
         /* ===== СЕТКИ ===== */
@@ -498,7 +497,7 @@
         .promo-card,
         .faq-card {
             background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(0, 170, 255, 0.05);
+            border: 1px solid rgba(74, 141, 183, 0.05);
             border-radius: 16px;
             padding: 25px 28px;
             transition: all 0.3s ease;
@@ -510,7 +509,7 @@
         .advantages-card:hover,
         .promo-card:hover,
         .faq-card:hover {
-            border-color: rgba(0, 170, 255, 0.1);
+            border-color: rgba(74, 141, 183, 0.1);
             background: rgba(255, 255, 255, 0.04);
             transform: translateY(-2px);
             box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
@@ -521,7 +520,7 @@
         .advantages-card h3,
         .promo-card h3,
         .faq-card h3 {
-            color: #00aaff;
+            color: #4a8db7;
             font-size: 18px;
             margin-bottom: 10px;
             font-weight: 600;
@@ -554,11 +553,11 @@
 
         .rules-extra-card:hover {
             background: rgba(255, 255, 255, 0.04);
-            border-color: rgba(0, 170, 255, 0.08);
+            border-color: rgba(74, 141, 183, 0.08);
         }
 
         .rules-extra-card h3 {
-            color: #00aaff;
+            color: #4a8db7;
             font-size: 17px;
             margin-bottom: 8px;
             font-weight: 600;
@@ -584,78 +583,25 @@
 
         /* ===== АДАПТИВ ===== */
         @media (max-width: 768px) {
-            body {
-                padding-top: 60px;
-            }
-
-            header {
-                height: 60px;
-                padding: 0 15px;
-            }
-
-            .brand-icon img {
-                height: 34px;
-            }
-
-            .burger-btn {
-                display: flex;
-            }
-
-            .nav {
-                display: none;
-            }
-
-            .bot-button {
-                padding: 6px 14px;
-                font-size: 13px;
-            }
-
-            .bot-button img {
-                height: 20px;
-            }
-
-            .hero {
-                padding: 20px 15px 20px;
-                min-height: 60vh;
-            }
-
-            .logo {
-                max-width: 120px;
-            }
-
-            .rules-grid,
-            .about-box,
-            .advantages-box,
-            .bonus-box,
-            .faq-box {
-                grid-template-columns: 1fr;
-            }
-
-            .rules-extra {
-                grid-template-columns: 1fr;
-            }
-
-            section {
-                padding: 30px 15px;
-            }
-
-            .info-block {
-                padding: 20px;
-            }
-
-            .title {
-                font-size: clamp(28px, 6vw, 40px);
-            }
-
-            .bear-glow-1,
-            .bear-glow-2,
-            .bear-glow-3,
-            .bear-glow-4 {
+            body { padding-top: 60px; }
+            header { height: 60px; padding: 0 15px; }
+            .brand-icon img { height: 34px; }
+            .burger-btn { display: flex; }
+            .nav { display: none; }
+            .bot-button { padding: 6px 14px; font-size: 13px; }
+            .bot-button img { height: 20px; }
+            .hero { padding: 20px 15px 20px; min-height: 60vh; }
+            .logo { max-width: 120px; }
+            .rules-grid, .about-box, .advantages-box, .bonus-box, .faq-box { grid-template-columns: 1fr; }
+            .rules-extra { grid-template-columns: 1fr; }
+            section { padding: 30px 15px; }
+            .info-block { padding: 20px; }
+            .title { font-size: clamp(28px, 6vw, 40px); }
+            .bear-glow-1, .bear-glow-2, .bear-glow-3, .bear-glow-4 {
                 width: 100px !important;
                 height: 100px !important;
                 opacity: 0.08 !important;
             }
-
             .bear-glow-1 { top: 2%; left: 1%; }
             .bear-glow-2 { top: 2%; right: 1%; }
             .bear-glow-3 { bottom: 2%; left: 1%; }
@@ -663,9 +609,7 @@
         }
 
         @media (min-width: 769px) {
-            .mobile-menu {
-                display: none !important;
-            }
+            .mobile-menu { display: none !important; }
         }
     </style>
 
@@ -724,14 +668,12 @@
             <img src="images/menu-logo.png" alt="LUCKY BEAR">
         </a>
 
-        <!-- БУРГЕР-КНОПКА -->
         <button class="burger-btn" id="burgerBtn" aria-label="Открыть меню">
             <span></span>
             <span></span>
             <span></span>
         </button>
 
-        <!-- ДЕСКТОПНОЕ МЕНЮ -->
         <nav class="nav" id="desktopNav">
             <a href="how-to-play.html" class="nav-link">Как играть</a>
             <a href="rules.html" class="nav-link">Правила</a>
@@ -745,7 +687,6 @@
             <a href="faq.html" class="nav-link">FAQ</a>
         </nav>
 
-        <!-- МОБИЛЬНОЕ МЕНЮ -->
         <div class="mobile-menu" id="mobileMenu">
             <a href="how-to-play.html" class="nav-link">Как играть</a>
             <a href="rules.html" class="nav-link">Правила</a>
