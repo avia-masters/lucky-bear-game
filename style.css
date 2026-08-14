@@ -1,5 +1,5 @@
 /* ===========================
-   LUCKY BEAR PREMIUM STYLE
+   LUCKY BEAR ORIGINAL STYLE (адаптирован под ваш сайт)
    =========================== */
 
 :root {
@@ -24,6 +24,7 @@ body {
     background: #101827;
     color: #ffffff;
     font-family: Arial, Helvetica, sans-serif;
+    padding-top: 80px;
 }
 
 /* ===== HEADER ===== */
@@ -42,6 +43,40 @@ header {
     border-bottom: 1px solid rgba(255,255,255,.10) !important;
     z-index: 99999 !important;
     padding: 0 20px;
+}
+
+/* ===== БУРГЕР-МЕНЮ ===== */
+.burger-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 22px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 12px;
+    z-index: 1001;
+}
+
+.burger-btn span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: #f5c842;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.burger-btn.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+.burger-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+.burger-btn.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
 }
 
 .nav {
@@ -105,6 +140,44 @@ header {
 .bot-button:hover {
     background: rgba(0,255,255,.2);
     transform: translateY(-50%) scale(1.05);
+}
+
+/* ===== МОБИЛЬНОЕ МЕНЮ ===== */
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: rgba(0,0,0,.95);
+    backdrop-filter: blur(15px);
+    padding: 20px;
+    flex-direction: column;
+    gap: 8px;
+    border-bottom: 1px solid rgba(255,255,255,.10);
+    z-index: 999;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+}
+
+.mobile-menu.open {
+    display: flex;
+}
+
+.mobile-menu a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 12px 20px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.05);
+    text-align: center;
+    transition: .3s;
+}
+
+.mobile-menu a:hover {
+    color: #00ffff;
+    background: rgba(0,255,255,.1);
 }
 
 /* ===== HERO ===== */
@@ -194,7 +267,7 @@ header {
     justify-content: center;
     padding: 15px 34px;
     border-radius: 16px;
-   text-decoration: none;
+    text-decoration: none;
     font-size: 16px;
     color: #ffffff;
     background: rgba(255,255,255,.08);
@@ -383,7 +456,7 @@ section {
     padding: 30px 0 !important;
 }
 .rules-extra-card h3 {
-   font-size: 22px !important;
+    font-size: 22px !important;
 }
 .rules-extra-card p {
     color: rgba(255,255,255,.65) !important;
@@ -400,8 +473,33 @@ footer {
     border-top: 1px solid rgba(0,255,255,.15);
 }
 
+/* ===== ФОНОВЫЕ МЕДВЕДИ ===== */
+.bear-background {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1 !important;
+    background-image: url("images/menu-logo.png"),
+                     url("images/menu-logo.png"),
+                     url("images/menu-logo.png"),
+                     url("images/menu-logo.png");
+    background-repeat: no-repeat;
+    background-position: 5% 15%, 90% 30%, 10% 70%, 85% 85%;
+    background-size: 260px, 320px, 220px, 280px;
+    opacity: 0.12;
+    filter: blur(1px);
+}
+section, footer {
+    position: relative;
+    z-index: 1;
+}
+
 /* ===== АДАПТИВ ===== */
 @media (max-width: 768px) {
+    body {
+        padding-top: 70px;
+    }
+
     header {
         height: 70px !important;
         min-height: auto !important;
@@ -409,6 +507,10 @@ footer {
         padding: 0 8px !important;
         background: rgba(0,0,0,.65);
         backdrop-filter: blur(15px);
+    }
+
+    .burger-btn {
+        display: flex !important;
     }
 
     .brand-icon {
@@ -425,30 +527,7 @@ footer {
     }
 
     .nav {
-        position: relative !important;
-        left: auto !important;
-        top: auto !important;
-        transform: none !important;
-        display: flex !important;
-        flex-wrap: nowrap;
-        gap: 6px !important;
-        width: auto;
-        margin-top: 0;
-        overflow-x: auto;
-        justify-content: center;
-        padding: 0 3px;
-        flex: 1 1 auto;
-    }
-    .nav a {
-        font-size: 12px !important;
-        padding: 3px 5px;
-        white-space: nowrap;
-        color: rgba(255,255,255,0.9);
-        font-weight: 600;
-        letter-spacing: 0.3px;
-    }
-    .nav a:hover {
-        color: #00ffff;
+        display: none !important;
     }
 
     .bot-button {
@@ -479,111 +558,6 @@ footer {
         transform: scale(1.02) !important;
     }
 
-    .hero {
-        padding-top: 120px;
-    }
-    .title {
-        font-size: 28px !important;
-        letter-spacing: 2px;
-    }
-    .subtitle {
-        font-size: 15px !important;
-    }
-    .section-title {
-        font-size: 28px !important;
-    }
-    section {
-        padding: 80px 18px 40px !important;
-    }
-    .rules-extra {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* ===== ФОНОВЫЕ МЕДВЕДИ ===== */
-.bear-background {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: -1 !important;
-    background-image: url("images/menu-logo.png"),
-                     url("images/menu-logo.png"),
-                     url("images/menu-logo.png"),
-                     url("images/menu-logo.png");
-    background-repeat: no-repeat;
-    background-position: 5% 15%, 90% 30%, 10% 70%, 85% 85%;
-    background-size: 260px, 320px, 220px, 280px;
-    opacity: 0.12;
-    filter: blur(1px);
-}
-section, footer {
-    position: relative;
-    z-index: 1;
-}
-@media (max-width: 480px) {
-    .bear-background {
-        top: 120px !important;
-        background-position: 10% 15%, 90% 20%, 10% 80%, 90% 85% !important;
-        background-size: 120px, 140px, 100px, 130px !important;
-        opacity: 0.15 !important;
-    }
-    .hero-buttons {
-        margin-bottom: 40px !important;
-    }
-}
-/* ============================================================
-   ПРИНУДИТЕЛЬНАЯ АДАПТАЦИЯ ДЛЯ ВСЕХ СТРАНИЦ (как на VIP)
-   ============================================================ */
-
-/* ===== ПЕРЕОПРЕДЕЛЯЕМ HERO ===== */
-.hero {
-    padding-top: 110px !important;
-    min-height: 90vh !important;
-    height: auto !important;
-    padding-bottom: 20px !important;
-}
-
-.hero .logo {
-    width: 260px !important;
-    max-width: 50vw !important;
-    margin-top: 0 !important;
-    margin-bottom: 5px !important;
-}
-
-.hero .title {
-    margin-top: 5px !important;
-}
-
-.hero .subtitle {
-    margin-top: 5px !important;
-}
-
-.hero .hero-description {
-    margin-top: 15px !important;
-}
-
-.hero .hero-buttons {
-    margin-top: 25px !important;
-    margin-bottom: 10px !important;
-}
-
-/* ===== ПЕРЕОПРЕДЕЛЯЕМ ПРЕДУПРЕЖДЕНИЕ ===== */
-.hero + div {
-    margin-top: 10px !important;
-    margin-bottom: 30px !important;
-}
-
-/* ===== УБИРАЕМ ПОДСВЕТКУ НАФИГ ===== */
-.hero::before {
-    opacity: 0.1 !important;
-    width: 300px !important;
-    height: 300px !important;
-    background: radial-gradient(circle, rgba(0,255,255,.03), transparent 70%) !important;
-    filter: blur(40px) !important;
-}
-
-/* ===== МОБИЛЬНАЯ АДАПТАЦИЯ ===== */
-@media (max-width: 768px) {
     .hero {
         padding-top: 100px !important;
         min-height: 80vh !important;
@@ -626,6 +600,25 @@ section, footer {
         font-size: 14px !important;
     }
 
+    .section-title {
+        font-size: 28px !important;
+    }
+
+    section {
+        padding: 50px 18px 30px !important;
+    }
+
+    .rules-extra {
+        grid-template-columns: 1fr !important;
+    }
+
+    .bear-background {
+        top: 120px !important;
+        background-position: 10% 15%, 90% 20%, 10% 80%, 90% 85% !important;
+        background-size: 120px, 140px, 100px, 130px !important;
+        opacity: 0.15 !important;
+    }
+
     .hero + div {
         margin-top: 5px !important;
         margin-bottom: 15px !important;
@@ -640,12 +633,7 @@ section, footer {
     }
 }
 
-@media (max-width: 400px) {
-    .hero {
-        padding-top: 90px !important;
-        min-height: 70vh !important;
-    }
-
+@media (max-width: 480px) {
     .hero .logo {
         width: 130px !important;
         max-width: 40vw !important;
@@ -676,12 +664,8 @@ section, footer {
     }
 }
 
-/* ===== ФОНОВЫЕ МЕДВЕДИ НА МОБИЛЬНЫХ ===== */
-@media (max-width: 480px) {
-    .bear-background {
-        top: 120px !important;
-        background-position: 10% 15%, 90% 20%, 10% 80%, 90% 85% !important;
-        background-size: 120px, 140px, 100px, 130px !important;
-        opacity: 0.15 !important;
+@media (min-width: 769px) {
+    .mobile-menu {
+        display: none !important;
     }
 }
