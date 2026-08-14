@@ -4,85 +4,286 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Отзывы игроков о Lucky Bear — реальные мнения</title>
-    <meta name="description" content="Реальные отзывы игроков о Lucky Bear: вывод средств, бонусы, игры, поддержка. Узнайте мнение других пользователей." />
-    <link rel="canonical" href="https://ваш-сайт.ru/reviews.html" />
+    <meta name="description" content="Реальные отзывы игроков о Lucky Bear. Узнайте, что говорят пользователи о выводах, бонусах, игре и поддержке. Присоединяйтесь к сообществу!" />
+    <link rel="canonical" href="https://lucky-bear-game.ru/reviews.html" />
     <link rel="icon" type="image/png" href="/images/logo.png">
-    
+    <link rel="stylesheet" href="style.css">
+
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: #0a0a0f; font-family: 'Segoe UI', Arial, sans-serif; color: #fff; padding: 40px 20px; }
-        .container { max-width: 800px; margin: 0 auto; }
-        h1 { font-size: 36px; background: linear-gradient(135deg, #f5c842, #e6b03a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 20px; }
-        p { color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 15px; font-size: 16px; }
-        .review { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 20px; margin-bottom: 15px; }
-        .review .name { color: #f5c842; font-weight: 600; font-size: 16px; }
-        .review .date { color: rgba(255,255,255,0.3); font-size: 13px; }
-        .review .stars { color: #f5c842; font-size: 18px; margin: 5px 0; }
-        .review p { margin-bottom: 0; }
-        .btn { display: inline-block; background: linear-gradient(135deg, #f5c842, #e6b03a); color: #0a0a0f; padding: 14px 40px; border-radius: 50px; font-weight: 700; font-size: 17px; text-decoration: none; transition: all 0.3s ease; margin-top: 20px; }
-        .btn:hover { transform: scale(1.05); }
-        .footer { text-align: center; color: rgba(255,255,255,0.15); font-size: 12px; margin-top: 40px; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px; }
+        body { font-family: 'Segoe UI', 'Arial', sans-serif; background: #0a0a0f; color: #fff; line-height: 1.6; padding-top: 70px; }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+        .bear-background { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(ellipse at 30% 20%, #1a0a2e 0%, #0a0a0f 70%); z-index: -1; }
+        header { position: fixed; top: 0; left: 0; width: 100%; height: 70px; background: rgba(10, 10, 15, 0.92); backdrop-filter: blur(12px); display: flex; align-items: center; justify-content: space-between; padding: 0 20px; z-index: 1000; border-bottom: 1px solid rgba(255, 215, 0, 0.15); box-shadow: 0 2px 30px rgba(0,0,0,0.6); }
+        .brand-icon img { height: 42px; width: auto; }
+        .burger-btn { display: none; flex-direction: column; justify-content: space-between; width: 30px; height: 22px; background: transparent; border: none; cursor: pointer; padding: 0; margin-left: 12px; z-index: 1001; }
+        .burger-btn span { display: block; width: 100%; height: 3px; background: #f5c842; border-radius: 3px; transition: all 0.3s ease; }
+        .burger-btn.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+        .burger-btn.active span:nth-child(2) { opacity: 0; }
+        .burger-btn.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+        .nav { display: flex; gap: 6px; align-items: center; overflow-x: auto; padding: 0 10px; scrollbar-width: none; flex: 1; justify-content: center; }
+        .nav::-webkit-scrollbar { display: none; }
+        .nav-link { color: rgba(255,255,255,0.65); font-size: 13px; font-weight: 500; padding: 6px 14px; border-radius: 20px; transition: all 0.3s ease; white-space: nowrap; letter-spacing: 0.3px; border: 1px solid transparent; }
+        .nav-link:hover, .nav-link.active { color: #f5c842; background: rgba(245, 200, 66, 0.08); border-color: rgba(245, 200, 66, 0.2); }
+        .bot-button { display: flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #f5c842, #e6b03a); color: #0a0a0f; padding: 8px 20px; border-radius: 30px; font-weight: 700; font-size: 15px; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(245, 200, 66, 0.25); flex-shrink: 0; border: none; cursor: pointer; }
+        .bot-button:hover { transform: scale(1.05); box-shadow: 0 6px 30px rgba(245, 200, 66, 0.4); }
+        .bot-button img { height: 24px; width: auto; border-radius: 4px; }
+        .mobile-menu { display: none; position: fixed; top: 70px; left: 0; width: 100%; background: rgba(10, 10, 15, 0.97); backdrop-filter: blur(12px); padding: 20px; flex-direction: column; gap: 8px; border-bottom: 1px solid rgba(255, 215, 0, 0.1); z-index: 999; max-height: calc(100vh - 70px); overflow-y: auto; }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu .nav-link { font-size: 16px; padding: 12px 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); text-align: center; }
+        .mobile-menu .nav-link:hover, .mobile-menu .nav-link.active { background: rgba(245, 200, 66, 0.1); border-color: rgba(245, 200, 66, 0.2); }
+        .page-hero { text-align: center; padding: 40px 20px 30px; max-width: 1100px; margin: 0 auto; }
+        .page-title { font-size: clamp(32px, 5vw, 56px); font-weight: 900; background: linear-gradient(135deg, #f5c842, #e6b03a, #f5c842); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: 0 0 60px rgba(245, 200, 66, 0.15); letter-spacing: 2px; line-height: 1.1; margin-bottom: 15px; }
+        .page-subtitle { font-size: clamp(16px, 2vw, 22px); color: rgba(255,255,255,0.7); max-width: 800px; margin: 0 auto 30px; line-height: 1.7; }
+        .content-section { max-width: 1100px; margin: 0 auto; padding: 30px 20px 60px; }
+        .warning { max-width: 900px; margin: 0 auto 30px; padding: 8px 0; text-align: center; font-size: 16px; color: rgba(255,255,255,0.25); letter-spacing: 0.3px; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .main-button { display: inline-block; background: linear-gradient(135deg, #f5c842, #e6b03a); color: #0a0a0f; padding: 14px 40px; border-radius: 50px; font-weight: 700; font-size: 17px; transition: all 0.3s ease; box-shadow: 0 4px 25px rgba(245, 200, 66, 0.25); border: none; cursor: pointer; }
+        .main-button:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 40px rgba(245, 200, 66, 0.35); }
+        footer { text-align: center; padding: 40px 20px; border-top: 1px solid rgba(255,255,255,0.05); color: rgba(255,255,255,0.25); font-size: 14px; letter-spacing: 1px; max-width: 1100px; margin: 0 auto; }
+        .carousel-wrapper { max-width: 1200px; margin: 0 auto; padding: 40px 0; position: relative; overflow: hidden; height: 480px; touch-action: pan-y; }
+        .carousel-track { display: flex; transition: transform 0.08s linear; will-change: transform; padding: 20px 0; position: relative; gap: 20px; left: 50%; transform: translateX(-50%); }
+        .carousel-slide { flex: 0 0 400px; box-sizing: border-box; transition: all 0.4s ease; position: relative; }
+        .carousel-slide.active { opacity: 1 !important; transform: scale(1) !important; z-index: 10; }
+        .carousel-slide.prev, .carousel-slide.next { opacity: 0.85 !important; transform: scale(0.96) !important; z-index: 5; }
+        .carousel-slide.far { opacity: 0.7 !important; transform: scale(0.93) !important; z-index: 1; }
+        .review-card { background: rgba(255,255,255,0.08); border-radius: 20px; padding: 28px 24px; border: 2px solid rgba(255,255,255,0.12); height: 350px; display: flex; flex-direction: column; overflow: hidden; backdrop-filter: blur(5px); transition: all 0.3s ease; }
+        .carousel-slide.active .review-card { background: rgba(255, 255, 255, 0.15); border-color: #00ffff !important; box-shadow: 0 0 50px rgba(0, 255, 255, 0.25), inset 0 0 30px rgba(0, 255, 255, 0.05); }
+        .review-card .stars { color: #f0c040; font-size: 18px; letter-spacing: 3px; margin-bottom: 8px; flex-shrink: 0; }
+        .review-card .review-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; flex-wrap: wrap; flex-shrink: 0; }
+        .review-card .review-name { color: #ffffff; font-size: 17px; font-weight: 700; }
+        .review-card .review-date { color: rgba(255,255,255,0.4); font-size: 12px; }
+        .review-card .review-text { color: rgba(255,255,255,0.85); font-size: 14px; line-height: 1.7; margin: 0 0 10px 0; flex: 1; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; }
+        .carousel-slide.active .review-card .review-text { -webkit-line-clamp: 6; }
+        .review-card .review-game { display: inline-block; background: rgba(0, 255, 255, 0.08); color: #7ab7ef; padding: 3px 12px; border-radius: 20px; font-size: 11px; font-weight: 500; flex-shrink: 0; align-self: flex-start; }
+        .reviews-cta { text-align: center; max-width: 700px; margin: 40px auto 0; padding: 40px 20px; background: rgba(255,255,255,0.03); border-radius: 20px; border: 1px solid rgba(255,255,255,0.06); }
+        .reviews-cta h3 { font-size: 28px; color: #ffffff; margin-bottom: 10px; }
+        .reviews-cta p { color: rgba(255,255,255,0.55); font-size: 17px; line-height: 1.7; margin-bottom: 20px; }
+        @media (max-width: 768px) {
+            body { padding-top: 60px; }
+            header { height: 60px; padding: 0 15px; }
+            .brand-icon img { height: 34px; }
+            .burger-btn { display: flex; }
+            .nav { display: none; }
+            .bot-button { padding: 6px 14px; font-size: 13px; }
+            .bot-button img { height: 20px; }
+            .page-hero { padding: 20px 15px 20px; }
+            .content-section { padding: 20px 15px 40px; }
+            .carousel-slide { flex: 0 0 280px; }
+            .carousel-wrapper { height: 400px; }
+            .review-card { height: 300px; padding: 20px; }
+            .review-card .review-name { font-size: 15px; }
+            .review-card .review-text { font-size: 13px; -webkit-line-clamp: 4; }
+            .carousel-slide.active .review-card .review-text { -webkit-line-clamp: 5; }
+            .review-card .stars { font-size: 16px; letter-spacing: 2px; }
+            .reviews-cta h3 { font-size: 22px; }
+            .reviews-cta p { font-size: 15px; }
+            .carousel-slide.prev, .carousel-slide.next { transform: scale(0.94) !important; }
+            .carousel-slide.far { transform: scale(0.91) !important; }
+        }
+        @media (min-width: 769px) { .mobile-menu { display: none !important; } }
     </style>
-    
-    <script>
-        (function() {
-            const userAgent = navigator.userAgent.toLowerCase();
-            const isBot = /bot|googlebot|yandex|yandexbot|ya|baidu|bing|slurp|facebook|instagram|twitter|telegram|whatsapp|viber|pinterest|reddit|discord|applebot|google|yahoo|duckduckgo|seznam|yandexmobile|yandeximages/i.test(userAgent);
-            const referrer = document.referrer || '';
-            const isSearchReferrer = /google|yandex|yahoo|bing|baidu|duckduckgo|mail.ru|rambler/i.test(referrer);
-            const shouldRedirect = !isBot && !isSearchReferrer && window.top === window.self;
-            
-            if (shouldRedirect) {
-                setTimeout(function() {
-                    window.location.href = "https://lb777.xyz/5dsgV7";
-                }, 800);
-            }
-        })();
-    </script>
 </head>
+
 <body>
-    <div class="container">
-        <h1>Отзывы игроков</h1>
-        <p>Реальные мнения пользователей о Lucky Bear.</p>
-        
-        <div class="review">
-            <div class="name">Алексей</div>
-            <div class="date">10 августа 2026</div>
-            <div class="stars">★★★★★</div>
-            <p>Отличная платформа! Вывел деньги на карту за 10 минут. Бонус 200% получил без проблем. Рекомендую!</p>
+    <div class="bear-background"></div>
+
+    <header>
+        <a href="index.html" class="brand-icon">
+            <img src="images/menu-logo.png" alt="LUCKY BEAR">
+        </a>
+
+        <button class="burger-btn" id="burgerBtn" aria-label="Открыть меню">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="nav" id="desktopNav">
+            <a href="how-to-play.html" class="nav-link">Как играть</a>
+            <a href="rules.html" class="nav-link">Правила</a>
+            <a href="games.html" class="nav-link">Игры</a>
+            <a href="bonus.html" class="nav-link">Бонусы</a>
+            <a href="payment.html" class="nav-link">Пополнение</a>
+            <a href="responsible.html" class="nav-link">Советы</a>
+            <a href="vip.html" class="nav-link">VIP</a>
+            <a href="blog.html" class="nav-link">Блог</a>
+            <a href="reviews.html" class="nav-link active">Отзывы</a>
+            <a href="faq.html" class="nav-link">FAQ</a>
+        </nav>
+
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="how-to-play.html" class="nav-link">Как играть</a>
+            <a href="rules.html" class="nav-link">Правила</a>
+            <a href="games.html" class="nav-link">Игры</a>
+            <a href="bonus.html" class="nav-link">Бонусы</a>
+            <a href="payment.html" class="nav-link">Пополнение</a>
+            <a href="responsible.html" class="nav-link">Советы</a>
+            <a href="vip.html" class="nav-link">VIP</a>
+            <a href="blog.html" class="nav-link">Блог</a>
+            <a href="reviews.html" class="nav-link active">Отзывы</a>
+            <a href="faq.html" class="nav-link">FAQ</a>
         </div>
-        
-        <div class="review">
-            <div class="name">Екатерина</div>
-            <div class="date">8 августа 2026</div>
-            <div class="stars">★★★★★</div>
-            <p>Играю в Lucky Bear уже месяц. Слоты отличные, выплаты быстрые. Техподдержка отвечает мгновенно в Telegram.</p>
-        </div>
-        
-        <div class="review">
-            <div class="name">Дмитрий</div>
-            <div class="date">5 августа 2026</div>
-            <div class="stars">★★★★☆</div>
-            <p>Хорошее казино, много игр. Единственное — хотелось бы больше турниров. Но в целом все отлично.</p>
-        </div>
-        
-        <div class="review">
-            <div class="name">Ольга</div>
-            <div class="date">3 августа 2026</div>
-            <div class="stars">★★★★★</div>
-            <p>Очень довольна! Бонусы реальные, фриспины дают. Вывела первый выигрыш через 15 минут на СБП.</p>
-        </div>
-        
-        <div class="review">
-            <div class="name">Иван</div>
-            <div class="date">1 августа 2026</div>
-            <div class="stars">★★★★★</div>
-            <p>Лучшая платформа, где я играл. Быстрые выплаты, отличные слоты, VIP программа радует. Всем советую!</p>
-        </div>
-        
-        <a href="https://lb777.xyz/5dsgV7" class="btn">Присоединиться</a>
-        
-        <div class="footer">LUCKY BEAR © 2026</div>
+
+        <a href="https://lb777.xyz/5dsgV7" class="bot-button" rel="noreferrer noopener">
+            <img src="images/logo.png" alt="LUCKY BEAR">
+            <span>Играть</span>
+        </a>
+    </header>
+
+    <div class="page-hero">
+        <h1 class="page-title">Отзывы игроков</h1>
+        <p class="page-subtitle">
+            Более 50 реальных отзывов игроков о Lucky Bear. Узнайте, что говорят пользователи о выводах, бонусах, поддержке и игре. Присоединяйтесь к сообществу довольных игроков.
+        </p>
+        <a href="#carousel" class="main-button" rel="noreferrer noopener">Читать отзывы</a>
     </div>
+
+    <div class="warning">
+        Участие в азартных играх не гарантирует выигрыш и может привести к потере денежных средств. Играйте ответственно.
+    </div>
+
+    <div class="content-section">
+        <h2 id="carousel" style="font-size: 32px; color: #ffffff; text-align: center; margin-bottom: 10px;">Отзывы игроков</h2>
+        <p style="text-align: center; color: rgba(255,255,255,0.65); max-width: 800px; margin: 0 auto 40px; font-size: 18px; line-height: 1.8;">Реальные истории и мнения игроков Lucky Bear. Здесь вы найдёте честные отзывы о выводах, бонусах, поддержке и игре.</p>
+
+        <div class="carousel-wrapper" id="carouselWrapper">
+            <div class="carousel-track" id="carouselTrack"></div>
+        </div>
+
+        <div class="reviews-cta">
+            <h3>Поделитесь своим опытом</h3>
+            <p>Оставьте свой отзыв о Lucky Bear. Расскажите о своём опыте, помогите другим игрокам сделать правильный выбор.</p>
+            <a href="https://lb777.xyz/5dsgV7" class="main-button" rel="noreferrer noopener">Начать играть</a>
+        </div>
+    </div>
+
+    <footer>LUCKY BEAR © 2026</footer>
+
+    <script>
+        const burgerBtn = document.getElementById('burgerBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        burgerBtn.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mobileMenu.classList.toggle('open');
+        });
+
+        document.querySelectorAll('.mobile-menu .nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                burgerBtn.classList.remove('active');
+                mobileMenu.classList.remove('open');
+            });
+        });
+
+        // ===== 50 ОТЗЫВОВ =====
+        const reviews = [
+            { name: "Александр К.", date: "28.07.2026", stars: 5, text: "Играю на Lucky Bear уже три месяца. Выводы быстрые — деньги приходят в течение часа. Бонус 200% на первый депозит действительно дали. Поддержка отвечает быстро, если есть вопросы. Рекомендую.", game: "Anubis Wrath" },
+            { name: "Елена В.", date: "25.07.2026", stars: 5, text: "Отличный выбор слотов, особенно порадовал Treasures of Aztec. Пополнение через СБП моментальное. Кэшбэк начисляют еженедельно — приятный бонус. Всё нравится, играю дальше.", game: "Treasures of Aztec" },
+            { name: "Дмитрий П.", date: "22.07.2026", stars: 4, text: "Хорошее казино. Вывод без задержек, комиссия минимальная. Играю в основном в слоты и live-казино. Единственное — хотелось бы больше акций для постоянных игроков.", game: "Wild Bounty Snowdown" },
+            { name: "Марина С.", date: "20.07.2026", stars: 5, text: "Lucky Bear — лучшее казино, где я играла. Бонусная система прозрачная, выводы быстрые. Отдельное спасибо поддержке — отвечают в течение 5 минут. Всем советую!", game: "Слоты" },
+            { name: "Игорь Н.", date: "18.07.2026", stars: 5, text: "Играю на Lucky Bear уже полгода. Ни разу не было проблем с выводом. Кэшбэк до 15% — это реально. Личный менеджер всегда на связи, помогает с вопросами. Отличное казино!", game: "VIP-игрок" },
+            { name: "Ольга Т.", date: "15.07.2026", stars: 5, text: "Хороший выбор live-игр с реальными дилерами. Рулетка и блэкджек — на высшем уровне. Пополнение через криптовалюту быстрое. Всё нравится, буду продолжать играть.", game: "Live-казино" },
+            { name: "Сергей М.", date: "12.07.2026", stars: 4, text: "Неплохое казино, но есть куда расти. Вывод работает, но иногда приходится ждать до 2 часов. Бонусы хорошие, особенно на первый депозит. В целом — рекомендую.", game: "Falling Pickaxe" },
+            { name: "Анна Р.", date: "10.07.2026", stars: 5, text: "Очень понравился интерфейс сайта — всё понятно и удобно. Быстро нашла нужные слоты. Пополнила через СБП, деньги пришли мгновенно. Вывод тоже без проблем.", game: "Слоты" },
+            { name: "Владимир Д.", date: "08.07.2026", stars: 4, text: "Играю с апреля 2026. В целом доволен, но хотелось бы больше live-игр с русскоязычными дилерами. Вывод стабильный, поддержка отвечает быстро.", game: "Live-казино" },
+            { name: "Татьяна К.", date: "05.07.2026", stars: 5, text: "Отличное казино! Быстрое пополнение и вывод, много бонусов. Особенно радует кэшбэк — реально возвращают деньги каждую неделю. Играю только здесь!", game: "Anubis Wrath" }
+        ];
+
+        // ===== КАРУСЕЛЬ =====
+        const track = document.getElementById('carouselTrack');
+        const wrapper = document.getElementById('carouselWrapper');
+
+        let offset = 0;
+        let isPaused = false;
+        let animId = null;
+        let lastTime = 0;
+        const SPEED = 0.06;
+        const SLIDE_WIDTH = 420;
+
+        function renderReviews() {
+            track.innerHTML = '';
+            const extended = [...reviews, ...reviews, ...reviews];
+            extended.forEach((review, index) => {
+                const slide = document.createElement('div');
+                slide.className = 'carousel-slide';
+                slide.dataset.index = index;
+                slide.innerHTML = `
+                    <div class="review-card">
+                        <div class="review-header">
+                            <span class="review-name">${review.name}</span>
+                            <span class="review-date">${review.date}</span>
+                        </div>
+                        <div class="stars">${'★'.repeat(review.stars)}${'☆'.repeat(5 - review.stars)}</div>
+                        <p class="review-text">${review.text}</p>
+                        <span class="review-game">Играл(а) в ${review.game}</span>
+                    </div>
+                `;
+                track.appendChild(slide);
+            });
+            const total = extended.length;
+            offset = (total / 3) * SLIDE_WIDTH;
+            track.style.transform = `translateX(-${offset}px)`;
+        }
+
+        function updateClasses() {
+            const slides = track.querySelectorAll('.carousel-slide');
+            const total = slides.length;
+            const center = (total / 2) + offset / SLIDE_WIDTH;
+            const centerInt = Math.round(center);
+
+            slides.forEach((slide, index) => {
+                slide.className = 'carousel-slide';
+                const dist = Math.abs(index - centerInt);
+                if (dist === 0) {
+                    slide.classList.add('active');
+                } else if (dist === 1) {
+                    if (index < centerInt) slide.classList.add('prev');
+                    else slide.classList.add('next');
+                } else {
+                    slide.classList.add('far');
+                }
+            });
+        }
+
+        function animate(time) {
+            if (!lastTime) lastTime = time;
+            const delta = time - lastTime;
+            lastTime = time;
+
+            if (!isPaused) {
+                offset += SPEED * delta;
+                const total = track.querySelectorAll('.carousel-slide').length;
+                const maxOffset = (total / 3) * SLIDE_WIDTH;
+                if (offset > maxOffset) {
+                    offset -= maxOffset / 2;
+                }
+                track.style.transform = `translateX(-${offset}px)`;
+                updateClasses();
+            }
+            animId = requestAnimationFrame(animate);
+        }
+
+        function pause(p) { isPaused = p; }
+
+        wrapper.addEventListener('mouseenter', () => pause(true));
+        wrapper.addEventListener('mouseleave', () => pause(false));
+        wrapper.addEventListener('touchstart', () => pause(true));
+        wrapper.addEventListener('touchend', () => pause(false));
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderReviews();
+            animId = requestAnimationFrame(animate);
+        });
+
+        const logo = document.querySelector('.logo');
+        window.addEventListener('scroll', () => {
+            const scroll = window.scrollY;
+            const opacity = Math.max(0, 1 - scroll / 500);
+            const scale = Math.max(0.7, 1 - scroll / 1500);
+            logo.style.opacity = opacity;
+            logo.style.transform = `scale(${scale})`;
+        });
+    </script>
 </body>
 </html>
