@@ -1,6 +1,6 @@
 /* ===========================================
-   LUCKY BEAR — СВЕТЛЫЙ НЕОН (ГОЛУБОЙ ГРАДИЕНТ)
-   Белые заголовки, синие акценты, светлый фон
+   LUCKY BEAR — СВЕТЛЫЙ НЕОН
+   Только голубой/синий градиент + белые кнопки
    =========================================== */
 
 * {
@@ -29,14 +29,14 @@ img {
     display: block;
 }
 
-/* ===== СВЕТЛЫЙ ГРАДИЕНТНЫЙ ФОН (ГОЛУБОЙ → СИНИЙ) ===== */
+/* ===== СВЕТЛЫЙ ГРАДИЕНТ (ГОЛУБОЙ → СИНИЙ, БЕЗ ФИОЛЕТА) ===== */
 .bear-background {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(145deg, #d4e4f7 0%, #e8f1fa 40%, #f0f6fe 70%, #e3edf7 100%);
+    background: linear-gradient(145deg, #c5dbe9 0%, #dce8f5 40%, #e8f1fa 70%, #d4e4f7 100%);
     z-index: -1;
 }
 
@@ -184,14 +184,14 @@ header {
     display: flex;
     align-items: center;
     gap: 8px;
-    background: linear-gradient(135deg, #ffffff, #f0f6fe);
+    background: #ffffff;
     color: #0a1628;
     padding: 8px 20px;
     border-radius: 30px;
     font-weight: 700;
     font-size: 15px;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 20px rgba(0, 136, 204, 0.08);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
     flex-shrink: 0;
     border: 1px solid rgba(0, 136, 204, 0.08);
     cursor: pointer;
@@ -199,8 +199,8 @@ header {
 
 .bot-button:hover {
     transform: scale(1.05);
-    box-shadow: 0 6px 30px rgba(0, 136, 204, 0.15);
-    border-color: rgba(0, 136, 204, 0.2);
+    box-shadow: 0 6px 30px rgba(0, 136, 204, 0.1);
+    border-color: rgba(0, 136, 204, 0.15);
 }
 
 .bot-button img {
@@ -271,6 +271,7 @@ header {
     50% { transform: translateY(-10px); }
 }
 
+/* ===== ЗАГОЛОВКИ (БЕЛЫЕ) ===== */
 .title {
     font-size: clamp(40px, 8vw, 80px);
     font-weight: 900;
@@ -310,21 +311,21 @@ header {
 /* ===== ГЛАВНЫЕ КНОПКИ (БЕЛЫЕ) ===== */
 .main-button {
     display: inline-block;
-    background: linear-gradient(135deg, #ffffff, #f0f6fe);
+    background: #ffffff;
     color: #0a1628;
     padding: 14px 40px;
     border-radius: 50px;
     font-weight: 700;
     font-size: 17px;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 25px rgba(0, 136, 204, 0.06);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.04);
     border: 1px solid rgba(0, 136, 204, 0.08);
     cursor: pointer;
 }
 
 .main-button:hover {
     transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 8px 40px rgba(0, 136, 204, 0.12);
+    box-shadow: 0 8px 40px rgba(0, 136, 204, 0.1);
     border-color: rgba(0, 136, 204, 0.15);
 }
 
@@ -383,7 +384,7 @@ section {
     line-height: 1.8;
 }
 
-/* ===== ИНФО-БЛОКИ (ПОЛУПРОЗРАЧНЫЕ) ===== */
+/* ===== ИНФО-БЛОКИ ===== */
 .info-block {
     background: rgba(255, 255, 255, 0.7);
     border: 1px solid rgba(0, 136, 204, 0.06);
