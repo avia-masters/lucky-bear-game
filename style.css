@@ -1,18 +1,7 @@
 /* ===========================================
-   LUCKY BEAR NEON STYLE (ОЧЕНЬ СВЕТЛЫЙ ФОН)
-   Голубой неон + 4 фоновых медведя по углам
+   LUCKY BEAR — СВЕТЛЫЙ НЕОН (ГОЛУБОЙ ГРАДИЕНТ)
+   Белые заголовки, синие акценты, светлый фон
    =========================================== */
-
-:root {
-    --neon-blue: #0088cc;
-    --neon-light: #00d4ff;
-    --bg-light: #e8f4ff;
-    --bg-card: rgba(255, 255, 255, 0.7);
-    --text-dark: #0a1628;
-    --text-soft: #2a4a6a;
-    --border-glow: rgba(0, 136, 204, 0.12);
-    --shadow-glow: 0 0 40px rgba(0, 136, 204, 0.06);
-}
 
 * {
     margin: 0;
@@ -22,7 +11,7 @@
 }
 
 body {
-    background: #f5f9ff;
+    background: #e3edf7;
     color: #0a1628;
     font-family: 'Segoe UI', 'Arial', sans-serif;
     line-height: 1.6;
@@ -40,14 +29,14 @@ img {
     display: block;
 }
 
-/* ===== ОЧЕНЬ СВЕТЛЫЙ ФОН ===== */
+/* ===== СВЕТЛЫЙ ГРАДИЕНТНЫЙ ФОН (ГОЛУБОЙ → СИНИЙ) ===== */
 .bear-background {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(145deg, #f0f6fe 0%, #f8fbff 50%, #ffffff 100%);
+    background: linear-gradient(145deg, #d4e4f7 0%, #e8f1fa 40%, #f0f6fe 70%, #e3edf7 100%);
     z-index: -1;
 }
 
@@ -63,35 +52,35 @@ img {
     background-position: center;
     pointer-events: none;
     z-index: -1;
-    opacity: 0.06;
+    opacity: 0.07;
 }
 
 .bear-glow-1 {
-    top: 3%;
-    left: 2%;
-    width: 280px;
-    height: 280px;
+    top: 2%;
+    left: 1%;
+    width: 300px;
+    height: 300px;
 }
 
 .bear-glow-2 {
-    top: 3%;
-    right: 2%;
-    width: 280px;
-    height: 280px;
+    top: 2%;
+    right: 1%;
+    width: 300px;
+    height: 300px;
 }
 
 .bear-glow-3 {
-    bottom: 3%;
-    left: 2%;
-    width: 280px;
-    height: 280px;
+    bottom: 2%;
+    left: 1%;
+    width: 300px;
+    height: 300px;
 }
 
 .bear-glow-4 {
-    bottom: 3%;
-    right: 2%;
-    width: 280px;
-    height: 280px;
+    bottom: 2%;
+    right: 1%;
+    width: 300px;
+    height: 300px;
 }
 
 /* ===== ХЕДЕР ===== */
@@ -140,7 +129,7 @@ header {
     display: block;
     width: 100%;
     height: 3px;
-    background: #0088cc;
+    background: #0a1628;
     border-radius: 3px;
     transition: all 0.3s ease;
 }
@@ -190,27 +179,28 @@ header {
     border-color: rgba(0, 136, 204, 0.1);
 }
 
-/* ===== КНОПКА "ИГРАТЬ" ===== */
+/* ===== КНОПКА "ИГРАТЬ" (БЕЛАЯ) ===== */
 .bot-button {
     display: flex;
     align-items: center;
     gap: 8px;
-    background: linear-gradient(135deg, #0088cc, #00a8e8);
-    color: #ffffff;
+    background: linear-gradient(135deg, #ffffff, #f0f6fe);
+    color: #0a1628;
     padding: 8px 20px;
     border-radius: 30px;
     font-weight: 700;
     font-size: 15px;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 20px rgba(0, 136, 204, 0.12);
+    box-shadow: 0 4px 20px rgba(0, 136, 204, 0.08);
     flex-shrink: 0;
-    border: none;
+    border: 1px solid rgba(0, 136, 204, 0.08);
     cursor: pointer;
 }
 
 .bot-button:hover {
     transform: scale(1.05);
-    box-shadow: 0 6px 30px rgba(0, 136, 204, 0.2);
+    box-shadow: 0 6px 30px rgba(0, 136, 204, 0.15);
+    border-color: rgba(0, 136, 204, 0.2);
 }
 
 .bot-button img {
@@ -317,35 +307,36 @@ header {
     margin-bottom: 20px;
 }
 
-/* ===== ГЛАВНЫЕ КНОПКИ ===== */
+/* ===== ГЛАВНЫЕ КНОПКИ (БЕЛЫЕ) ===== */
 .main-button {
     display: inline-block;
-    background: linear-gradient(135deg, #0088cc, #00a8e8);
-    color: #ffffff;
+    background: linear-gradient(135deg, #ffffff, #f0f6fe);
+    color: #0a1628;
     padding: 14px 40px;
     border-radius: 50px;
     font-weight: 700;
     font-size: 17px;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 25px rgba(0, 136, 204, 0.12);
-    border: none;
+    box-shadow: 0 4px 25px rgba(0, 136, 204, 0.06);
+    border: 1px solid rgba(0, 136, 204, 0.08);
     cursor: pointer;
 }
 
 .main-button:hover {
     transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 8px 40px rgba(0, 136, 204, 0.2);
+    box-shadow: 0 8px 40px rgba(0, 136, 204, 0.12);
+    border-color: rgba(0, 136, 204, 0.15);
 }
 
 .main-button.secondary {
-    background: rgba(0, 0, 0, 0.03);
+    background: rgba(10, 22, 40, 0.03);
     color: #0a1628;
     box-shadow: none;
     border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .main-button.secondary:hover {
-    background: rgba(0, 0, 0, 0.06);
+    background: rgba(10, 22, 40, 0.06);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04);
 }
 
@@ -370,6 +361,7 @@ section {
     scroll-margin-top: 90px;
 }
 
+/* ===== ЗАГОЛОВКИ (БЕЛЫЕ) ===== */
 .section-title {
     font-size: clamp(28px, 4vw, 44px);
     font-weight: 700;
@@ -391,7 +383,7 @@ section {
     line-height: 1.8;
 }
 
-/* ===== ИНФО-БЛОКИ ===== */
+/* ===== ИНФО-БЛОКИ (ПОЛУПРОЗРАЧНЫЕ) ===== */
 .info-block {
     background: rgba(255, 255, 255, 0.7);
     border: 1px solid rgba(0, 136, 204, 0.06);
