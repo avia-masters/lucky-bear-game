@@ -9,63 +9,73 @@
     <link rel="icon" type="image/png" href="/images/logo.png">
     <link rel="stylesheet" href="style.css">
 
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', 'Arial', sans-serif; background: #0a0a0f; color: #fff; line-height: 1.6; padding-top: 70px; }
-        a { text-decoration: none; color: inherit; }
-        img { max-width: 100%; display: block; }
-        .bear-background { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(ellipse at 30% 20%, #1a0a2e 0%, #0a0a0f 70%); z-index: -1; }
-        header { position: fixed; top: 0; left: 0; width: 100%; height: 70px; background: rgba(10, 10, 15, 0.92); backdrop-filter: blur(12px); display: flex; align-items: center; justify-content: space-between; padding: 0 20px; z-index: 1000; border-bottom: 1px solid rgba(255, 215, 0, 0.15); box-shadow: 0 2px 30px rgba(0,0,0,0.6); }
-        .brand-icon img { height: 42px; width: auto; }
-        .burger-btn { display: none; flex-direction: column; justify-content: space-between; width: 30px; height: 22px; background: transparent; border: none; cursor: pointer; padding: 0; margin-left: 12px; z-index: 1001; }
-        .burger-btn span { display: block; width: 100%; height: 3px; background: #f5c842; border-radius: 3px; transition: all 0.3s ease; }
-        .burger-btn.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
-        .burger-btn.active span:nth-child(2) { opacity: 0; }
-        .burger-btn.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
-        .nav { display: flex; gap: 6px; align-items: center; overflow-x: auto; padding: 0 10px; scrollbar-width: none; flex: 1; justify-content: center; }
-        .nav::-webkit-scrollbar { display: none; }
-        .nav-link { color: rgba(255,255,255,0.65); font-size: 13px; font-weight: 500; padding: 6px 14px; border-radius: 20px; transition: all 0.3s ease; white-space: nowrap; letter-spacing: 0.3px; border: 1px solid transparent; }
-        .nav-link:hover, .nav-link.active { color: #f5c842; background: rgba(245, 200, 66, 0.08); border-color: rgba(245, 200, 66, 0.2); }
-        .bot-button { display: flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #f5c842, #e6b03a); color: #0a0a0f; padding: 8px 20px; border-radius: 30px; font-weight: 700; font-size: 15px; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(245, 200, 66, 0.25); flex-shrink: 0; border: none; cursor: pointer; }
-        .bot-button:hover { transform: scale(1.05); box-shadow: 0 6px 30px rgba(245, 200, 66, 0.4); }
-        .bot-button img { height: 24px; width: auto; border-radius: 4px; }
-        .mobile-menu { display: none; position: fixed; top: 70px; left: 0; width: 100%; background: rgba(10, 10, 15, 0.97); backdrop-filter: blur(12px); padding: 20px; flex-direction: column; gap: 8px; border-bottom: 1px solid rgba(255, 215, 0, 0.1); z-index: 999; max-height: calc(100vh - 70px); overflow-y: auto; }
-        .mobile-menu.open { display: flex; }
-        .mobile-menu .nav-link { font-size: 16px; padding: 12px 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); text-align: center; }
-        .mobile-menu .nav-link:hover, .mobile-menu .nav-link.active { background: rgba(245, 200, 66, 0.1); border-color: rgba(245, 200, 66, 0.2); }
-        .page-hero { text-align: center; padding: 40px 20px 30px; max-width: 1100px; margin: 0 auto; }
-        .page-title { font-size: clamp(32px, 5vw, 56px); font-weight: 900; background: linear-gradient(135deg, #f5c842, #e6b03a, #f5c842); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: 0 0 60px rgba(245, 200, 66, 0.15); letter-spacing: 2px; line-height: 1.1; margin-bottom: 15px; }
-        .page-subtitle { font-size: clamp(16px, 2vw, 22px); color: rgba(255,255,255,0.7); max-width: 800px; margin: 0 auto 30px; line-height: 1.7; }
-        .content-section { max-width: 1100px; margin: 0 auto; padding: 30px 20px 60px; }
-        .tip-block { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 30px 35px; margin-bottom: 20px; transition: all 0.3s ease; }
-        .tip-block:hover { border-color: rgba(245, 200, 66, 0.15); background: rgba(255,255,255,0.05); }
-        .tip-block h3 { color: #f5c842; font-size: 20px; margin-bottom: 10px; font-weight: 600; }
-        .tip-block p { color: rgba(255,255,255,0.7); font-size: 16px; line-height: 1.8; }
-        .tip-block ul { color: rgba(255,255,255,0.7); font-size: 16px; line-height: 1.8; padding-left: 20px; margin-top: 8px; }
-        .tip-block ul li { margin-bottom: 6px; }
-        .highlight-block { border-color: rgba(245, 200, 66, 0.2); background: rgba(245, 200, 66, 0.04); }
-        .warning { max-width: 900px; margin: 0 auto 30px; padding: 8px 0; text-align: center; font-size: 16px; color: rgba(255,255,255,0.25); letter-spacing: 0.3px; border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .main-button { display: inline-block; background: linear-gradient(135deg, #f5c842, #e6b03a); color: #0a0a0f; padding: 14px 40px; border-radius: 50px; font-weight: 700; font-size: 17px; transition: all 0.3s ease; box-shadow: 0 4px 25px rgba(245, 200, 66, 0.25); border: none; cursor: pointer; }
-        .main-button:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 40px rgba(245, 200, 66, 0.35); }
-        footer { text-align: center; padding: 40px 20px; border-top: 1px solid rgba(255,255,255,0.05); color: rgba(255,255,255,0.25); font-size: 14px; letter-spacing: 1px; max-width: 1100px; margin: 0 auto; }
-        @media (max-width: 768px) {
-            body { padding-top: 60px; }
-            header { height: 60px; padding: 0 15px; }
-            .brand-icon img { height: 34px; }
-            .burger-btn { display: flex; }
-            .nav { display: none; }
-            .bot-button { padding: 6px 14px; font-size: 13px; }
-            .bot-button img { height: 20px; }
-            .page-hero { padding: 20px 15px 20px; }
-            .content-section { padding: 20px 15px 40px; }
-            .tip-block { padding: 20px; }
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=110916195', 'ym');
+
+        ym(110916195, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/110916195" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Главная",
+          "item": "https://lucky-bear-game.ru/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Советы",
+          "item": "https://lucky-bear-game.ru/responsible.html"
         }
-        @media (min-width: 769px) { .mobile-menu { display: none !important; } }
-    </style>
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Lucky Bear",
+      "url": "https://lucky-bear-game.ru",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://lucky-bear-game.ru/search?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Lucky Bear",
+      "url": "https://lucky-bear-game.ru",
+      "logo": "https://lucky-bear-game.ru/images/logo.png"
+    }
+    </script>
 </head>
 
 <body>
     <div class="bear-background"></div>
+    <div class="bear-glow-1"></div>
+    <div class="bear-glow-2"></div>
+    <div class="bear-glow-3"></div>
+    <div class="bear-glow-4"></div>
 
     <header>
         <a href="index.html" class="brand-icon">
@@ -110,55 +120,64 @@
         </a>
     </header>
 
-    <div class="page-hero">
-        <h1 class="page-title">Советы для игры</h1>
-        <p class="page-subtitle">
+    <div class="hero">
+        <img src="images/logo.png" alt="LUCKY BEAR" class="logo">
+        <div class="title">СОВЕТЫ</div>
+        <div class="subtitle">LUCKY BEAR</div>
+        <p class="hero-description">
             Умный подход к игре — это залог долгосрочного удовольствия и высоких результатов. Контролируйте бюджет, выбирайте игры с преимуществом и используйте все возможности платформы.
         </p>
-        <a href="https://lb777.xyz/5dsgV7" class="main-button" rel="noreferrer noopener">Начать игру</a>
+        <div class="hero-buttons">
+            <a href="https://lb777.xyz/5dsgV7" class="main-button" rel="noreferrer noopener">Начать игру</a>
+            <a href="index.html" class="main-button secondary">На главную</a>
+        </div>
     </div>
 
     <div class="warning">
         Участие в азартных играх не гарантирует выигрыш и может привести к потере денежных средств. Играйте ответственно.
     </div>
 
-    <div class="content-section">
-        <h2 style="font-size: 32px; color: #ffffff; text-align: center; margin-bottom: 10px;">Правила эффективной игры</h2>
-        <p style="text-align: center; color: rgba(255,255,255,0.65); max-width: 800px; margin: 0 auto 40px; font-size: 18px; line-height: 1.8;">Чтобы игра приносила удовольствие и результат, важно подходить к ней осознанно. Следуйте этим принципам, чтобы сделать игровой процесс максимально выгодным.</p>
+    <section>
+        <h2 class="section-title">Правила эффективной игры</h2>
+        <p class="section-description">
+            Чтобы игра приносила удовольствие и результат, важно подходить к ней осознанно. Следуйте этим принципам, чтобы сделать игровой процесс максимально выгодным.
+        </p>
 
-        <div class="tip-block"><h3>Контроль бюджета</h3><p>Определите сумму, которую вы готовы инвестировать в игру на месяц. Это ваш игровой фонд. Разделите его на части и используйте в соответствии с планом. Это поможет избежать необдуманных трат и сохранить контроль над своими финансами.</p></div>
-        <div class="tip-block"><h3>Анализ ставок</h3><p>Ведите учёт выигрышей и проигрышей. Это позволит вам видеть свою динамику и корректировать стратегию. Lucky Bear предоставляет полную историю транзакций, которая всегда доступна в личном кабинете.</p></div>
-        <div class="tip-block"><h3>Бонусная стратегия</h3><p>Используйте бонусы и фриспины для увеличения игрового времени. Это даёт больше возможностей для выигрыша без дополнительных вложений. Внимательно изучайте условия отыгрыша, чтобы использовать бонусы с максимальной выгодой.</p></div>
-        <div class="tip-block" style="border-bottom: none;"><h3>Дисциплина — залог успеха</h3><p>Играйте по заранее продуманной стратегии, не поддаваясь эмоциям. Холодный расчёт и самоконтроль помогут принимать правильные решения и избегать импульсивных ставок.</p></div>
+        <div class="info-block"><h3>Контроль бюджета</h3><p>Определите сумму, которую вы готовы инвестировать в игру на месяц. Это ваш игровой фонд. Разделите его на части и используйте в соответствии с планом. Это поможет избежать необдуманных трат и сохранить контроль над своими финансами.</p></div>
+        <div class="info-block"><h3>Анализ ставок</h3><p>Ведите учёт выигрышей и проигрышей. Это позволит вам видеть свою динамику и корректировать стратегию. Lucky Bear предоставляет полную историю транзакций, которая всегда доступна в личном кабинете.</p></div>
+        <div class="info-block"><h3>Бонусная стратегия</h3><p>Используйте бонусы и фриспины для увеличения игрового времени. Это даёт больше возможностей для выигрыша без дополнительных вложений. Внимательно изучайте условия отыгрыша, чтобы использовать бонусы с максимальной выгодой.</p></div>
+        <div class="info-block" style="border-bottom: none;"><h3>Дисциплина — залог успеха</h3><p>Играйте по заранее продуманной стратегии, не поддаваясь эмоциям. Холодный расчёт и самоконтроль помогут принимать правильные решения и избегать импульсивных ставок.</p></div>
 
-        <h2 style="font-size: 32px; color: #ffffff; text-align: center; margin: 50px 0 10px;">Как извлечь максимум из игры</h2>
-        <p style="text-align: center; color: rgba(255,255,255,0.65); max-width: 800px; margin: 0 auto 40px; font-size: 18px; line-height: 1.8;">Небольшие хитрости, которые помогут увеличить ваши шансы на успех в Lucky Bear.</p>
+        <h2 class="section-title" style="margin-top: 60px;">Как извлечь максимум из игры</h2>
+        <p class="section-description">Небольшие хитрости, которые помогут увеличить ваши шансы на успех в Lucky Bear.</p>
 
-        <div class="tip-block"><h3>Выбирайте игры с высоким RTP</h3><p>RTP (Return to Player) — это процент возврата средств игроку. Чем выше RTP, тем больше шансов на длительную игру и выигрыш. В Lucky Bear представлены слоты с RTP выше 96%. Изучайте информацию об игре перед запуском.</p></div>
-        <div class="tip-block"><h3>Изучайте механику слотов</h3><p>Перед тем как играть на деньги, используйте демо-версии слотов. Это позволит понять механику, бонусные раунды и частоту выпадения выигрышей без риска для своего бюджета.</p></div>
-        <div class="tip-block" style="border-bottom: none;"><h3>Ставьте на то, в чём разбираетесь</h3><p>Если вы делаете ставки на спорт, выбирайте события, в которых вы хорошо ориентируетесь. Анализируйте статистику, форму команд и другие факторы. Это повышает вероятность успешного прогноза.</p></div>
+        <div class="info-block"><h3>Выбирайте игры с высоким RTP</h3><p>RTP (Return to Player) — это процент возврата средств игроку. Чем выше RTP, тем больше шансов на длительную игру и выигрыш. В Lucky Bear представлены слоты с RTP выше 96%. Изучайте информацию об игре перед запуском.</p></div>
+        <div class="info-block"><h3>Изучайте механику слотов</h3><p>Перед тем как играть на деньги, используйте демо-версии слотов. Это позволит понять механику, бонусные раунды и частоту выпадения выигрышей без риска для своего бюджета.</p></div>
+        <div class="info-block" style="border-bottom: none;"><h3>Ставьте на то, в чём разбираетесь</h3><p>Если вы делаете ставки на спорт, выбирайте события, в которых вы хорошо ориентируетесь. Анализируйте статистику, форму команд и другие факторы. Это повышает вероятность успешного прогноза.</p></div>
 
-        <h2 style="font-size: 32px; color: #ffffff; text-align: center; margin: 50px 0 10px;">Инструменты для комфортной игры</h2>
-        <p style="text-align: center; color: rgba(255,255,255,0.65); max-width: 800px; margin: 0 auto 40px; font-size: 18px; line-height: 1.8;">Используйте возможности платформы, чтобы играть с максимальным контролем и удовольствием.</p>
+        <h2 class="section-title" style="margin-top: 60px;">Инструменты для комфортной игры</h2>
+        <p class="section-description">Используйте возможности платформы, чтобы играть с максимальным контролем и удовольствием.</p>
 
-        <div class="tip-block"><h3>Лимиты на депозит</h3><p>Установите сумму, которую вы готовы потратить без ущерба для своего бюджета. Это поможет избежать лишних трат и сохранить контроль над игровым процессом. Настройки доступны в личном кабинете.</p></div>
-        <div class="tip-block"><h3>История транзакций</h3><p>В любое время вы можете просмотреть все свои пополнения, ставки и выводы в детальном отчёте. Это помогает анализировать свои действия и принимать обоснованные решения.</p></div>
-        <div class="tip-block" style="border-bottom: none;"><h3>Бонусный калькулятор</h3><p>Рассчитывайте потенциальную выгоду от акций и бонусов. Сравнивайте предложения, чтобы выбрать наиболее выгодное для вашего стиля игры. Вся информация о бонусах доступна в разделе «Бонусы».</p></div>
+        <div class="info-block"><h3>Лимиты на депозит</h3><p>Установите сумму, которую вы готовы потратить без ущерба для своего бюджета. Это поможет избежать лишних трат и сохранить контроль над игровым процессом. Настройки доступны в личном кабинете.</p></div>
+        <div class="info-block"><h3>История транзакций</h3><p>В любое время вы можете просмотреть все свои пополнения, ставки и выводы в детальном отчёте. Это помогает анализировать свои действия и принимать обоснованные решения.</p></div>
+        <div class="info-block" style="border-bottom: none;"><h3>Бонусный калькулятор</h3><p>Рассчитывайте потенциальную выгоду от акций и бонусов. Сравнивайте предложения, чтобы выбрать наиболее выгодное для вашего стиля игры. Вся информация о бонусах доступна в разделе «Бонусы».</p></div>
 
-        <h2 style="font-size: 32px; color: #ffffff; text-align: center; margin: 50px 0 10px;">Защита вашего аккаунта</h2>
-        <p style="text-align: center; color: rgba(255,255,255,0.65); max-width: 800px; margin: 0 auto 40px; font-size: 18px; line-height: 1.8;">Безопасность вашего профиля — это основа комфортной игры. Следуйте этим простым рекомендациям.</p>
+        <h2 class="section-title" style="margin-top: 60px;">Защита вашего аккаунта</h2>
+        <p class="section-description">Безопасность вашего профиля — это основа комфортной игры. Следуйте этим простым рекомендациям.</p>
 
-        <div class="tip-block"><h3>Используйте сложные пароли</h3><p>Создайте пароль, который будет трудно подобрать. Используйте комбинацию заглавных и строчных букв, цифр и специальных символов. Не используйте один и тот же пароль на разных сайтах.</p></div>
-        <div class="tip-block"><h3>Не передавайте доступ третьим лицам</h3><p>Никому не сообщайте свои логин и пароль. Также не передавайте данные для подтверждения платежей и SMS-коды. Сотрудники Lucky Bear никогда не запрашивают пароли пользователей.</p></div>
-        <div class="tip-block" style="border-bottom: none;"><h3>Включайте двухфакторную аутентификацию</h3><p>Если функция доступна, обязательно активируйте двухфакторную аутентификацию. Это дополнительный уровень защиты вашего аккаунта от несанкционированного доступа.</p></div>
+        <div class="info-block"><h3>Используйте сложные пароли</h3><p>Создайте пароль, который будет трудно подобрать. Используйте комбинацию заглавных и строчных букв, цифр и специальных символов. Не используйте один и тот же пароль на разных сайтах.</p></div>
+        <div class="info-block"><h3>Не передавайте доступ третьим лицам</h3><p>Никому не сообщайте свои логин и пароль. Также не передавайте данные для подтверждения платежей и SMS-коды. Сотрудники Lucky Bear никогда не запрашивают пароли пользователей.</p></div>
+        <div class="info-block" style="border-bottom: none;"><h3>Включайте двухфакторную аутентификацию</h3><p>Если функция доступна, обязательно активируйте двухфакторную аутентификацию. Это дополнительный уровень защиты вашего аккаунта от несанкционированного доступа.</p></div>
 
         <div style="max-width: 900px; margin: 50px auto 0; text-align: center;">
-            <p style="color: rgba(255,255,255,0.8); font-size: 18px; max-width: 700px; margin: 0 auto 25px;">Применяйте эти стратегии и начните игру в Lucky Bear с преимуществом.</p>
+            <p style="color: rgba(200,220,240,0.7); font-size: 18px; max-width: 700px; margin: 0 auto 25px;">Применяйте эти стратегии и начните игру в Lucky Bear с преимуществом.</p>
             <a href="https://lb777.xyz/5dsgV7" class="main-button" rel="noreferrer noopener" style="display: inline-block;">Перейти к игре</a>
         </div>
-    </div>
+    </section>
 
-    <footer>LUCKY BEAR © 2026</footer>
+    <footer>
+        LUCKY BEAR © 2026
+    </footer>
 
     <script>
         const burgerBtn = document.getElementById('burgerBtn');
@@ -176,7 +195,18 @@
             });
         });
 
-        const elements = document.querySelectorAll(".tip-block");
+        const logo = document.querySelector(".logo");
+        window.addEventListener("scroll", () => {
+            let scroll = window.scrollY;
+            let opacity = 1 - scroll / 500;
+            let scale = 1 - scroll / 1500;
+            if (opacity < 0) opacity = 0;
+            if (scale < 0.7) scale = 0.7;
+            logo.style.opacity = opacity;
+            logo.style.transform = `scale(${scale})`;
+        });
+
+        const elements = document.querySelectorAll(".info-block");
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
