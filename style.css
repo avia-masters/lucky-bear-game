@@ -1,6 +1,6 @@
 /* ===========================================
    LUCKY BEAR NEON STYLE (СВЕТЛЫЙ ФОН)
-   Голубой неон + 6 фоновых медведей
+   Голубой неон + 4 фоновых медведя по углам
    =========================================== */
 
 :root {
@@ -10,8 +10,8 @@
     --bg-card: rgba(255, 255, 255, 0.7);
     --text-dark: #0a1628;
     --text-soft: #2a4a6a;
-    --border-glow: rgba(0, 136, 204, 0.15);
-    --shadow-glow: 0 0 40px rgba(0, 136, 204, 0.08);
+    --border-glow: rgba(0, 136, 204, 0.12);
+    --shadow-glow: 0 0 40px rgba(0, 136, 204, 0.06);
 }
 
 * {
@@ -40,24 +40,22 @@ img {
     display: block;
 }
 
-/* ===== СВЕТЛЫЙ ФОН С МЕДВЕДЯМИ ===== */
+/* ===== СВЕТЛЫЙ ФОН ===== */
 .bear-background {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #dce8f5 0%, #e8f4ff 40%, #f0f8ff 100%);
+    background: linear-gradient(145deg, #dce8f5 0%, #eef6fc 50%, #f5faff 100%);
     z-index: -1;
 }
 
-/* ===== 6 МЕДВЕДЕЙ ПО УГЛАМ (ровные, без искажений) ===== */
+/* ===== 4 РОВНЫХ МЕДВЕДЯ ПО УГЛАМ (БЕЗ ПОВОРОТА) ===== */
 .bear-background::before,
 .bear-background::after,
 .bear-glow-1,
-.bear-glow-2,
-.bear-glow-3,
-.bear-glow-4 {
+.bear-glow-2 {
     content: '';
     position: fixed;
     background-image: url('images/menu-logo.png');
@@ -71,63 +69,39 @@ img {
 
 /* Медведь 1 — верхний левый */
 .bear-background::before {
-    top: 5%;
-    left: 3%;
-    width: 180px;
-    height: 180px;
-    transform: rotate(-5deg);
+    top: 3%;
+    left: 2%;
+    width: 280px;
+    height: 280px;
 }
 
 /* Медведь 2 — верхний правый */
 .bear-background::after {
-    top: 5%;
-    right: 3%;
-    width: 200px;
-    height: 200px;
-    transform: rotate(5deg);
+    top: 3%;
+    right: 2%;
+    width: 280px;
+    height: 280px;
 }
 
-/* Медведь 3 — средний левый */
+/* Медведь 3 — нижний левый */
 .bear-glow-1 {
-    top: 35%;
-    left: 1%;
-    width: 140px;
-    height: 140px;
-    transform: rotate(-8deg);
+    bottom: 3%;
+    left: 2%;
+    width: 280px;
+    height: 280px;
 }
 
-/* Медведь 4 — средний правый */
+/* Медведь 4 — нижний правый */
 .bear-glow-2 {
-    top: 35%;
-    right: 1%;
-    width: 160px;
-    height: 160px;
-    transform: rotate(8deg);
+    bottom: 3%;
+    right: 2%;
+    width: 280px;
+    height: 280px;
 }
 
-/* Медведь 5 — нижний левый */
-.bear-glow-3 {
-    bottom: 5%;
-    left: 3%;
-    width: 200px;
-    height: 200px;
-    transform: rotate(-3deg);
-}
-
-/* Медведь 6 — нижний правый */
-.bear-glow-4 {
-    bottom: 5%;
-    right: 3%;
-    width: 180px;
-    height: 180px;
-    transform: rotate(3deg);
-}
-
-/* ===== ДОБАВЛЯЕМ МЕДВЕДЕЙ В HTML (нужно добавить в index.html) ===== */
+/* ===== ДОБАВЬТЕ В HTML (после <div class="bear-background"></div>) ===== */
 /* <div class="bear-glow-1"></div>
-   <div class="bear-glow-2"></div>
-   <div class="bear-glow-3"></div>
-   <div class="bear-glow-4"></div> */
+   <div class="bear-glow-2"></div> */
 
 /* ===== ХЕДЕР ===== */
 header {
@@ -143,8 +117,8 @@ header {
     justify-content: space-between;
     padding: 0 20px;
     z-index: 1000;
-    border-bottom: 1px solid rgba(0, 136, 204, 0.08);
-    box-shadow: 0 2px 30px rgba(0, 0, 0, 0.04);
+    border-bottom: 1px solid rgba(0, 136, 204, 0.06);
+    box-shadow: 0 2px 30px rgba(0, 0, 0, 0.03);
 }
 
 .brand-icon {
@@ -237,7 +211,7 @@ header {
     font-weight: 700;
     font-size: 15px;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 20px rgba(0, 136, 204, 0.15);
+    box-shadow: 0 4px 20px rgba(0, 136, 204, 0.12);
     flex-shrink: 0;
     border: none;
     cursor: pointer;
@@ -245,7 +219,7 @@ header {
 
 .bot-button:hover {
     transform: scale(1.05);
-    box-shadow: 0 6px 30px rgba(0, 136, 204, 0.25);
+    box-shadow: 0 6px 30px rgba(0, 136, 204, 0.2);
 }
 
 .bot-button img {
@@ -362,14 +336,14 @@ header {
     font-weight: 700;
     font-size: 17px;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 25px rgba(0, 136, 204, 0.15);
+    box-shadow: 0 4px 25px rgba(0, 136, 204, 0.12);
     border: none;
     cursor: pointer;
 }
 
 .main-button:hover {
     transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 8px 40px rgba(0, 136, 204, 0.25);
+    box-shadow: 0 8px 40px rgba(0, 136, 204, 0.2);
 }
 
 .main-button.secondary {
@@ -630,20 +604,16 @@ footer {
     .bear-background::before,
     .bear-background::after,
     .bear-glow-1,
-    .bear-glow-2,
-    .bear-glow-3,
-    .bear-glow-4 {
-        width: 80px !important;
-        height: 80px !important;
+    .bear-glow-2 {
+        width: 120px !important;
+        height: 120px !important;
         opacity: 0.06 !important;
     }
 
-    .bear-background::before { top: 3%; left: 2%; }
-    .bear-background::after { top: 3%; right: 2%; }
-    .bear-glow-1 { top: 30%; left: 0%; }
-    .bear-glow-2 { top: 30%; right: 0%; }
-    .bear-glow-3 { bottom: 3%; left: 2%; }
-    .bear-glow-4 { bottom: 3%; right: 2%; }
+    .bear-background::before { top: 2%; left: 1%; }
+    .bear-background::after { top: 2%; right: 1%; }
+    .bear-glow-1 { bottom: 2%; left: 1%; }
+    .bear-glow-2 { bottom: 2%; right: 1%; }
 }
 
 @media (min-width: 769px) {
