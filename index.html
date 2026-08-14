@@ -27,8 +27,8 @@
 
     <style>
         /* ===========================================
-           LUCKY BEAR — СВЕТЛЫЙ НЕОН (ГОЛУБОЙ ГРАДИЕНТ)
-           Белые заголовки, белые кнопки, светлый фон
+           LUCKY BEAR — ТЁМНЫЙ СТИЛЬ (МЯГКИЙ ТЁМНО-СИНИЙ)
+           Белые заголовки, белые кнопки, тёмный фон
            =========================================== */
 
         * {
@@ -39,8 +39,8 @@
         }
 
         body {
-            background: #e3edf7;
-            color: #0a1628;
+            background: #0d1b2a;
+            color: #e0e8f0;
             font-family: 'Segoe UI', 'Arial', sans-serif;
             line-height: 1.6;
             padding-top: 70px;
@@ -57,18 +57,18 @@
             display: block;
         }
 
-        /* ===== СВЕТЛЫЙ ГРАДИЕНТ ===== */
+        /* ===== ТЁМНЫЙ ФОН С МЯГКИМ ГРАДИЕНТОМ ===== */
         .bear-background {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(145deg, #c5dbe9 0%, #dce8f5 40%, #e8f1fa 70%, #d4e4f7 100%);
+            background: linear-gradient(145deg, #0d1b2a 0%, #1b2d45 50%, #0f1f30 100%);
             z-index: -1;
         }
 
-        /* ===== 4 РОВНЫХ МЕДВЕДЯ ПО УГЛАМ ===== */
+        /* ===== 4 МЕДВЕДЯ ПО УГЛАМ (БОЛЕЕ ЗАМЕТНЫЕ) ===== */
         .bear-glow-1,
         .bear-glow-2,
         .bear-glow-3,
@@ -80,7 +80,7 @@
             background-position: center;
             pointer-events: none;
             z-index: -1;
-            opacity: 0.07;
+            opacity: 0.10;
         }
 
         .bear-glow-1 {
@@ -118,15 +118,15 @@
             left: 0;
             width: 100%;
             height: 70px;
-            background: rgba(255, 255, 255, 0.92);
+            background: rgba(13, 27, 42, 0.92);
             backdrop-filter: blur(15px);
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 0 20px;
             z-index: 1000;
-            border-bottom: 1px solid rgba(0, 136, 204, 0.06);
-            box-shadow: 0 2px 30px rgba(0, 0, 0, 0.02);
+            border-bottom: 1px solid rgba(0, 136, 204, 0.15);
+            box-shadow: 0 2px 30px rgba(0, 0, 0, 0.4);
         }
 
         .brand-icon {
@@ -136,6 +136,7 @@
         .brand-icon img {
             height: 42px;
             width: auto;
+            filter: drop-shadow(0 0 10px rgba(0, 136, 204, 0.2));
         }
 
         /* ===== БУРГЕР-МЕНЮ ===== */
@@ -157,9 +158,10 @@
             display: block;
             width: 100%;
             height: 3px;
-            background: #0a1628;
+            background: #00aaff;
             border-radius: 3px;
             transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 170, 255, 0.2);
         }
 
         .burger-btn.active span:nth-child(1) {
@@ -189,7 +191,7 @@
         }
 
         .nav-link {
-            color: rgba(10, 22, 40, 0.55);
+            color: rgba(200, 220, 240, 0.6);
             font-size: 13px;
             font-weight: 500;
             padding: 6px 14px;
@@ -202,12 +204,13 @@
 
         .nav-link:hover,
         .nav-link.active {
-            color: #0088cc;
-            background: rgba(0, 136, 204, 0.06);
-            border-color: rgba(0, 136, 204, 0.1);
+            color: #00aaff;
+            background: rgba(0, 170, 255, 0.08);
+            border-color: rgba(0, 170, 255, 0.15);
+            box-shadow: 0 0 20px rgba(0, 170, 255, 0.05);
         }
 
-        /* ===== КНОПКА "ИГРАТЬ" (БЕЛАЯ) ===== */
+        /* ===== КНОПКА "ИГРАТЬ" (БЕЛАЯ С НЕОНОМ) ===== */
         .bot-button {
             display: flex;
             align-items: center;
@@ -219,16 +222,16 @@
             font-weight: 700;
             font-size: 15px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 4px 25px rgba(0, 170, 255, 0.1);
             flex-shrink: 0;
-            border: 1px solid rgba(0, 136, 204, 0.08);
+            border: 1px solid rgba(0, 170, 255, 0.1);
             cursor: pointer;
         }
 
         .bot-button:hover {
             transform: scale(1.05);
-            box-shadow: 0 6px 30px rgba(0, 136, 204, 0.1);
-            border-color: rgba(0, 136, 204, 0.15);
+            box-shadow: 0 6px 35px rgba(0, 170, 255, 0.2);
+            border-color: rgba(0, 170, 255, 0.2);
         }
 
         .bot-button img {
@@ -244,12 +247,12 @@
             top: 70px;
             left: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.98);
+            background: rgba(13, 27, 42, 0.98);
             backdrop-filter: blur(15px);
             padding: 20px;
             flex-direction: column;
             gap: 8px;
-            border-bottom: 1px solid rgba(0, 136, 204, 0.05);
+            border-bottom: 1px solid rgba(0, 170, 255, 0.05);
             z-index: 999;
             max-height: calc(100vh - 70px);
             overflow-y: auto;
@@ -263,15 +266,16 @@
             font-size: 16px;
             padding: 12px 20px;
             border-radius: 12px;
-            border: 1px solid rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.03);
             text-align: center;
+            color: rgba(200, 220, 240, 0.7);
         }
 
         .mobile-menu .nav-link:hover,
         .mobile-menu .nav-link.active {
-            background: rgba(0, 136, 204, 0.06);
-            border-color: rgba(0, 136, 204, 0.1);
-            color: #0088cc;
+            background: rgba(0, 170, 255, 0.06);
+            border-color: rgba(0, 170, 255, 0.1);
+            color: #00aaff;
         }
 
         /* ===== ГЕРОЙ ===== */
@@ -292,6 +296,7 @@
             margin: 0 auto 20px;
             transition: all 0.1s ease;
             animation: floatLogo 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 40px rgba(0, 170, 255, 0.15));
         }
 
         @keyframes floatLogo {
@@ -299,22 +304,23 @@
             50% { transform: translateY(-10px); }
         }
 
-        /* ===== ЗАГОЛОВКИ (БЕЛЫЕ) ===== */
+        /* ===== ЗАГОЛОВКИ (БЕЛЫЕ С НЕОНОВЫМ СВЕЧЕНИЕМ) ===== */
         .title {
             font-size: clamp(40px, 8vw, 80px);
             font-weight: 900;
-            color: #0a1628;
+            color: #ffffff;
             letter-spacing: 2px;
             line-height: 1.1;
+            text-shadow: 0 0 40px rgba(0, 170, 255, 0.1);
         }
 
         .title span {
-            color: #0088cc;
+            color: #00aaff;
         }
 
         .subtitle {
             font-size: clamp(16px, 2.5vw, 26px);
-            color: rgba(10, 22, 40, 0.75);
+            color: rgba(200, 220, 240, 0.75);
             margin-top: 10px;
             font-weight: 300;
             letter-spacing: 0.5px;
@@ -324,7 +330,7 @@
             max-width: 800px;
             margin: 20px auto 30px;
             font-size: clamp(15px, 1.8vw, 19px);
-            color: rgba(10, 22, 40, 0.6);
+            color: rgba(200, 220, 240, 0.6);
             line-height: 1.7;
         }
 
@@ -336,7 +342,7 @@
             margin-bottom: 20px;
         }
 
-        /* ===== ГЛАВНЫЕ КНОПКИ (БЕЛЫЕ) ===== */
+        /* ===== ГЛАВНЫЕ КНОПКИ (БЕЛЫЕ С НЕОНОМ) ===== */
         .main-button {
             display: inline-block;
             background: #ffffff;
@@ -346,27 +352,27 @@
             font-weight: 700;
             font-size: 17px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.04);
-            border: 1px solid rgba(0, 136, 204, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 170, 255, 0.08);
+            border: 1px solid rgba(0, 170, 255, 0.1);
             cursor: pointer;
         }
 
         .main-button:hover {
             transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 8px 40px rgba(0, 136, 204, 0.1);
-            border-color: rgba(0, 136, 204, 0.15);
+            box-shadow: 0 8px 50px rgba(0, 170, 255, 0.15);
+            border-color: rgba(0, 170, 255, 0.15);
         }
 
         .main-button.secondary {
-            background: rgba(10, 22, 40, 0.03);
-            color: #0a1628;
+            background: rgba(255, 255, 255, 0.05);
+            color: #ffffff;
             box-shadow: none;
-            border: 1px solid rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
         .main-button.secondary:hover {
-            background: rgba(10, 22, 40, 0.06);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
         }
 
         /* ===== ПРЕДУПРЕЖДЕНИЕ ===== */
@@ -376,10 +382,10 @@
             padding: 8px 0;
             text-align: center;
             font-size: 16px;
-            color: rgba(10, 22, 40, 0.25);
+            color: rgba(200, 220, 240, 0.2);
             letter-spacing: 0.3px;
-            border-top: 1px solid rgba(0, 0, 0, 0.04);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
         }
 
         /* ===== СЕКЦИИ ===== */
@@ -396,11 +402,12 @@
             font-weight: 700;
             text-align: center;
             margin-bottom: 15px;
-            color: #0a1628;
+            color: #ffffff;
+            text-shadow: 0 0 30px rgba(0, 170, 255, 0.05);
         }
 
         .section-title span {
-            color: #0088cc;
+            color: #00aaff;
         }
 
         .section-description {
@@ -408,14 +415,14 @@
             max-width: 800px;
             margin: 0 auto 40px;
             font-size: clamp(15px, 1.6vw, 18px);
-            color: rgba(10, 22, 40, 0.6);
+            color: rgba(200, 220, 240, 0.6);
             line-height: 1.8;
         }
 
         /* ===== ИНФО-БЛОКИ ===== */
         .info-block {
-            background: rgba(255, 255, 255, 0.7);
-            border: 1px solid rgba(0, 136, 204, 0.06);
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(0, 170, 255, 0.06);
             border-radius: 16px;
             padding: 30px 35px;
             margin-bottom: 20px;
@@ -424,27 +431,28 @@
         }
 
         .info-block:hover {
-            border-color: rgba(0, 136, 204, 0.12);
-            background: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.03);
+            border-color: rgba(0, 170, 255, 0.12);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
         }
 
         .info-block h3 {
-            color: #0088cc;
+            color: #00aaff;
             font-size: 20px;
             margin-bottom: 10px;
             font-weight: 600;
+            text-shadow: 0 0 20px rgba(0, 170, 255, 0.1);
         }
 
         .info-block p {
-            color: rgba(10, 22, 40, 0.7);
+            color: rgba(200, 220, 240, 0.7);
             font-size: 16px;
             line-height: 1.8;
         }
 
         .info-highlight {
-            border-color: rgba(0, 136, 204, 0.12);
-            background: rgba(0, 136, 204, 0.04);
+            border-color: rgba(0, 170, 255, 0.12);
+            background: rgba(0, 170, 255, 0.04);
         }
 
         /* ===== СЕТКИ ===== */
@@ -463,8 +471,8 @@
         .advantages-card,
         .promo-card,
         .faq-card {
-            background: rgba(255, 255, 255, 0.6);
-            border: 1px solid rgba(0, 136, 204, 0.05);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(0, 170, 255, 0.05);
             border-radius: 16px;
             padding: 25px 28px;
             transition: all 0.3s ease;
@@ -476,10 +484,10 @@
         .advantages-card:hover,
         .promo-card:hover,
         .faq-card:hover {
-            border-color: rgba(0, 136, 204, 0.1);
-            background: rgba(255, 255, 255, 0.85);
+            border-color: rgba(0, 170, 255, 0.1);
+            background: rgba(255, 255, 255, 0.04);
             transform: translateY(-2px);
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.03);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
         }
 
         .rules-card h3,
@@ -487,7 +495,7 @@
         .advantages-card h3,
         .promo-card h3,
         .faq-card h3 {
-            color: #0088cc;
+            color: #00aaff;
             font-size: 18px;
             margin-bottom: 10px;
             font-weight: 600;
@@ -498,7 +506,7 @@
         .advantages-card p,
         .promo-card p,
         .faq-card p {
-            color: rgba(10, 22, 40, 0.65);
+            color: rgba(200, 220, 240, 0.65);
             font-size: 15px;
             line-height: 1.7;
         }
@@ -511,27 +519,27 @@
         }
 
         .rules-extra-card {
-            background: rgba(255, 255, 255, 0.5);
-            border: 1px solid rgba(0, 0, 0, 0.03);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.03);
             border-radius: 14px;
             padding: 22px 24px;
             transition: all 0.3s ease;
         }
 
         .rules-extra-card:hover {
-            background: rgba(255, 255, 255, 0.8);
-            border-color: rgba(0, 136, 204, 0.08);
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(0, 170, 255, 0.08);
         }
 
         .rules-extra-card h3 {
-            color: #0088cc;
+            color: #00aaff;
             font-size: 17px;
             margin-bottom: 8px;
             font-weight: 600;
         }
 
         .rules-extra-card p {
-            color: rgba(10, 22, 40, 0.6);
+            color: rgba(200, 220, 240, 0.6);
             font-size: 15px;
             line-height: 1.7;
         }
@@ -540,8 +548,8 @@
         footer {
             text-align: center;
             padding: 40px 20px;
-            border-top: 1px solid rgba(0, 0, 0, 0.03);
-            color: rgba(10, 22, 40, 0.2);
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            color: rgba(200, 220, 240, 0.2);
             font-size: 14px;
             letter-spacing: 1px;
             max-width: 1100px;
@@ -619,7 +627,7 @@
             .bear-glow-4 {
                 width: 100px !important;
                 height: 100px !important;
-                opacity: 0.05 !important;
+                opacity: 0.08 !important;
             }
 
             .bear-glow-1 { top: 2%; left: 1%; }
