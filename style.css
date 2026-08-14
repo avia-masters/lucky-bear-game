@@ -1,6 +1,6 @@
 /* ===========================================
-   LUCKY BEAR — СВЕТЛЫЙ НЕОН
-   Только голубой/синий градиент + белые кнопки
+   LUCKY BEAR — ПРЕМИАЛЬНЫЙ ТЁМНЫЙ СТИЛЬ
+   Благородные кнопки с переливом
    =========================================== */
 
 * {
@@ -11,8 +11,8 @@
 }
 
 body {
-    background: #e3edf7;
-    color: #0a1628;
+    background: #0d1b2a;
+    color: #e0e8f0;
     font-family: 'Segoe UI', 'Arial', sans-serif;
     line-height: 1.6;
     padding-top: 70px;
@@ -29,18 +29,18 @@ img {
     display: block;
 }
 
-/* ===== СВЕТЛЫЙ ГРАДИЕНТ (ГОЛУБОЙ → СИНИЙ, БЕЗ ФИОЛЕТА) ===== */
+/* ===== ТЁМНЫЙ ФОН ===== */
 .bear-background {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(145deg, #c5dbe9 0%, #dce8f5 40%, #e8f1fa 70%, #d4e4f7 100%);
+    background: linear-gradient(145deg, #0d1b2a 0%, #1b2d45 50%, #0f1f30 100%);
     z-index: -1;
 }
 
-/* ===== 4 РОВНЫХ МЕДВЕДЯ ПО УГЛАМ ===== */
+/* ===== 4 МЕДВЕДЯ ===== */
 .bear-glow-1,
 .bear-glow-2,
 .bear-glow-3,
@@ -52,36 +52,13 @@ img {
     background-position: center;
     pointer-events: none;
     z-index: -1;
-    opacity: 0.07;
+    opacity: 0.10;
 }
 
-.bear-glow-1 {
-    top: 2%;
-    left: 1%;
-    width: 300px;
-    height: 300px;
-}
-
-.bear-glow-2 {
-    top: 2%;
-    right: 1%;
-    width: 300px;
-    height: 300px;
-}
-
-.bear-glow-3 {
-    bottom: 2%;
-    left: 1%;
-    width: 300px;
-    height: 300px;
-}
-
-.bear-glow-4 {
-    bottom: 2%;
-    right: 1%;
-    width: 300px;
-    height: 300px;
-}
+.bear-glow-1 { top: 2%; left: 1%; width: 300px; height: 300px; }
+.bear-glow-2 { top: 2%; right: 1%; width: 300px; height: 300px; }
+.bear-glow-3 { bottom: 2%; left: 1%; width: 300px; height: 300px; }
+.bear-glow-4 { bottom: 2%; right: 1%; width: 300px; height: 300px; }
 
 /* ===== ХЕДЕР ===== */
 header {
@@ -90,15 +67,15 @@ header {
     left: 0;
     width: 100%;
     height: 70px;
-    background: rgba(255, 255, 255, 0.92);
+    background: rgba(13, 27, 42, 0.92);
     backdrop-filter: blur(15px);
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 20px;
     z-index: 1000;
-    border-bottom: 1px solid rgba(0, 136, 204, 0.06);
-    box-shadow: 0 2px 30px rgba(0, 0, 0, 0.02);
+    border-bottom: 1px solid rgba(74, 141, 183, 0.15);
+    box-shadow: 0 2px 30px rgba(0, 0, 0, 0.4);
 }
 
 .brand-icon {
@@ -108,6 +85,7 @@ header {
 .brand-icon img {
     height: 42px;
     width: auto;
+    filter: drop-shadow(0 0 10px rgba(74, 141, 183, 0.2));
 }
 
 /* ===== БУРГЕР-МЕНЮ ===== */
@@ -129,9 +107,10 @@ header {
     display: block;
     width: 100%;
     height: 3px;
-    background: #0a1628;
+    background: #4a8db7;
     border-radius: 3px;
     transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(74, 141, 183, 0.2);
 }
 
 .burger-btn.active span:nth-child(1) {
@@ -161,7 +140,7 @@ header {
 }
 
 .nav-link {
-    color: rgba(10, 22, 40, 0.55);
+    color: rgba(200, 220, 240, 0.6);
     font-size: 13px;
     font-weight: 500;
     padding: 6px 14px;
@@ -174,39 +153,120 @@ header {
 
 .nav-link:hover,
 .nav-link.active {
-    color: #0088cc;
-    background: rgba(0, 136, 204, 0.06);
-    border-color: rgba(0, 136, 204, 0.1);
+    color: #4a8db7;
+    background: rgba(74, 141, 183, 0.08);
+    border-color: rgba(74, 141, 183, 0.15);
+    box-shadow: 0 0 20px rgba(74, 141, 183, 0.05);
 }
 
-/* ===== КНОПКА "ИГРАТЬ" (БЕЛАЯ) ===== */
+/* ============================================================
+   ПРЕМИАЛЬНЫЕ КНОПКИ — БЛАГОРОДНЫЙ ТЁМНО-СИНИЙ С ПЕРЕЛИВОМ
+   ============================================================ */
+
 .bot-button {
     display: flex;
     align-items: center;
     gap: 8px;
-    background: #ffffff;
-    color: #0a1628;
+    background: linear-gradient(145deg, #0a2a4a, #1a4a6a);
+    color: #e0e8f0;
     padding: 8px 20px;
     border-radius: 30px;
     font-weight: 700;
     font-size: 15px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     flex-shrink: 0;
-    border: 1px solid rgba(0, 136, 204, 0.08);
+    border: 1px solid rgba(74, 141, 183, 0.15);
     cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.bot-button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(74, 141, 183, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.6s ease;
 }
 
 .bot-button:hover {
     transform: scale(1.05);
-    box-shadow: 0 6px 30px rgba(0, 136, 204, 0.1);
-    border-color: rgba(0, 136, 204, 0.15);
+    box-shadow: 0 6px 30px rgba(74, 141, 183, 0.2);
+    border-color: rgba(74, 141, 183, 0.3);
+    background: linear-gradient(145deg, #0f3050, #1f5a7a);
+}
+
+.bot-button:hover::before {
+    opacity: 1;
 }
 
 .bot-button img {
     height: 24px;
     width: auto;
     border-radius: 4px;
+}
+
+/* ===== ГЛАВНАЯ КНОПКА ===== */
+.main-button {
+    display: inline-block;
+    background: linear-gradient(145deg, #0a2a4a, #1a4a6a);
+    color: #e0e8f0;
+    padding: 14px 40px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 17px;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(74, 141, 183, 0.15);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.main-button::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(74, 141, 183, 0.12) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.main-button:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 40px rgba(74, 141, 183, 0.15);
+    border-color: rgba(74, 141, 183, 0.25);
+    background: linear-gradient(145deg, #0f3050, #1f5a7a);
+}
+
+.main-button:hover::before {
+    opacity: 1;
+}
+
+.main-button.secondary {
+    background: transparent;
+    color: #4a8db7;
+    box-shadow: none;
+    border: 2px solid rgba(74, 141, 183, 0.2);
+}
+
+.main-button.secondary::before {
+    display: none;
+}
+
+.main-button.secondary:hover {
+    background: rgba(74, 141, 183, 0.05);
+    border-color: rgba(74, 141, 183, 0.4);
+    box-shadow: 0 4px 30px rgba(74, 141, 183, 0.05);
+    transform: translateY(-3px) scale(1.02);
 }
 
 /* ===== МОБИЛЬНОЕ МЕНЮ ===== */
@@ -216,12 +276,12 @@ header {
     top: 70px;
     left: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.98);
+    background: rgba(13, 27, 42, 0.98);
     backdrop-filter: blur(15px);
     padding: 20px;
     flex-direction: column;
     gap: 8px;
-    border-bottom: 1px solid rgba(0, 136, 204, 0.05);
+    border-bottom: 1px solid rgba(74, 141, 183, 0.05);
     z-index: 999;
     max-height: calc(100vh - 70px);
     overflow-y: auto;
@@ -235,15 +295,16 @@ header {
     font-size: 16px;
     padding: 12px 20px;
     border-radius: 12px;
-    border: 1px solid rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.03);
     text-align: center;
+    color: rgba(200, 220, 240, 0.7);
 }
 
 .mobile-menu .nav-link:hover,
 .mobile-menu .nav-link.active {
-    background: rgba(0, 136, 204, 0.06);
-    border-color: rgba(0, 136, 204, 0.1);
-    color: #0088cc;
+    background: rgba(74, 141, 183, 0.06);
+    border-color: rgba(74, 141, 183, 0.1);
+    color: #4a8db7;
 }
 
 /* ===== ГЕРОЙ ===== */
@@ -264,6 +325,7 @@ header {
     margin: 0 auto 20px;
     transition: all 0.1s ease;
     animation: floatLogo 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 40px rgba(74, 141, 183, 0.15));
 }
 
 @keyframes floatLogo {
@@ -271,22 +333,22 @@ header {
     50% { transform: translateY(-10px); }
 }
 
-/* ===== ЗАГОЛОВКИ (БЕЛЫЕ) ===== */
 .title {
     font-size: clamp(40px, 8vw, 80px);
     font-weight: 900;
-    color: #0a1628;
+    color: #ffffff;
     letter-spacing: 2px;
     line-height: 1.1;
+    text-shadow: 0 0 40px rgba(74, 141, 183, 0.08);
 }
 
 .title span {
-    color: #0088cc;
+    color: #4a8db7;
 }
 
 .subtitle {
     font-size: clamp(16px, 2.5vw, 26px);
-    color: rgba(10, 22, 40, 0.75);
+    color: rgba(200, 220, 240, 0.75);
     margin-top: 10px;
     font-weight: 300;
     letter-spacing: 0.5px;
@@ -296,7 +358,7 @@ header {
     max-width: 800px;
     margin: 20px auto 30px;
     font-size: clamp(15px, 1.8vw, 19px);
-    color: rgba(10, 22, 40, 0.6);
+    color: rgba(200, 220, 240, 0.6);
     line-height: 1.7;
 }
 
@@ -308,39 +370,6 @@ header {
     margin-bottom: 20px;
 }
 
-/* ===== ГЛАВНЫЕ КНОПКИ (БЕЛЫЕ) ===== */
-.main-button {
-    display: inline-block;
-    background: #ffffff;
-    color: #0a1628;
-    padding: 14px 40px;
-    border-radius: 50px;
-    font-weight: 700;
-    font-size: 17px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.04);
-    border: 1px solid rgba(0, 136, 204, 0.08);
-    cursor: pointer;
-}
-
-.main-button:hover {
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 8px 40px rgba(0, 136, 204, 0.1);
-    border-color: rgba(0, 136, 204, 0.15);
-}
-
-.main-button.secondary {
-    background: rgba(10, 22, 40, 0.03);
-    color: #0a1628;
-    box-shadow: none;
-    border: 1px solid rgba(0, 0, 0, 0.06);
-}
-
-.main-button.secondary:hover {
-    background: rgba(10, 22, 40, 0.06);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.04);
-}
-
 /* ===== ПРЕДУПРЕЖДЕНИЕ ===== */
 .warning {
     max-width: 900px;
@@ -348,10 +377,10 @@ header {
     padding: 8px 0;
     text-align: center;
     font-size: 16px;
-    color: rgba(10, 22, 40, 0.25);
+    color: rgba(200, 220, 240, 0.2);
     letter-spacing: 0.3px;
-    border-top: 1px solid rgba(0, 0, 0, 0.04);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.03);
 }
 
 /* ===== СЕКЦИИ ===== */
@@ -362,17 +391,17 @@ section {
     scroll-margin-top: 90px;
 }
 
-/* ===== ЗАГОЛОВКИ (БЕЛЫЕ) ===== */
 .section-title {
     font-size: clamp(28px, 4vw, 44px);
     font-weight: 700;
     text-align: center;
     margin-bottom: 15px;
-    color: #0a1628;
+    color: #ffffff;
+    text-shadow: 0 0 30px rgba(74, 141, 183, 0.05);
 }
 
 .section-title span {
-    color: #0088cc;
+    color: #4a8db7;
 }
 
 .section-description {
@@ -380,14 +409,14 @@ section {
     max-width: 800px;
     margin: 0 auto 40px;
     font-size: clamp(15px, 1.6vw, 18px);
-    color: rgba(10, 22, 40, 0.6);
+    color: rgba(200, 220, 240, 0.6);
     line-height: 1.8;
 }
 
 /* ===== ИНФО-БЛОКИ ===== */
 .info-block {
-    background: rgba(255, 255, 255, 0.7);
-    border: 1px solid rgba(0, 136, 204, 0.06);
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(74, 141, 183, 0.06);
     border-radius: 16px;
     padding: 30px 35px;
     margin-bottom: 20px;
@@ -396,27 +425,28 @@ section {
 }
 
 .info-block:hover {
-    border-color: rgba(0, 136, 204, 0.12);
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.03);
+    border-color: rgba(74, 141, 183, 0.12);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
 }
 
 .info-block h3 {
-    color: #0088cc;
+    color: #4a8db7;
     font-size: 20px;
     margin-bottom: 10px;
     font-weight: 600;
+    text-shadow: 0 0 20px rgba(74, 141, 183, 0.08);
 }
 
 .info-block p {
-    color: rgba(10, 22, 40, 0.7);
+    color: rgba(200, 220, 240, 0.7);
     font-size: 16px;
     line-height: 1.8;
 }
 
 .info-highlight {
-    border-color: rgba(0, 136, 204, 0.12);
-    background: rgba(0, 136, 204, 0.04);
+    border-color: rgba(74, 141, 183, 0.12);
+    background: rgba(74, 141, 183, 0.04);
 }
 
 /* ===== СЕТКИ ===== */
@@ -435,8 +465,8 @@ section {
 .advantages-card,
 .promo-card,
 .faq-card {
-    background: rgba(255, 255, 255, 0.6);
-    border: 1px solid rgba(0, 136, 204, 0.05);
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(74, 141, 183, 0.05);
     border-radius: 16px;
     padding: 25px 28px;
     transition: all 0.3s ease;
@@ -448,10 +478,10 @@ section {
 .advantages-card:hover,
 .promo-card:hover,
 .faq-card:hover {
-    border-color: rgba(0, 136, 204, 0.1);
-    background: rgba(255, 255, 255, 0.85);
+    border-color: rgba(74, 141, 183, 0.1);
+    background: rgba(255, 255, 255, 0.04);
     transform: translateY(-2px);
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.03);
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
 }
 
 .rules-card h3,
@@ -459,7 +489,7 @@ section {
 .advantages-card h3,
 .promo-card h3,
 .faq-card h3 {
-    color: #0088cc;
+    color: #4a8db7;
     font-size: 18px;
     margin-bottom: 10px;
     font-weight: 600;
@@ -470,7 +500,7 @@ section {
 .advantages-card p,
 .promo-card p,
 .faq-card p {
-    color: rgba(10, 22, 40, 0.65);
+    color: rgba(200, 220, 240, 0.65);
     font-size: 15px;
     line-height: 1.7;
 }
@@ -483,27 +513,27 @@ section {
 }
 
 .rules-extra-card {
-    background: rgba(255, 255, 255, 0.5);
-    border: 1px solid rgba(0, 0, 0, 0.03);
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.03);
     border-radius: 14px;
     padding: 22px 24px;
     transition: all 0.3s ease;
 }
 
 .rules-extra-card:hover {
-    background: rgba(255, 255, 255, 0.8);
-    border-color: rgba(0, 136, 204, 0.08);
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(74, 141, 183, 0.08);
 }
 
 .rules-extra-card h3 {
-    color: #0088cc;
+    color: #4a8db7;
     font-size: 17px;
     margin-bottom: 8px;
     font-weight: 600;
 }
 
 .rules-extra-card p {
-    color: rgba(10, 22, 40, 0.6);
+    color: rgba(200, 220, 240, 0.6);
     font-size: 15px;
     line-height: 1.7;
 }
@@ -512,8 +542,8 @@ section {
 footer {
     text-align: center;
     padding: 40px 20px;
-    border-top: 1px solid rgba(0, 0, 0, 0.03);
-    color: rgba(10, 22, 40, 0.2);
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
+    color: rgba(200, 220, 240, 0.2);
     font-size: 14px;
     letter-spacing: 1px;
     max-width: 1100px;
@@ -522,78 +552,25 @@ footer {
 
 /* ===== АДАПТИВ ===== */
 @media (max-width: 768px) {
-    body {
-        padding-top: 60px;
-    }
-
-    header {
-        height: 60px;
-        padding: 0 15px;
-    }
-
-    .brand-icon img {
-        height: 34px;
-    }
-
-    .burger-btn {
-        display: flex;
-    }
-
-    .nav {
-        display: none;
-    }
-
-    .bot-button {
-        padding: 6px 14px;
-        font-size: 13px;
-    }
-
-    .bot-button img {
-        height: 20px;
-    }
-
-    .hero {
-        padding: 20px 15px 20px;
-        min-height: 60vh;
-    }
-
-    .logo {
-        max-width: 120px;
-    }
-
-    .rules-grid,
-    .about-box,
-    .advantages-box,
-    .bonus-box,
-    .faq-box {
-        grid-template-columns: 1fr;
-    }
-
-    .rules-extra {
-        grid-template-columns: 1fr;
-    }
-
-    section {
-        padding: 30px 15px;
-    }
-
-    .info-block {
-        padding: 20px;
-    }
-
-    .title {
-        font-size: clamp(28px, 6vw, 40px);
-    }
-
-    .bear-glow-1,
-    .bear-glow-2,
-    .bear-glow-3,
-    .bear-glow-4 {
+    body { padding-top: 60px; }
+    header { height: 60px; padding: 0 15px; }
+    .brand-icon img { height: 34px; }
+    .burger-btn { display: flex; }
+    .nav { display: none; }
+    .bot-button { padding: 6px 14px; font-size: 13px; }
+    .bot-button img { height: 20px; }
+    .hero { padding: 20px 15px 20px; min-height: 60vh; }
+    .logo { max-width: 120px; }
+    .rules-grid, .about-box, .advantages-box, .bonus-box, .faq-box { grid-template-columns: 1fr; }
+    .rules-extra { grid-template-columns: 1fr; }
+    section { padding: 30px 15px; }
+    .info-block { padding: 20px; }
+    .title { font-size: clamp(28px, 6vw, 40px); }
+    .bear-glow-1, .bear-glow-2, .bear-glow-3, .bear-glow-4 {
         width: 100px !important;
         height: 100px !important;
-        opacity: 0.05 !important;
+        opacity: 0.08 !important;
     }
-
     .bear-glow-1 { top: 2%; left: 1%; }
     .bear-glow-2 { top: 2%; right: 1%; }
     .bear-glow-3 { bottom: 2%; left: 1%; }
@@ -601,7 +578,5 @@ footer {
 }
 
 @media (min-width: 769px) {
-    .mobile-menu {
-        display: none !important;
-    }
+    .mobile-menu { display: none !important; }
 }
